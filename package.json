@@ -1,0 +1,22 @@
+{
+  "name": "rachelandjoey",
+  "version": "0.0.0",
+  "description": "wedding site for Rachel and Joey",
+  "main": "index.js",
+  "scripts": {
+    "test": "prova test/**"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeybaker/rachelandjoey.git"
+  },
+  "author": "Joey Baker <joey@byjoeybaker.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeybaker/rachelandjoey/issues"
+  },
+  "homepage": "https://github.com/joeybaker/rachelandjoey",
+  "dependencies": {
+    "hapi": "^6.2.2"
+  }
+}

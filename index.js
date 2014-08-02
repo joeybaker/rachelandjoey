@@ -2,7 +2,28 @@ var hapi = require('hapi')
   , path = require('path')
   , atomify = require('atomify')
   , server = new hapi.Server(8000, {
-    // debug: {error: true}
+    security: {
+      // enable strict transport security
+      hsts: true
+      // don't allow embdeding of this site
+      , xframe: true
+    }
+    , files: {
+      relativeTo: __dirname
+    }
+    , json: {
+      space: 2
+    }
+    , payload: {
+      // 1MB max
+      maxBytes: 1048576
+    }
+    , timeout: {
+      // max upload time, 10s
+      client: 10000
+      // server timesout at 30s
+      , server: 30 * 1000
+    }
   })
 
 // force https
@@ -59,11 +80,11 @@ server.start(function startServer(){
 })
 
 server.on('log', function(e){
-  console.log(new Date(e.timestamp).toISOString(), e.tags, e.data)
+  console.info(new Date(e.timestamp).toISOString(), e.tags, e.data)
 })
 
 server.on('request', function(req, e){
-  console.log(new Date(e.timestamp).toISOString(), e.tags, req.method, req.path, e.request)
+  console.info(new Date(e.timestamp).toISOString(), e.tags, req.method, req.path, e.request)
 })
 
 server.on('internalError', function(request, err){

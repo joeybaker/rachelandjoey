@@ -1,5 +1,5 @@
 var hapi = require('hapi')
-  , server = new hapi.Server(8000, 'localhost', {
+  , server = new hapi.Server(8000, '0.0.0.0', {
     // debug: {error: true}
   })
 

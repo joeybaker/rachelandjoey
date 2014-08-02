@@ -1,5 +1,7 @@
 var hapi = require('hapi')
   , path = require('path')
+  , atomify = require('atomify')
+  , autoprefixer = require('autoprefixer')
   , server = new hapi.Server(8000, {
     // debug: {error: true}
   })
@@ -12,6 +14,41 @@ server.ext('onRequest', function serverOnRequest(req, next){
   }
   else console.log('not an https connection!')
   next()
+})
+
+server.route({
+  path: '/index.css'
+  , method: 'GET'
+  , config: {
+    handler: function handleCss(req, res){
+      atomify.css({
+        entry: path.join(__dirname, 'components/_entry/index.css')
+        , plugins: [
+          ['rework-inherit']
+        ]
+      }, function atomifiedCss(err, css){
+        var prefixedCss
+
+        if (err) return void res(err)
+
+        // prefixedCss = autoprefixer('last 1 version', '> 3%').process(css).css
+
+        console.log(prefixedCss)
+
+        // res(prefixedCss).type('text/css')
+        res(css).type('text/css')
+      })
+
+    }
+    , cache: {
+      // change to 'default' in prod
+      privacy: 'private'
+      // set to some huge number in prod
+      , expiresIn: 1
+    }
+    , tags: ['assets', 'css']
+    , description: 'atomify css bundle'
+  }
 })
 
 server.route({

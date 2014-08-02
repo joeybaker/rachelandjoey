@@ -9,7 +9,7 @@ RUN npm install -g nave
 RUN nave usemain stable
 
 # Bundle app source
-COPY . /src
+ADD . /src
 # Install app dependencies
 RUN cd /src; npm install
 

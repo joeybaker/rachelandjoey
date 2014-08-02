@@ -1,17 +1,16 @@
 var hapi = require('hapi')
-  , server = new hapi.Server(8000, '0.0.0.0', {
+  , path = require('path')
+  , server = new hapi.Server(8000, {
     // debug: {error: true}
   })
 
 // force https
 server.ext('onRequest', function serverOnRequest(req, next){
-  console.log(req.info)
   if (req.headers['x-forwarded-for'] && !req.raw.req.connection.xForward){
     console.log('https!!!!!!!!')
     req.raw.req.connection.xForward = req.headers['x-forwarded-for']
   }
   else console.log('not an https connection!')
-  console.log(req.raw.req.connection.xForward)
   next()
 })
 
@@ -20,7 +19,7 @@ server.route({
   , method: '*'
   , handler: {
     directory: {
-      path: './static'
+      path: path.join(__dirname, 'static')
       , index: true
     }
   }

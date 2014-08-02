@@ -11,6 +11,8 @@
   margin: 0;
   text-align: center;
   text-shadow: -.03em -.03em .02em #fff;
+  /* b/c this is so huge, knock down the font weight */
+  font-weight: 300;
 }
 
 @media (min-width: 321px){

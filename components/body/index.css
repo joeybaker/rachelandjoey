@@ -3,9 +3,12 @@
 :root {
   var-background: #eee;
   var-font-size-base: 16px;
-  var-font-sans-serif: 'Asap', sans-serif;;
+  var-font-size-normal: 300;
+  var-font-size-bold: 700;
+  var-font-sans-serif: 'Lato', sans-serif;;
 
   font-size: var(font-size-base);
+  font-weight: var(font-size-normal);
 }
 
 html

@@ -1,30 +1,13 @@
 var hapi = require('hapi')
   , path = require('path')
   , atomify = require('atomify')
-  , server = new hapi.Server(8000, {
-    security: {
-      // enable strict transport security
-      hsts: true
-      // don't allow embdeding of this site
-      , xframe: true
-    }
-    , files: {
-      relativeTo: __dirname
-    }
-    , json: {
-      space: 2
-    }
-    , payload: {
-      // 1MB max
-      maxBytes: 1048576
-    }
-    , timeout: {
-      // max upload time, 10s
-      client: 10000
-      // server timesout at 30s
-      , server: 30 * 1000
-    }
+  , jace = require('jace')
+  , config = jace({
+    configPath: path.join(__dirname, 'config')
   })
+  , server = new hapi.Server(8000, config.server)
+
+server.app.config = config
 
 // force https
 server.ext('onRequest', function serverOnRequest(req, next){

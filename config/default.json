@@ -1,0 +1,18 @@
+{
+  "server": {
+    "security": {
+      "hsts": true,
+      "xframe": true
+    },
+    "json": {
+      "space": 2
+    },
+    "payload": {
+      "maxBytes": 1048576
+    },
+    "timeout": {
+      "client": 10000,
+      "server": 30000
+    }
+  }
+}

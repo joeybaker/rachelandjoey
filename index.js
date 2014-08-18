@@ -12,11 +12,22 @@ server.app.config = config
 // force https
 server.ext('onRequest', function serverOnRequest(req, next){
   if (req.headers['x-forwarded-for'] && !req.raw.req.connection.xForward){
-    console.log('https!!!!!!!!')
+    console.log('init https!!!!!!!!')
     req.raw.req.connection.xForward = req.headers['x-forwarded-for']
+    next()
   }
-  else console.log('not an https connection!')
-  next()
+  else if (req.raw.req.connection.xForward){
+    next()
+  }
+  else {
+    console.log('not an https connection!')
+    next({
+      statusCode: 301
+      , headers: {
+        'Location': 'https://www.rachelandjoey.com'
+      }
+    })
+  }
 })
 
 server.route({

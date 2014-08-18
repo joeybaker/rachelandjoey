@@ -11,7 +11,7 @@ RUN nave usemain stable
 # Bundle app source
 ADD . /src
 # Install app dependencies
-RUN cd /src; npm install
+RUN cd /src; npm install --production
 
 
 EXPOSE 8000

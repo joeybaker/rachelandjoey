@@ -9,6 +9,10 @@ sudo docker rm rachelandjoey
 sudo docker run -d  -p 80:8000 --name rachelandjoey joeybaker/rachelandjoey
 ```
 
+```bash
+sudo docker run -d -v /srv/bud:/data -p 443:443 --name bud --link rachelandjoey:backend joeybaker/bud-tls
+```
+
 ## Tests
 Tests are [prova](https://github.com/azer/prova), based on [tape](https://github.com/substack/tape). They can be run with `npm test`.
 

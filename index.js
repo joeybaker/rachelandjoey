@@ -21,7 +21,7 @@ server.ext('onRequest', function serverOnRequest(req, next){
   }
   else {
     console.log('not an https connection!')
-    next({statusCode: 301}).redirect('https://www.rachelandjoey.com')
+    next({statusCode: 301}).redirect('https://www.rachelandjoey.com' + req.url.path)
   }
 })
 

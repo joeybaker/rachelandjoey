@@ -1,12 +1,9 @@
 # rachelandjoey
 #
-# VERSION               1.0.0
+# VERSION               2.0.0
 
-FROM      dockerfile/nodejs
+FROM      iojs:1.1.0
 MAINTAINER Joey Baker <joey@byjoeybaker.com>
-
-RUN npm install -g nave
-RUN nave usemain stable
 
 # Bundle app source
 ADD . /src
@@ -15,4 +12,5 @@ RUN cd /src; npm install --production
 
 
 EXPOSE 8000
-CMD ["node", "/src/index.js"]
+WORKDIR "/src"
+CMD ["npm", "start"]

@@ -1,52 +1,69 @@
+'use strict';
+
+require('6to5/register')
+
 var hapi = require('hapi')
   , path = require('path')
-  , atomify = require('atomify')
+  , fs = require('fs')
+  , atomifyCSS = require('atomify-css')
+  , React = require('react')
+  , entryJs = require('./components/home/index.jsx')
+  , autoprefixer = require('autoprefixer-core')
   , jace = require('jace')
   , config = jace({
     configPath: path.join(__dirname, 'config')
   })
-  , server = new hapi.Server(8000, config.server)
+  , browserify = require('browserify')
+  , server = new hapi.Server()
+  , expiresIn = 1000 * 60 * 60 * 24 * 365
+
+server.connection({port: 8000})
 
 server.app.config = config
 
-// force https
-server.ext('onRequest', function serverOnRequest(req, next){
-  if (req.headers['x-forwarded-for'] && !req.raw.req.connection.xForward){
-    console.log('init https!!!!!!!!')
-    req.raw.req.connection.xForward = req.headers['x-forwarded-for']
-    next()
-  }
-  else if (req.raw.req.connection.xForward){
-    next()
-  }
-  else {
-    console.log('not an https connection!')
-    next({statusCode: 301}).redirect('https://www.rachelandjoey.com' + req.url.path)
-  }
+var builtJs
+function buildJs(callback){
+  if (builtJs) return void callback.apply(null, builtJs)
+
+  var b = browserify({debug: true})
+
+  b.add(path.join(__dirname, 'components', '_entry', 'index.jsx'))
+
+  b.transform('6to5ify')
+  b.plugin('minifyify', {map: '/static/index.js.map'})
+
+  b.bundle(function bundled(){
+    let args = [].slice.call(arguments, 0)
+    builtJs = args
+    callback.apply(null, args)
+  })
+}
+
+function buildCss(callback){
+  atomifyCSS({
+    entry: path.join(__dirname, 'static', 'index.css')
+  }, function(err, css){
+    if (err) return void callback(err)
+    callback(null, autoprefixer.process(css).css)
+  })
+}
+buildCss(function builtCss(err, css){
+  if (err) throw err
+  fs.writeFileSync(path.join(__dirname, 'static', 'entry.css'), css)
 })
 
 server.route({
-  path: '/index.css'
+  path: '/static/entry.css'
   , method: 'GET'
   , config: {
-    handler: function handleCss(req, res){
-      atomify.css({
-        entry: path.join(__dirname, 'components/_entry/index.css')
-        , plugins: [
-          ['rework-inherit']
-        ]
-      }, function atomifiedCss(err, css){
-        if (err) return void res(err)
-
-        res(css).type('text/css')
-      })
-
+    handler: {
+      file: path.join(__dirname, 'static', 'entry.css')
     }
     , cache: {
       // change to 'default' in prod
-      privacy: 'private'
-      // set to some huge number in prod
-      , expiresIn: 1
+      privacy: 'public'
+      // TODO: set to some huge number in prod
+      , expiresIn: expiresIn
     }
     , tags: ['assets', 'css']
     , description: 'atomify css bundle'
@@ -54,12 +71,64 @@ server.route({
 })
 
 server.route({
-  path: '/{any*}'
-  , method: '*'
-  , handler: {
-    directory: {
-      path: path.join(__dirname, 'static')
-      , index: true
+  path: '/static/index.js'
+  , method: 'GET'
+  , config: {
+    handler: function jsHandler(req, reply){
+      buildJs(function bundled(err, js){
+        if (err) return void reply(err)
+        else reply(js).type('application/javascript')
+      })
+    }
+    , cache: {
+      // change to 'default' in prod
+      privacy: 'public'
+      // TODO: set to some huge number in prod
+      , expiresIn: expiresIn
+    }
+    , tags: ['assets', 'js']
+    , description: 'js bundle'
+  }
+})
+
+server.route({
+  path: '/static/index.js.map'
+  , method: 'GET'
+  , config: {
+    handler: function jsHandler(req, reply){
+      buildJs(function bundled(err, js, map){
+        reply(err || map)
+      })
+    }
+    , cache: {
+      // change to 'default' in prod
+      privacy: 'public'
+      // TODO: set to some huge number in prod
+      , expiresIn: expiresIn
+    }
+    , tags: ['assets', 'js']
+    , description: 'js sourcemap'
+  }
+})
+
+server.route({
+  path: '/'
+  , method: 'GET'
+  , config: {
+    handler: function homeHandler(req, reply){
+      fs.readFile(path.join(__dirname, 'static', 'index.html'), function onReadHTML(err, html){
+        if (err) return void reply(err)
+        var initialHTML = React.renderToString(React.createElement(entryJs))
+        reply(html.toString()
+          .replace('{{entry}}', '/static/index.js')
+          .replace('<body>', '<body>' + initialHTML)
+          )
+          .type('text/html')
+      })
+    }
+    , cache: {
+      privacy: 'public'
+      , expiresIn: expiresIn
     }
   }
 })

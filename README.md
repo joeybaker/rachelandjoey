@@ -22,6 +22,6 @@ sudo docker run -d --restart=always -p 80:80 --name redirector getable/https-red
 Tests are [tape](https://github.com/substack/tape). They can be run with `npm test`.
 
 ## Developing
-`npm run server` the JS in live reload mode, it's not the full server
-`npm run dev -- component/dir` can run just a single component
+`npm run dev` the JS in live reload mode, it's not the full server
+`npm run component -- component/dir` can run just a single component
 `npm start` boots the server

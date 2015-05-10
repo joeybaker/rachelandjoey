@@ -1,5 +1,8 @@
-'use strict';
-var test = require('prova')
+'use strict'
+
+require('babel/register')
+
+const test = require('tape')
   , rachelandjoey = require('../')
 
 test('rachelandjoey#get', function getTest(t){

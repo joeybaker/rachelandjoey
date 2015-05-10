@@ -101,5 +101,5 @@ function npm_release(){
 }
 
 function run_beefy(){
-  beefy "$@" --live -- -t 6to5ify
+  beefy "$@" --live -- -t babelify
 }

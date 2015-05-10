@@ -1,2 +1,2 @@
-import data from '../events.json'
-export default {events: data}
+import events from '../../../data/events.json'
+export default {events}

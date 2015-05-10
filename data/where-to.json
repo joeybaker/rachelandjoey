@@ -1,0 +1,20 @@
+[
+    {
+      "verb": "Stay"
+      , "description": "Downtown healdsburg is nearby, and the town of Windsor is just 10 minutes away by car. There are many options, but hotels will fill up fast. Book something now."
+      , "link": "http://business.healdsburg.com/list/QL/lodging-travel-15"
+      , "cta": "See all area hotels"
+    }
+  , {
+    "verb": "eat"
+    , "description": "There are great meals all around from a $5 picnic to a fancy dinner. "
+    , "link": "http://business.healdsburg.com/list/QL/restaurants-food-beverages-22"
+    , "cta": "See Healdsburg restaruants"
+  }
+  , {
+    "verb": "drink"
+    , "description": "It's wine country! There are amazing wineries and a few breweries too. Healdsburg is Zin, Saviogn Blanc, and Cab territory, but all of Sonoma is nearby"
+    , "link": "http://business.healdsburg.com/list/QL/wineries-tasting-rooms-26"
+    , "cta": "See nearby wineries and breweries"
+  }
+]

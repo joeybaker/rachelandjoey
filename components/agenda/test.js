@@ -3,6 +3,7 @@ import React from 'react'
 import {addons} from 'react/addons'
 import Agenda from './index.jsx'
 const {TestUtils} = addons
+/* eslint-disable */
 const {Simulate, renderIntoDocument, isElement, createRenderer} = TestUtils
 const getReactNode = (dom, node) => TestUtils.findRenderedDOMComponentWithTag(dom, node)
 const getDOMNode = (dom, node) => getReactNode(dom, node).getDOMNode()

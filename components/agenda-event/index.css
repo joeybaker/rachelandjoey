@@ -1,0 +1,59 @@
+@import "../variables/";
+
+:root {
+  /* define your namespaced vars here
+  --fontSize-normal-agendaEvent: 1rem;
+  */
+}
+
+.agendaEvent {
+  display: block;
+  max-width: var(--width-textColumn-narrow);
+  margin-top: var(--padding-normal);
+}
+
+.agendaEvent-locationName
+, .agendaEvent-locationAddress {
+  margin: var(--padding-small) 0;
+}
+
+.agendaEvent-title {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fontSize-h3);
+  font-weight: var(--fontWeight-lato-bold);
+  color: var(--color-brand);
+}
+
+.agendaEvent-title-text
+, .agendaEvent-title-time {
+  display: block;
+}
+
+.agendaEvent-title-time {
+  color: var(--color-text-default);
+  margin-left: var(--padding-small);
+}
+
+/* this is the same media query from agenda-day*/
+@media (min-width: 36rem) {
+  .agendaEvent-title {
+    flex-direction: column;
+  }
+
+  .agendaEvent-title-time {
+    margin-left: 0;
+    margin-top: var(--padding-small);
+  }
+}
+
+@media (min-width: 64rem) {
+  .agendaEvent-title {
+    flex-direction: row;
+  }
+
+  .agendaEvent-title-time {
+    margin-left: var(--padding-small);
+    margin-top: 0;
+  }
+}

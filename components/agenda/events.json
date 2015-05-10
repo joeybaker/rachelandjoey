@@ -1,0 +1,19 @@
+[
+  {
+    "start": 1441472400000, "end": 1441494000000, "title": "Chillaxin’ by the Pool", "location": {
+      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
+    }, "description": "Drink some drink, nosh some nosh, and pick up a welcome packet!"
+  }, {
+    "start": 1441512000000, "end": 1441522800000, "title": "Rehearsal Dinner After Party", "location": {
+      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
+    }, "description": "Join us for drinks and dancing poolside. Please bring a beverage to share. We will be providing glasses, ice, and mixers."
+  }, {
+    "start": 1441582200000, "end": 1441602000000, "title": "Wedding!", "location": {
+      "name": "Quivira Vineyards", "street": "4900 W Dry Creek Rd", "city": ", Healdsburg", "state": "CA", "zip": "95448"
+    }, "description": ""
+  }, {
+    "start": 1441641600000, "end": 1441652400000, "title": "Farewell Brunch", "location": {
+      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
+    }, "description": ""
+  }
+]

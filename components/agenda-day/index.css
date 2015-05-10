@@ -1,0 +1,50 @@
+@import "../agenda-event/";
+@import "../variables/";
+
+:root {
+  --width-agendaDay-agendaEvent: 18rem;
+}
+
+.agendaDay {
+  margin-bottom: var(--padding-xLarge);
+}
+
+.agendaDay-events {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.agendaDay-title {
+  display: block;
+  border-bottom: var(--border-hairline);
+  line-height: 2;
+}
+
+/* 18rem is about the minimum amount where the agendaEvent looks okay */
+@media (min-width: 36rem) {
+  .agendaDay-events {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .agendaDay-events > li {
+    margin-right: var(--padding-large);
+  }
+  .agendaDay-events > li:last-child {
+    margin-right: 0;
+  }
+}
+
+/* this comes from agenda */
+@media (min-width: 54rem) {
+  .agendaDay-events {
+    flex-direction: column;
+  }
+
+  .agendaDay-events > li {
+    margin-right: 0;
+  }
+}

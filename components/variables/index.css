@@ -1,0 +1,28 @@
+:root {
+  --color-black30: rgb(30,30,30);
+  --color-grey10: rgb(210,210,210);
+  --color-brand: rgb(241, 86, 63);
+
+  --color-text-default: var(--color-black30);
+
+  --fontSize-h1: 2rem;
+  --fontSize-h2: 1.5rem;
+  --fontSize-h3: 1.3rem;
+  --fontSize-h4: 1.3rem;
+  --fontSize-h5: 1rem;
+  --fontSize-h6: 1rem;
+
+  --fontWeight-lato-bold: 800;
+
+  --padding-small: calc(1rem / 3);
+  --padding-normal: 0.9rem;
+  --padding-large: 1.5rem;
+  --padding-xLarge: 2.5rem;
+
+  /* just shy of 550px */
+  --width-textColumn-narrow: 25rem;
+  --width-textColumn-max: 34rem;
+
+  --border-hairline: 1px solid var(--color-grey10);
+  --border-brand-narrow: 2px solid var(--color-brand);
+}

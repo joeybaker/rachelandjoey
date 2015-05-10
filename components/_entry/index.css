@@ -1,0 +1,12 @@
+@import "normalize.css/normalize.css";
+@import "@getable/lato";
+@import "../variables/";
+
+:root {
+  font-family: 'Lato' sans-serif;
+  color: var(--color-text-default);
+}
+
+html, body {
+  height: 100%
+}

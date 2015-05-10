@@ -1,9 +1,14 @@
 :root {
   --color-black30: rgb(30,30,30);
   --color-grey10: rgb(210,210,210);
+  --color-white30: rgb(230,230,230);
+  --color-white10: rgb(248,248,248);
   --color-brand: rgb(241, 86, 63);
 
   --color-text-default: var(--color-black30);
+
+  --background-body: var(--color-white30);
+  --background-content: var(--color-white10);
 
   --fontSize-h1: 2rem;
   --fontSize-h2: 1.5rem;
@@ -27,5 +32,7 @@
   --width-textColumn-max: 34rem;
 
   --border-hairline: 1px solid var(--color-grey10);
+  --border-widgetSeperator: 3px solid var(--background-content);
+  --border-widgetSeperator-inverse: 3px solid var(--color-brand);
   --border-brand-narrow: 2px solid var(--color-brand);
 }

@@ -9,7 +9,6 @@
 .agendaEvent {
   display: block;
   max-width: var(--width-textColumn-narrow);
-  margin-top: var(--padding-normal);
 }
 
 .agendaEvent-locationName

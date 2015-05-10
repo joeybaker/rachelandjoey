@@ -10,10 +10,10 @@
   }, {
     "start": 1441582200000, "end": 1441602000000, "title": "Wedding!", "location": {
       "name": "Quivira Vineyards", "street": "4900 W Dry Creek Rd", "city": ", Healdsburg", "state": "CA", "zip": "95448"
-    }, "description": ""
+    }, "description": "Ceremony starts at 4:30. It's short, so if you're late, you'll miss it. Much food and wine to follow."
   }, {
     "start": 1441641600000, "end": 1441652400000, "title": "Farewell Brunch", "location": {
       "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
-    }, "description": ""
+    }, "description": "Stop by before you head out for a light breakfast."
   }
 ]

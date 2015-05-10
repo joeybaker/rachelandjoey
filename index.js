@@ -1,19 +1,19 @@
-'use strict';
+'use strict'
 
-require('6to5/register')
+require('babel/register')
 
 var hapi = require('hapi')
   , path = require('path')
   , fs = require('fs')
   , atomifyCSS = require('atomify-css')
   , React = require('react')
-  , entryJs = require('./components/home/index.jsx')
   , autoprefixer = require('autoprefixer-core')
   , jace = require('jace')
+  , browserify = require('browserify')
+  , entryJs = require('./components/home/index.jsx')
   , config = jace({
     configPath: path.join(__dirname, 'config')
   })
-  , browserify = require('browserify')
   , server = new hapi.Server()
   , expiresIn = 1000 * 60 * 60 * 24 * 365
 
@@ -29,7 +29,7 @@ function buildJs(callback){
 
   b.add(path.join(__dirname, 'components', '_entry', 'index.jsx'))
 
-  b.transform('6to5ify')
+  b.transform('babelify')
   b.plugin('minifyify', {map: '/static/index.js.map'})
 
   b.bundle(function bundled(){

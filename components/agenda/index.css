@@ -15,9 +15,14 @@
     justify-content: space-evenly;
   }
 
-  .agenda > li {
+  .agenda > * {
     flex: 1 1 33%;
-    margin-right: var(--padding-normal);
+    border-right: var(--border-widgetSeperator-inverse);
+    /*margin-right: var(--padding-normal);*/
+  }
+
+  .agenda > :last-child {
+    border-right: 0;
   }
 }
 

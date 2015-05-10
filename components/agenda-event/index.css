@@ -1,14 +1,10 @@
 @import "../variables/";
 
-:root {
-  /* define your namespaced vars here
-  --fontSize-normal-agendaEvent: 1rem;
-  */
-}
-
 .agendaEvent {
   display: block;
-  max-width: var(--width-textColumn-narrow);
+  width: 100%;
+  padding: var(--padding-normal);
+  /*border-right: var(--border-widgetSeperator-inverse);*/
 }
 
 .agendaEvent-locationName
@@ -18,7 +14,6 @@
 
 .agendaEvent-title {
   display: flex;
-  justify-content: space-between;
   font-size: var(--fontSize-h3);
   font-weight: var(--fontWeight-body-bold);
   color: var(--color-brand);
@@ -29,7 +24,13 @@
   display: block;
 }
 
+.agendaEvent-title-text {
+  flex: 1;
+}
+
 .agendaEvent-title-time {
+  /* 6 is enough so that the content doesn't get pushed off to the side*/
+  flex-basis: 6em;
   color: var(--color-text-default);
   margin-left: var(--padding-small);
 }
@@ -41,12 +42,22 @@
   }
 
   .agendaEvent-title-time {
+    flex-basis: auto;
     margin-left: 0;
     margin-top: var(--padding-small);
   }
 }
 
+/* 54rem comes from the agenda css*/
+@media (min-width: 54rem){
+  .agendaEvent {
+    /* remove the 100% width so that the content doesn't over flow the column */
+    width: auto;
+  }
+}
+
 @media (min-width: 64rem) {
+
   .agendaEvent-title {
     flex-direction: row;
   }

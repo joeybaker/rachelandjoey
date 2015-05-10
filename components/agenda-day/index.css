@@ -6,7 +6,8 @@
 }
 
 .agendaDay {
-  margin-bottom: var(--padding-xLarge);
+  /*margin-bottom: var(--padding-xLarge);*/
+  background: var(--background-content);
 }
 
 .agendaDay-events {
@@ -19,7 +20,7 @@
 
 .agendaDay-title {
   display: block;
-  border-bottom: var(--border-hairline);
+  padding: 0 var(--padding-normal);
   line-height: 2;
 }
 

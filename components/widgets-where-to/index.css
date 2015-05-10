@@ -1,0 +1,27 @@
+@import "../variables/";
+@import "../widget-where-to/";
+
+.widgetsWhereTo {
+  display: flex;
+  flex-direction: column;
+  /*border-top: var(--border-widgetSeperator);*/
+}
+
+.widgetsWhereTo > * {
+  flex: 0 1 33%;
+  border-bottom: var(--border-widgetSeperator);
+}
+
+@media (min-width: 32em) {
+  .widgetsWhereTo {
+    flex-direction: row;
+  }
+
+  .widgetsWhereTo > * {
+    border-right: var(--border-widgetSeperator);
+  }
+
+  .widgetsWhereTo > :last-child {
+    border-right: 0;
+  }
+}

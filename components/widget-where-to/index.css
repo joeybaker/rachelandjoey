@@ -1,0 +1,32 @@
+@import "../variables/";
+
+:root {
+  /* define your namespaced vars here
+  --fontSize-normal-widgetWhereTo: 1rem;
+  */
+}
+
+.widgetWhereTo {
+  display: flex;
+  /* wrap because each child spans ful width*/
+  flex-direction: column;
+
+  padding: var(--padding-normal);
+  background: var(--color-brand);
+  color: var(--color-white10);
+  text-decoration: none;
+}
+
+.widgetWhereTo-title {
+  margin: 0;
+}
+
+/* fill the whole space so the link goes to the bottom*/
+.widgetWhereTo-description {
+  flex: 1;
+}
+
+.widgetWhereTo-link {
+  padding: var(--padding-normal) 0 0;
+  text-decoration: underline;
+}

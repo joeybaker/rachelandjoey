@@ -13,6 +13,9 @@
   --fontSize-h6: 1rem;
 
   --fontWeight-lato-bold: 800;
+  --fontFamily-lato: 'Lato' sans-serif;
+
+  --fontWeight-body-bold: var(--fontWeight-lato-bold);
 
   --padding-small: calc(1rem / 3);
   --padding-normal: 0.9rem;

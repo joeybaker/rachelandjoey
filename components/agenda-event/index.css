@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
   font-size: var(--fontSize-h3);
-  font-weight: var(--fontWeight-lato-bold);
+  font-weight: var(--fontWeight-body-bold);
   color: var(--color-brand);
 }
 

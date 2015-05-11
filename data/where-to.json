@@ -1,19 +1,19 @@
 [
     {
       "verb": "Stay"
-      , "description": "Downtown healdsburg is nearby, and the town of Windsor is just 10 minutes away by car. There are many options, but hotels will fill up fast. Book something now."
+      , "description": "There are plenty of options in downtown Healdsburg and the town of Windsor—both within a 15 minute drive of the wedding site—but hotels will fill up fast. Book something now!"
       , "link": "http://business.healdsburg.com/list/QL/lodging-travel-15"
       , "cta": "See all area hotels"
     }
   , {
-    "verb": "eat"
-    , "description": "There are great meals all around from a $5 picnic to a fancy dinner. "
+    "verb": "Eat"
+    , "description": "It’s wine country, which means there is some of the best farm-to-table eats around from grab’n’go picnics to 5-course tasting menus."
     , "link": "http://business.healdsburg.com/list/QL/restaurants-food-beverages-22"
     , "cta": "See Healdsburg restaruants"
   }
   , {
-    "verb": "drink"
-    , "description": "It's wine country! There are amazing wineries and a few breweries too. Healdsburg is Zin, Saviogn Blanc, and Cab territory, but all of Sonoma is nearby"
+    "verb": "Drink"
+    , "description": "You had me at Merlot! The Dry Creek Valley area and Sonoma County are home to some of the best wineries in California (and the world)."
     , "link": "http://business.healdsburg.com/list/QL/wineries-tasting-rooms-26"
     , "cta": "See nearby wineries and breweries"
   }

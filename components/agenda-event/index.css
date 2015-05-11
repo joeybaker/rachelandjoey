@@ -57,6 +57,10 @@
 }
 
 @media (min-width: 64rem) {
+  .agendaEvent {
+    /* go back to even spacing so that we can have columns */
+    width: 100%;
+  }
 
   .agendaEvent-title {
     flex-direction: row;

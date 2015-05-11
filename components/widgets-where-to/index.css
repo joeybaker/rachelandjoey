@@ -4,7 +4,6 @@
 .widgetsWhereTo {
   display: flex;
   flex-direction: column;
-  /*border-top: var(--border-widgetSeperator);*/
 }
 
 .widgetsWhereTo > * {

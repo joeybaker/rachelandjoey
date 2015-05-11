@@ -6,8 +6,8 @@
 }
 
 .agendaDay {
-  /*margin-bottom: var(--padding-xLarge);*/
   background: var(--background-content);
+  border-bottom: var(--border-widgetSeperator);
 }
 
 .agendaDay-events {

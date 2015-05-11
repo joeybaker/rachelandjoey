@@ -8,10 +8,10 @@
 
 .widgetWhereTo {
   display: flex;
-  /* wrap because each child spans ful width*/
+  /* wrap because each child spans full width*/
   flex-direction: column;
 
-  padding: var(--padding-normal);
+  padding: var(--padding-xLarge);
   background: var(--color-brand);
   color: var(--color-white10);
   text-decoration: none;

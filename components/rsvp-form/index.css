@@ -1,0 +1,184 @@
+@import "../variables/";
+
+:root {
+  --opacity-disabled-rsvpForm: 0.5;
+}
+
+.rsvpForm {
+  max-width: var(--width-textColumn-narrow);
+  margin: 0 auto;
+}
+
+/* general form stuff */
+.rsvpForm label {
+  display: flex;
+  flex-direction: column-reverse;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.rsvpForm label
+, .rsvpForm fieldset {
+  margin-bottom: var(--padding-normal);
+}
+
+.rsvpForm label:last-child
+, .rsvpForm fieldset:last-child {
+  margin-bottom: 0;
+}
+
+.rsvpForm input {
+  width: 100%;
+
+  /* just stylin' */
+  padding: var(--padding-normal);
+  background: var(--background-content);
+  font-size: var(--fontSize-h4);
+
+  /* unset defaults */
+  border: 0;
+  border-radius: 0;
+
+  /* when valid and focused, add a bottom border */
+  border-bottom: var(--border-brand-narrow);
+}
+
+/* when the input is invalid, don't show a highlight */
+.rsvpForm input:invalid {
+  border-bottom: var(--border-narrow);
+}
+
+/* the focus style is the same as the valid styling */
+.rsvpForm input:focus {
+  outline: none;
+  border-bottom: var(--border-brand-narrow);
+}
+
+.rsvpForm input:disabled {
+  cursor: auto;
+  opacity: var(--opacity-disabled-rsvpForm);
+}
+
+.rsvpForm label span
+, .rsvpForm fieldset > span {
+  display: block;
+  margin-bottom: var(--padding-small);
+  font-weight: var(--fontWeight-lato-bold);
+  user-select: none;
+}
+
+
+/* radio inputs */
+.rsvpForm fieldset {
+  display: flex;
+  flex-flow: row wrap;
+
+  padding: 0;
+
+  border: 0;
+}
+
+.rsvpForm fieldset label {
+  display: flex;
+  /* relative to contain the input */
+  position: relative;
+  flex: 1 1 50%;
+  margin: 0 0 var(--padding-small);
+
+  /* by default, labels get a pointer cursor, but we need more control here */
+  cursor: auto;
+}
+
+.rsvpForm fieldset label span {
+  font-weight: var(--fontWeight-lato-normal);
+  background: var(--background-content);
+  padding: var(--padding-normal);
+  margin-bottom: 0;
+}
+
+/* position absolute the input so that it can be focused by HTML and validation
+messages can be shown */
+.rsvpForm fieldset input[type="radio"] {
+  position: absolute;
+  appearance: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.rsvpForm fieldset input[type="radio"]:focus {
+  outline: none;
+  border: var(--border-brand-narrow);
+}
+
+.rsvpForm fieldset input[type="radio"]:active {
+  border: none;
+}
+
+.rsvpForm fieldset input[type="radio"]:disabled {
+  cursor: auto;
+}
+
+.rsvpForm fieldset input[type="radio"]:active:not(:disabled) + span {
+  color: var(--color-brand);
+}
+
+.rsvpForm fieldset input[type="radio"]:checked + span {
+  background: var(--background-inverted);
+  color: var(--color-text-inverted);
+}
+
+.rsvpForm fieldset input[type="radio"]:disabled + span {
+  opacity: var(--opacity-disabled-rsvpForm);
+}
+
+
+/* auto suggest looks very much like the radio inputs */
+.react-autosuggest input {
+  margin-bottom: 0;
+}
+
+.rsvpForm [role="listbox"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rsvpForm [role="listbox"] li {
+  background: var(--background-content);
+  padding: var(--padding-normal);
+  margin-bottom: var(--padding-small);
+}
+
+.react-autosuggest__suggestion--focused {
+  box-shadow: 0 0 0 2px var(--color-brand) inset;
+}
+
+
+
+/* buttons. This could be abstracted */
+.rsvpForm button {
+  width: 100%;
+  padding: var(--padding-normal);
+  background: var(--background-content);
+  border: 0;
+  color: var(--color-brand);
+  font-size: var(--fontSize-h4);
+  user-select: none;
+}
+
+.rsvpForm button:focus {
+  background: var(--background-inverted);
+  color: var(--color-text-inverted);
+  outline: 0;
+}
+
+.rsvpForm button:disabled {
+  background: var(--color-grey10);
+  color: var(--color-text-inverted);
+}

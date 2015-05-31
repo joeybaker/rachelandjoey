@@ -6,9 +6,11 @@
   --color-brand: rgb(241, 86, 63);
 
   --color-text-default: var(--color-black30);
+  --color-text-inverted: var(--color-white30);
 
   --background-body: var(--color-white30);
   --background-content: var(--color-white10);
+  --background-inverted: var(--color-brand);
 
   --fontSize-h1: 2rem;
   --fontSize-h2: 1.5rem;
@@ -17,8 +19,10 @@
   --fontSize-h5: 1rem;
   --fontSize-h6: 1rem;
 
+  --fontWeight-lato-normal: 400;
   --fontWeight-lato-bold: 800;
   --fontFamily-lato: 'Lato' sans-serif;
+  --fontSize-default: 1rem;
 
   --fontWeight-body-bold: var(--fontWeight-lato-bold);
 
@@ -34,5 +38,6 @@
   --border-hairline: 1px solid var(--color-grey10);
   --border-widgetSeperator: var(--padding-small) solid var(--background-body);
   --border-widgetSeperator-inverse: 3px solid var(--color-brand);
+  --border-narrow: 2px solid var(--color-grey10);
   --border-brand-narrow: 2px solid var(--color-brand);
 }

@@ -7,6 +7,10 @@
   color: var(--color-text-default);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   background: var(--background-body);

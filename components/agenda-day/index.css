@@ -1,5 +1,6 @@
 @import "../agenda-event/";
 @import "../variables/";
+@import "../card/";
 
 :root {
   --width-agendaDay-agendaEvent: 18rem;

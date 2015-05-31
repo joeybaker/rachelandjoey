@@ -1,32 +1,12 @@
 @import "../agenda-day/";
 @import "../variables/";
+@import "../card-row/";
 
 .agenda {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  /*background: var(--background-content);*/
 }
 
 /* 36 comes from agenda-day */
 @media (min-width: 36rem) {
-  .agenda {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .agenda > * {
-    /* 48 for the border, flex grow will take care of the rest */
-    flex: 1 0 48%;
-    border-right: var(--border-widgetSeperator);
-  }
-
-  .agenda > :last-child {
-    border-right: 0;
-  }
-
   /* the first agenda day has two items */
   .agenda > :first-child {
     flex-basis: 100%;

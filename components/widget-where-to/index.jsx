@@ -1,5 +1,6 @@
 import React, {PropTypes, Component} from 'react'
 import {addons} from 'react/addons'
+import Card from '../card/'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'widgetWhereTo'
 
@@ -11,11 +12,13 @@ export default class WidgetWhereTo extends Component {
   }
 
   render () {
-    return (<a className={namespace} href={this.props.link}>
-      <h3 className={`${namespace}-title`}>Where To {this.props.verb}</h3>
-      <p className={`${namespace}-description`}>{this.props.description}</p>
-      <p className={`${namespace}-link`} href={this.props.link}>{this.props.cta}</p>
-    </a>)
+    return (<Card style="inverted">
+      <a className={namespace} href={this.props.link}>
+        <h3 className={`${namespace}-title`}>Where To {this.props.verb}</h3>
+        <p className={`${namespace}-description`}>{this.props.description}</p>
+        <p className={`${namespace}-link`} href={this.props.link}>{this.props.cta}</p>
+      </a>
+    </Card>)
   }
 }
 

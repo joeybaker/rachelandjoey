@@ -1,6 +1,7 @@
 import React, {PropTypes, Component} from 'react'
 import {addons} from 'react/addons'
 import WhereTo from '../widget-where-to/'
+import CardRow from '../card-row/'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'widgetsWhereTo'
 
@@ -13,9 +14,9 @@ export default class WidgetsWhereTo extends Component {
 
   render () {
     const activities = this.props.activities.map((activity) => <WhereTo {...activity} key={activity.verb} />)
-    return (<div className={namespace}>
+    return (<CardRow className={namespace}>
       {activities}
-    </div>)
+    </CardRow>)
   }
 }
 

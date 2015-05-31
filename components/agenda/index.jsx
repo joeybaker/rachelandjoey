@@ -3,6 +3,7 @@ import moment from 'moment'
 import groupBy from 'lodash/collection/groupBy'
 import map from 'lodash/collection/map'
 import AgendaDay from '../agenda-day/'
+import CardRow from '../card-row/'
 const namespace = 'agenda'
 
 export default class Agenda extends Component {
@@ -22,9 +23,9 @@ export default class Agenda extends Component {
 
   render () {
     const events = this.state.events
-    return (<ol className={namespace}>
+    return (<CardRow className={namespace}>
       {map(events, (eventList, date) => <AgendaDay events={eventList} date={date} key={date} />)}
-    </ol>)
+    </CardRow>)
   }
 }
 

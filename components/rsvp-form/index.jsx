@@ -5,10 +5,23 @@ import assign from 'lodash/object/assign'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'rsvpForm'
 
+const hasStorage = process.browser && !!window.localStorage && !!window.localStorage.setItem
+
 export default class RsvpForm extends Component {
   constructor (props) {
     super()
-    this.state = assign({submitEnabled: true, submitButtonLabel: 'Done'}, props)
+    let stored = {}
+
+    if (hasStorage) {
+      const raw = window.localStorage.getItem(namespace)
+      if (raw) stored = JSON.parse(raw)
+    }
+
+    this.state = assign(
+      stored
+      , {submitEnabled: true, submitButtonLabel: 'RSVP'}
+      , props
+    )
   }
   // use the pure-render mixin without the mixin. This allows us to use es6
   // classes and avoid "magic" code
@@ -47,8 +60,10 @@ export default class RsvpForm extends Component {
 
   onSubmit (e) {
     e.preventDefault()
-    console.log(e.target.checkValidity())
     if (e.target.checkValidity()) {
+      if (hasStorage) {
+        window.localStorage.setItem(namespace, JSON.stringify(this.state))
+      }
       this.setState({submitEnabled: false, submitButtonLabel: 'sending…'})
       console.log(this.state)
     }
@@ -61,14 +76,45 @@ export default class RsvpForm extends Component {
       , disabled: !this.state.submitEnabled
     }
 
+    const makeAutosuggest = (options = {}) => (
+      <label>
+        <Autosuggest
+          id={options.name}
+          suggestions={this.getSuggestions}
+          inputAttributes={assign(
+            {name: options.name, value: this.state[options.name]}
+            , autosuggestInputAttrs
+          )}
+          onSuggestionSelected={this.onSuggestionSelected.bind(this)}
+        />
+        <span>{options.label}</span>
+      </label>
+    )
+
     const makeInput = (options = {}) => <input disabled={!this.state.submitEnabled} onChange={this.onInputChange.bind(this)} {...options} />
     const makeRadioInput = (options = {}) => makeInput(assign({type: 'radio'}, options))
 
     const mealChooser = (options = {}) => {
       const inputOptions = {required: true, name: options.name}
+      const checkedValue = this.state[options.name]
+      const buildRadioInput = (value) => (
+        <label>
+          {makeRadioInput(assign(
+            {
+              value: value.toLowerCase()
+              , checked: value.toLowerCase() === checkedValue
+            }
+            , inputOptions
+          ))}
+          <span>{value}</span>
+        </label>
+      )
       const rsvp = (
         <label>
-          {makeRadioInput(assign({value: false}, inputOptions))}
+          {makeRadioInput(assign({
+            value: 'regrets'
+            , checked: checkedValue === 'regrets'
+          }, inputOptions))}
           <span>Sorry, won't be coming</span>
         </label>
         )
@@ -76,45 +122,38 @@ export default class RsvpForm extends Component {
       return (
       <fieldset>
         <span>{options.label}</span>
-        <label>
-          {makeRadioInput(assign({value: 'chicken'}, inputOptions))}
-          <span>Chicken</span>
-        </label>
-        <label>
-          {makeRadioInput(assign({value: 'steak'}, inputOptions))}
-          <span>Steak</span>
-        </label>
-        <label>
-          {makeRadioInput(assign({value: 'vegie'}, inputOptions))}
-          <span>Vegie</span>
-        </label>
+        {buildRadioInput('Chicken')}
+        {buildRadioInput('Steak')}
+        {buildRadioInput('Vegie')}
         {options.addRSVP ? rsvp : ''}
       </fieldset>
       )
     }
 
+    const submit = <button type="submit" disabled={!this.state.submitEnabled}>{this.state.submitButtonLabel}</button>
+
     return (<form className={namespace} onSubmit={this.onSubmit.bind(this)}>
-      <label>
-        <Autosuggest
-          id="mainname"
-          suggestions={this.getSuggestions}
-          inputAttributes={assign({name: 'mainname'}, autosuggestInputAttrs)}
-          onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-        />
-        <span>Who are you?</span>
-      </label>
-      {mealChooser({label: 'I\'ll have', name: 'meal', addRSVP: true})}
-      <label>
-        <Autosuggest
-          id="secondname"
-          suggestions={this.getSuggestions}
-          inputAttributes={assign({name: 'secondname'}, autosuggestInputAttrs)}
-          onSuggestionSelected={this.onSuggestionSelected.bind(this)}
-        />
-        <span>Bringing anyone?</span>
-      </label>
-      {mealChooser({label: 'They\'ll have', name: 'meal2'})}
-      <button type="submit" disabled={!this.state.submitEnabled}>{this.state.submitButtonLabel}</button>
+      {makeAutosuggest({name: 'mainname', label: 'Who are you?'})}
+      {
+        this.state.mainname
+        ? mealChooser({label: 'I\'ll have', name: 'meal', addRSVP: true})
+        : ''
+      }
+      {
+        this.state.meal && this.state.meal !== 'regrets'
+        ? makeAutosuggest({name: 'secondname', label: 'Bringing anyone?'})
+        : ''
+      }
+      {
+        this.state.secondname
+        ? mealChooser({label: 'They\'ll have', name: 'meal2'})
+        : ''
+      }
+      {
+        this.state.meal2 || this.state.meal === 'regrets'
+        ? submit
+        : ''
+      }
     </form>)
   }
 }

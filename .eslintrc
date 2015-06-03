@@ -134,7 +134,7 @@
         "allowSingleLine": false
       }
     ],
-    "curly-braces-spacing": [2, "never"],
+    "object-curly-spacing": [2, "never"],
     "comma-spacing": [
       1,
       {

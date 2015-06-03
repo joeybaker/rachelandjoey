@@ -17,9 +17,12 @@ export default class RsvpForm extends Component {
       if (raw) stored = JSON.parse(raw)
     }
 
+    // aug 1st at midnight
+    const enabled = Date.now() < 1438498799000
+
     this.state = assign(
       stored
-      , {submitEnabled: true, submitButtonLabel: 'RSVP'}
+      , {submitEnabled: enabled, submitButtonLabel: 'RSVP'}
       , props
     )
   }
@@ -115,16 +118,16 @@ export default class RsvpForm extends Component {
             value: 'regrets'
             , checked: checkedValue === 'regrets'
           }, inputOptions))}
-          <span>Sorry, won't be coming</span>
+          <span>Sorry, I won't be coming</span>
         </label>
         )
 
       return (
       <fieldset>
         <span>{options.label}</span>
-        {buildRadioInput('Chicken')}
-        {buildRadioInput('Steak')}
-        {buildRadioInput('Vegie')}
+        {buildRadioInput('Chicken stuffed with sundried tomato, basil, and creamy garlic herb cheese')}
+        {buildRadioInput('New York strip steak, with gorgonzola cream sauce and chipotle sweet potatoes')}
+        {buildRadioInput('Cannelloni with spinach, goat cheese, and pine nuts')}
         {options.addRSVP ? rsvp : ''}
       </fieldset>
       )
@@ -154,6 +157,9 @@ export default class RsvpForm extends Component {
         ? submit
         : ''
       }
+      <p>
+        <small>Please RSVP by August 1<sup>st</sup></small>
+      </p>
     </form>)
   }
 }

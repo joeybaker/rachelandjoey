@@ -182,3 +182,9 @@ messages can be shown */
   background: var(--color-grey10);
   color: var(--color-text-inverted);
 }
+
+
+/* particular to this form*/
+.rsvpForm p {
+  text-align: center;
+}

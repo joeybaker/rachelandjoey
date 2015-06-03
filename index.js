@@ -1,31 +1,33 @@
 'use strict'
-
 require('babel/register')
 
-var hapi = require('hapi')
+const hapi = require('hapi')
   , path = require('path')
   , fs = require('fs')
   , atomifyCSS = require('atomify-css')
   , React = require('react')
-  , autoprefixer = require('autoprefixer-core')
   , jace = require('jace')
   , browserify = require('browserify')
   , entryJs = require('./components/home/index.jsx')
   , config = jace({
     configPath: path.join(__dirname, 'config')
   })
+  , bulkRequire = require('bulk-require')
   , server = new hapi.Server()
+  , packs = bulkRequire(__dirname, ['packs/*.js']).packs
+  , _ = require('lodash')
   , expiresIn = 1000 * 60 * 60 * 24 * 365
 
 server.connection({port: 8000})
 
 server.app.config = config
 
-var builtJs
+let builtJs
 function buildJs (callback) {
   if (builtJs) return void callback.apply(null, builtJs)
 
-  var b = browserify({debug: true})
+  server.log(['info', 'http', 'bundle', 'js'], 'started')
+  const b = browserify({debug: true})
 
   b.add(path.join(__dirname, 'components', '_entry', 'index.jsx'))
 
@@ -35,11 +37,13 @@ function buildJs (callback) {
   b.bundle(function bundled () {
     let args = [].slice.call(arguments, 0)
     builtJs = args
+    server.log(['info', 'http', 'bundle', 'js'], 'finished')
     callback.apply(null, args)
   })
 }
 
 function buildCss (callback) {
+  server.log(['info', 'http', 'bundle', 'css'], 'started')
   atomifyCSS({
     entry: path.join(__dirname, 'components', '_routes', 'index.css')
     , autoprefixer: true
@@ -116,7 +120,7 @@ server.route({
     handler: function homeHandler (req, reply) {
       fs.readFile(path.join(__dirname, 'static', 'index.html'), function onReadHTML (err, html) {
         if (err) return void reply(err)
-        var initialHTML = React.renderToString(React.createElement(entryJs))
+        const initialHTML = React.renderToString(React.createElement(entryJs))
         reply(html.toString()
           .replace('{{entry}}', '/static/index.js')
           .replace('id="app">', 'id="app">' + initialHTML)
@@ -131,18 +135,12 @@ server.route({
   }
 })
 
-server.start(function startServer () {
-  server.log(['server', 'init'], 'started')
-})
 
-server.on('log', function (e) {
-  console.info(new Date(e.timestamp).toISOString(), e.tags, e.data)
+const startServer = _.after(_.size(packs), function startServer () {
+  server.start(function serverStarted () {
+    server.log(['server', 'init'], 'started')
+  })
 })
-
-server.on('request', function (req, e) {
-  console.info(new Date(e.timestamp).toISOString(), e.tags, req.method, req.path, e.request)
-})
-
-server.on('internalError', function (request, err) {
-  console.error(new Date().toISOString(), err.message, err.stack, request.id, request.method, request.path)
+_.each(packs, function startPack (pack) {
+  pack(server, startServer)
 })

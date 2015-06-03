@@ -1,3 +1,8 @@
+cd /srv/rachelandjoey.com
+git reset --hard HEAD
+git pull --rebase --prune
+npm prune
+npm i --production
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
 sudo docker rm -f rachelandjoey
 sudo docker run -d --name rachelandjoey joeybaker/rachelandjoey

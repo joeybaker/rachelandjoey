@@ -4,4 +4,4 @@ var React = require('react')
 // expose React so that dev tools will work
 window.React = React
 
-React.render(React.createElement(Home, null), document.body)
+React.render(React.createElement(Home, null), document.getElementById('app'))

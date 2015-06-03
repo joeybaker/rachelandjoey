@@ -15,6 +15,16 @@ moment.locale('en', {
 })
 
 export default class Home extends Component {
+  constructor () {
+    super()
+    const deadline = moment([2015, 8, 6])
+    const timeRemaining = this.getTimeRemaining(deadline)
+
+    this.state = {
+      deadline
+      , timeRemaining
+    }
+  }
   styles () {
     return {
       h1: {
@@ -37,16 +47,6 @@ export default class Home extends Component {
     const date = deadline || this.state.deadline
     if (date.valueOf() > Date.now()) return date.calendar()
     else return date.fromNow()
-  }
-
-  getInitialState () {
-    const deadline = moment([2015, 8, 6])
-    const timeRemaining = this.getTimeRemaining(deadline)
-
-    return {
-      deadline
-      , timeRemaining
-    }
   }
 
   componentDidMount () {

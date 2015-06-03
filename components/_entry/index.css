@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 
-html, body {
+html, body, #app {
   height: 100%;
   background: var(--background-body);
 }

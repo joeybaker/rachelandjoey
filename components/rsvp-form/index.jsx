@@ -165,5 +165,4 @@ export default class RsvpForm extends Component {
 }
 
 RsvpForm.propTypes = {
-  name: PropTypes.string.isRequired
 }

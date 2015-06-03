@@ -1,4 +1,4 @@
-sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey
+sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
 sudo docker rm -f rachelandjoey
 sudo docker run -d --name rachelandjoey joeybaker/rachelandjoey
 sudo docker rm -f bud

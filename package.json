@@ -36,7 +36,9 @@
     "gitPull": "git pull --rebase origin master",
     "gitPush": "git push --follow-tags --no-verify && git push --tags --no-verify",
     "release": "source ./scripts.sh && npm run requireGitClean && npm run gitPull && npm run dmn && npm run doctoc && npm_release $@",
-    "parse-db-csv": "f () { csv-parser $@; }; f"
+    "parse-db-csv": "f () { csv-parser $@; }; f",
+    "rethinkdb": "remote=root@rachelandjoey.com; ssh -fNTL localhost:8080:$(ssh $remote \"docker inspect --format '{{ .NetworkSettings.IPAddress }}' rethinkdb\"):8080 $remote",
+    "kill-rethinkdb": "kill $(lsof -t -i @localhost:8080 -sTCP:listen)"
   },
   "config": {
     "notes": "important to correct the path of npm so that the git hook doesn't error",

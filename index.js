@@ -14,6 +14,7 @@ const hapi = require('hapi')
   , bulkRequire = require('bulk-require')
   , server = new hapi.Server()
   , packs = bulkRequire(__dirname, ['packs/*.js']).packs
+  , routes = bulkRequire(__dirname, ['routes/*.js']).routes
   , _ = require('lodash')
   , expiresIn = 1000 * 60 * 60 * 24 * 365
 
@@ -134,10 +135,11 @@ server.route({
   }
 })
 
+server.route(_.values(routes))
 
 const startServer = _.after(_.size(packs), function startServer () {
   server.start(function serverStarted () {
-    server.log(['server', 'init'], 'started')
+    server.log(['server', 'init'], server.info)
   })
 })
 _.each(packs, function startPack (pack) {

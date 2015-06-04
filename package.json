@@ -17,7 +17,7 @@
     "rachelandjoey"
   ],
   "scripts": {
-    "start": "iojs index.js",
+    "start": "babel-node index.js",
     "dev": "source ./scripts.sh && run_beefy components/_entry/index.jsx --index static/index.html 8000",
     "component": "source ./scripts.sh && run_beefy --open",
     "test-browser": "browserify -t coverify -t babelify test/test.js | tap-closer | smokestack -b chrome | tap-spec",

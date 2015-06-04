@@ -19,7 +19,10 @@ const hapi = require('hapi')
   , expiresIn = 1000 * 60 * 60 * 24 * 365
 
 server.app.config = config
-server.connection({port: 8000, host: 'localhost'})
+
+const connectionOptions = {port: 8000}
+if (config.nodeEnv === 'development') connectionOptions.host = 'localhost'
+server.connection(connectionOptions)
 
 let builtJs
 function buildJs (callback) {

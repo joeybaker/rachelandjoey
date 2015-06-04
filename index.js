@@ -1,5 +1,4 @@
-'use strict'
-require('babel/register')
+process.title = 'rachelandjoey'
 
 const hapi = require('hapi')
   , path = require('path')

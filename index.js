@@ -18,9 +18,8 @@ const hapi = require('hapi')
   , _ = require('lodash')
   , expiresIn = 1000 * 60 * 60 * 24 * 365
 
-server.connection({port: 8000})
-
 server.app.config = config
+server.connection({port: 8000, host: 'localhost'})
 
 let builtJs
 function buildJs (callback) {

@@ -14,5 +14,6 @@
       "client": 10000,
       "server": 30000
     }
-  }
+  },
+  "rethnkdb": {}
 }

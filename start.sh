@@ -9,7 +9,11 @@ git pull --rebase --prune
 npm prune
 npm i --production
 
-sudo docker run --name rethinkdb -v "/srv/rethinkdb:/data" -d rethinkdb
+if [[ -n $(docker ps -f 'name=rethinkdb' -q) ]]; then
+  echo 'rethinkdb already running'
+else
+  sudo docker run --name rethinkdb -v "/srv/rethinkdb:/data" -d rethinkdb
+fi
 
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
 sudo docker rm -f rachelandjoey

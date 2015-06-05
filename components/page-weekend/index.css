@@ -1,2 +1,6 @@
 @import "../agenda/";
 @import "../widgets-where-to/";
+
+.pageWeekend {
+  border-top: var(--border-widgetSeperator);
+}

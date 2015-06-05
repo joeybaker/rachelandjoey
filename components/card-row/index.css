@@ -4,7 +4,7 @@
 .cardRow {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--padding-small);
+  margin-bottom: var(--padding-normal);
 }
 
 .cardRow:last-child {
@@ -12,7 +12,7 @@
 }
 
 .cardRow > .card {
-  margin-bottom: var(--padding-small);
+  margin-bottom: var(--padding-normal);
 }
 
 .cardRow > .card:last-child {
@@ -28,7 +28,7 @@
   .cardRow > .card {
     flex: 1;
     margin-bottom: 0;
-    margin-right: var(--padding-small);
+    margin-right: var(--padding-normal);
   }
 
   .cardRow > .card:last-child {

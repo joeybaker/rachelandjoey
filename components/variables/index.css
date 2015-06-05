@@ -1,8 +1,8 @@
 :root {
   --color-black30: rgb(30,30,30);
   --color-grey10: rgb(210,210,210);
-  --color-white30: rgb(230,230,230);
-  --color-white10: rgb(248,248,248);
+  --color-white30: rgb(245,245,245);
+  --color-white10: rgb(253,253,253);
   --color-brand: rgb(241, 86, 63);
 
   --color-text-default: var(--color-black30);
@@ -18,10 +18,12 @@
   --fontSize-h4: 1.3rem;
   --fontSize-h5: 1rem;
   --fontSize-h6: 1rem;
+  --fontSize-default: 18px;
 
   --fontWeight-lato-normal: 400;
   --fontWeight-lato-bold: 800;
   --fontFamily-lato: 'Lato' sans-serif;
+  --fontFamily-playfair: 'Playfair Display', serif;
   --fontSize-default: 1rem;
 
   --fontWeight-body-bold: var(--fontWeight-lato-bold);
@@ -34,10 +36,11 @@
   /* just shy of 550px */
   --width-textColumn-narrow: 25rem;
   --width-textColumn-max: 34rem;
+  --width-widgetSeperator: var(--padding-normal);
 
   --border-hairline: 1px solid var(--color-grey10);
-  --border-widgetSeperator: var(--padding-small) solid var(--background-body);
-  --border-widgetSeperator-inverse: 3px solid var(--color-brand);
+  --border-widgetSeperator: var(--width-widgetSeperator) solid var(--background-body);
+  --border-widgetSeperator-inverse: var(--width-widgetSeperator) solid var(--color-brand);
   --border-narrow: 2px solid var(--color-grey10);
   --border-brand-narrow: 2px solid var(--color-brand);
 }

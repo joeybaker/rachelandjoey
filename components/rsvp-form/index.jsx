@@ -32,8 +32,12 @@ export default class RsvpForm extends Component {
     return shouldComponentUpdate.apply(this, args)
   }
 
-  getSuggestions (input, callback) {
-    callback(null, ['billy', 'bobby', 'sammy'])
+  getSuggestionsMain (input, callback) {
+    this.props.findNames(input, callback)
+  }
+
+  getSuggestionsSecondary (input, callback) {
+    this.props.findRelatedName(input, callback)
   }
 
   onSuggestionSelected (value, e) {
@@ -57,7 +61,6 @@ export default class RsvpForm extends Component {
   }
 
   setFormValue (name, value) {
-    console.log(name, value)
     this.setState({[name]: value})
   }
 
@@ -83,7 +86,10 @@ export default class RsvpForm extends Component {
       <label>
         <Autosuggest
           id={options.name}
-          suggestions={this.getSuggestions}
+          suggestions={options.name.includes('main')
+            ? this.getSuggestionsMain.bind(this)
+            : this.getSuggestionsSecondary.bind(this)
+          }
           inputAttributes={assign(
             {name: options.name, value: this.state[options.name]}
             , autosuggestInputAttrs
@@ -165,4 +171,6 @@ export default class RsvpForm extends Component {
 }
 
 RsvpForm.propTypes = {
+  findNames: PropTypes.func.isRequired
+  , findRelatedName: PropTypes.func.isRequired
 }

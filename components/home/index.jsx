@@ -25,6 +25,7 @@ export default class Home extends Component {
       , timeRemaining
     }
   }
+
   styles () {
     return {
       h1: {
@@ -38,7 +39,7 @@ export default class Home extends Component {
         , WebkitJustifyContent: 'center'
         , WebkitAlignItems: 'center'
         , height: '100%'
-        , backgroundColor: css.colors.grey10
+        , textAlign: 'center'
       }
     }
   }
@@ -50,9 +51,9 @@ export default class Home extends Component {
   }
 
   componentDidMount () {
-    this.timeInteval = setInterval(function timeInterval () {
+    this.timeInterval = setInterval(() => {
       this.setState({timeRemaining: this.getTimeRemaining()})
-    }.bind(this), 1000)
+    }, 1000)
   }
 
   componentWillUnmount () {

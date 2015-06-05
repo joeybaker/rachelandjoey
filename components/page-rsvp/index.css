@@ -1,0 +1,7 @@
+@import "../rsvp-form/";
+@import "../variables/";
+
+.pageRsvp {
+  padding: var(--padding-large) var(--padding-normal);
+  border-top: var(--border-widgetSeperator);
+}

@@ -1,23 +1,16 @@
-import React, {PropTypes, Component} from 'react'
-import {addons} from 'react/addons'
-const {shouldComponentUpdate} = addons.PureRenderMixin
-const namespace = 'routes'
+import React from 'react'
+import {Route, DefaultRoute, NotFoundRoute} from 'react-router'
+import Entry from '../_entry/'
+import Home from '../home/'
+import Weekend from '../page-weekend/'
+import RSVP from '../page-rsvp'
+import NotFound from '../_notfound/'
 
-export default class Routes extends Component {
-  // use the pure-render mixin without the mixin. This allows us to use es6
-  // classes and avoid "magic" code
-  shouldComponentUpdate (...args) {
-    return shouldComponentUpdate.apply(this, args)
-  }
-
-  render () {
-    return (<div className={namespace}>
-      <h1 className={`${namespace}-title`}>{this.props.name} component</h1>
-      <img src={`//${this.props.name}.jpg.to`} />
-    </div>)
-  }
-}
-
-Routes.propTypes = {
-  name: PropTypes.string.isRequired
-}
+export default (
+  <Route path="/" handler={Entry}>
+    <Route name="rsvp" handler={RSVP} />
+    <Route name="weekend" handler={Weekend} />
+    <DefaultRoute name="home" handler={Home} />
+    <NotFoundRoute name="notFound" handler={NotFound}/>
+  </Route>
+)

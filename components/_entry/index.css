@@ -2,9 +2,26 @@
 @import "@getable/lato";
 @import "../variables/";
 
+/* hacky way to get the playfair font-face */
+/* via https://fonts.googleapis.com/css?family=Playfair+Display&text=%26*/
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/l/font?kit=2NBgzUtEeyB-Xtpr9bm1CYUpO3myIcWyBoHLB3F4Rvk&skey=f3b68f0152604ed9) format('woff2');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/l/font?kit=2NBgzUtEeyB-Xtpr9bm1Cb8s7_7sVsxX-8CaClC1xT0&skey=f3b68f0152604ed9) format('woff');
+}
+
 :root {
   font-family: var(--fontFamily-lato);
+  font-size: var(--fontSize-default);
   color: var(--color-text-default);
+  --background-entryNav: var(--background-content);
 }
 
 * {
@@ -12,6 +29,105 @@
 }
 
 html, body, #app {
-  height: 100%;
+  min-height: 100%;
   background: var(--background-body);
+}
+
+#app {
+  display: flex;
+}
+
+.entry {
+  display: flex;
+  width: 100%;
+  flex-direction: column-reverse;
+}
+
+.entry-nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: var(--background-entryNav);
+  border-top: var(--border-widgetSeperator-inverse);
+}
+
+.entry-link {
+  display: block;
+  flex: 1;
+  padding: var(--padding-normal);
+  border-bottom: var(--border-widgetSeperator-inverse);
+  color: var(--color-text-default);
+  font-size: var(--fontSize-h2);
+  background: var(--background-content);
+  text-decoration: none;
+}
+
+.entry-link:last-child {
+}
+
+.entry-link.active {
+  display: none;
+}
+
+.entry-link:hover:not(.active) {
+  color: var(--color-brand);
+}
+
+.entry-link--home span {
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.entry-amp {
+  vertical-align: bottom;
+  font-size: var(--fontSize-h1);
+  font-family: var(--fontFamily-playfair);
+  color: var(--color-brand);
+}
+
+.entry-content {
+  flex: 1;
+  /*padding: var(--padding-normal) var(--padding-small) 0;*/
+}
+
+@media (min-width: 35rem) {
+  .entry {
+    flex-direction: column;
+  }
+
+  .entry-content {
+    /*padding: var(--padding-large);*/
+  }
+
+  .entry-nav {
+    flex-direction: row;
+    align-content: center;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, .2) inset;
+    border-bottom: var(--border-widgetSeperator-inverse);
+  }
+
+  .entry-link {
+    padding: var(--padding-large);
+    border-bottom: 0;
+    /*border-right: var(--border-widgetSeperator);*/
+  }
+
+  .entry-link:last-child {
+    border-right: 0;
+  }
+
+  .entry-link.active {
+    display: block;
+    color: var(--color-text-inverted);
+    background: var(--background-inverted);
+  }
+
+  .entry-link--home {
+    /*flex: 2;*/
+  }
+
+  .entry-link--home.active {
+    background: var(--background-entryNav);
+    color: var(--color-brand);
+  }
 }

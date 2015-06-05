@@ -1,7 +1,18 @@
-var React = require('react')
-  , Home = require('../home/index.jsx')
+import React, {Component} from 'react'
+import {RouteHandler, Link} from 'react-router'
+const namespace = 'entry'
 
-// expose React so that dev tools will work
-window.React = React
-
-React.render(React.createElement(Home, null), document.getElementById('app'))
+export default class Entry extends Component {
+  render () {
+    return (<div className={namespace}>
+      <nav className={`${namespace}-nav`}>
+        <Link to="rsvp" className={`${namespace}-link`}>RSVP</Link>
+        <Link to="home" className={`${namespace}-link ${namespace}-link--home`}>Rachel <span className={`${namespace}-amp`}>&</span> Joey</Link>
+        <Link to="weekend" className={`${namespace}-link`}>Weekend</Link>
+      </nav>
+      <div className={`${namespace}-content`}>
+        <RouteHandler {...this.props} />
+      </div>
+    </div>)
+  }
+}

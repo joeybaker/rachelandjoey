@@ -505,6 +505,7 @@ th {
 
 :root {
   font-family: 'Lato' sans-serif;
+  font-size: 1rem;
   color: rgb(30,30,30);
 }
 
@@ -516,14 +517,407 @@ html,
 body,
 #app {
   height: 100%;
-  background: rgb(230,230,230);
+  background: rgb(245,245,245);
 }
 
-.flex {
+#app {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.entry {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.entry-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  background: rgb(253,253,253);
+  border-top: 0.9rem solid rgb(241, 86, 63);
+}
+
+.entry-link {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 0.9rem;
+  border-bottom: 0.9rem solid rgb(241, 86, 63);
+  color: rgb(30,30,30);
+  font-size: 1.5rem;
+  background: rgb(253,253,253);
+  text-decoration: none;
+}
+
+
+
+.entry-link.active {
+  display: none;
+}
+
+.entry-link:hover:not(.active) {
+  color: rgb(125,125,125);
+}
+
+.entry-link--home span {
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.entry-amp {
+  vertical-align: bottom;
+  font-size: 2rem;
+  font-family: 'Playfair Display', serif;
+  color: rgb(241, 86, 63);
+}
+
+.entry-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.entry-content > * {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+@media (min-width: 35rem) {
+  .entry {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+
+  .entry-content {
+    /*padding: var(--padding-large);*/
+  }
+
+  .entry-nav {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-align-content: center;
+        -ms-flex-line-pack: center;
+            align-content: center;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, .2) inset;
+    border-bottom: 0.9rem solid rgb(241, 86, 63);
+  }
+
+  .entry-link {
+    padding: 1.5rem;
+    border-bottom: 0;
+    /*border-right: var(--border-widgetSeperator);*/
+  }
+
+  .entry-link:last-child {
+    /*border-right: 0;*/
+  }
+
+  .entry-link.active {
+    display: block;
+    color: rgb(241, 86, 63);
+  }
+
+  .entry-link--home {
+    /*flex: 2;*/
+  }
+
+  .entry-link--home.active {
+    /*background: var(--background-entryNav);*/
+    /*color: var(--color-brand);*/
+  }
+}
+
+
+
+.rsvpForm {
+  max-width: 25rem;
+  margin: 0 auto;
+}
+
+/* general form stuff */
+
+.rsvpForm label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+.rsvpForm label,
+.rsvpForm fieldset {
+  margin-bottom: 0.9rem;
+}
+
+.rsvpForm label:last-child,
+.rsvpForm fieldset:last-child {
+  margin-bottom: 0;
+}
+
+.rsvpForm input {
+  width: 100%;
+  /* just stylin' */
+  padding: 0.9rem;
+  background: rgb(253,253,253);
+  font-size: 1.3rem;
+  /* unset defaults */
+  border: 0;
+  border-radius: 0;
+  /* when valid and focused, add a bottom border */
+  border-bottom: 2px solid rgb(241, 86, 63);
+}
+
+/* when the input is invalid, don't show a highlight */
+
+.rsvpForm input:invalid {
+  border-bottom: 2px solid rgb(210,210,210);
+}
+
+/* the focus style is the same as the valid styling */
+
+.rsvpForm input:focus {
+  outline: none;
+  border-bottom: 2px solid rgb(241, 86, 63);
+}
+
+.rsvpForm input:disabled {
+  cursor: auto;
+  opacity: 0.5;
+}
+
+.rsvpForm label span,
+.rsvpForm fieldset > span {
+  display: block;
+  margin-bottom: calc(1rem / 3);
+  font-weight: 800;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/* radio inputs */
+
+.rsvpForm fieldset {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 0;
+  border: 0;
+}
+
+.rsvpForm fieldset label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  /* relative to contain the input */
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 50%;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  margin: 0 0 calc(1rem / 3);
+  /* by default, labels get a pointer cursor, but we need more control here */
+  cursor: auto;
+}
+
+.rsvpForm fieldset label span {
+  font-weight: 400;
+  background: rgb(253,253,253);
+  padding: 0.9rem;
+  margin-bottom: 0;
+}
+
+/* position absolute the input so that it can be focused by HTML and validation
+messages can be shown */
+
+.rsvpForm fieldset input[type="radio"] {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-bottom: 0;
+  cursor: pointer;
+}
+
+.rsvpForm fieldset input[type="radio"]:focus {
+  outline: none;
+  border: 2px solid rgb(241, 86, 63);
+}
+
+.rsvpForm fieldset input[type="radio"]:active {
+  border: none;
+}
+
+.rsvpForm fieldset input[type="radio"]:disabled {
+  cursor: auto;
+}
+
+.rsvpForm fieldset input[type="radio"]:active:not(:disabled) + span {
+  color: rgb(241, 86, 63);
+}
+
+.rsvpForm fieldset input[type="radio"]:checked + span {
+  background: rgb(241, 86, 63);
+  color: rgb(245,245,245);
+}
+
+.rsvpForm fieldset input[type="radio"]:disabled + span {
+  opacity: 0.5;
+}
+
+/* auto suggest looks very much like the radio inputs */
+
+.react-autosuggest input {
+  margin-bottom: 0;
+}
+
+.rsvpForm [role="listbox"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rsvpForm [role="listbox"] li {
+  background: rgb(253,253,253);
+  padding: 0.9rem;
+  margin-bottom: calc(1rem / 3);
+}
+
+.react-autosuggest__suggestion--focused {
+  box-shadow: 0 0 0 2px rgb(241, 86, 63) inset;
+}
+
+/* buttons. This could be abstracted */
+
+.rsvpForm button {
+  width: 100%;
+  padding: 0.9rem;
+  background: rgb(253,253,253);
+  border: 0;
+  color: rgb(241, 86, 63);
+  font-size: 1.3rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.rsvpForm button:focus {
+  background: rgb(241, 86, 63);
+  color: rgb(245,245,245);
+  outline: 0;
+}
+
+.rsvpForm button:disabled {
+  background: rgb(210,210,210);
+  color: rgb(245,245,245);
+}
+
+/* particular to this form*/
+
+.rsvpForm p {
+  text-align: center;
+}
+
+.rsvpWrap {
+  /* 100% because it's container will be a flex */
+  width: 100%;
+  padding: 1.5rem 0.9rem;
+  border-top: 0.9rem solid rgb(245,245,245);
+}
+
+.home {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.home-title {
+  margin: 30% 0 10%;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 300;
+  font-size: 10vw;
 }
 
 .agendaEvent {
@@ -625,13 +1019,13 @@ body,
 }
 
 .card {
-  background: rgb(248,248,248);
+  background: rgb(253,253,253);
   padding: 0.9rem;
 }
 
 .card-inverted {
   background: rgb(241, 86, 63);
-  color: rgb(230,230,230);
+  color: rgb(245,245,245);
 }
 
 /* 35rem is the arbitrarily decided break point */
@@ -645,8 +1039,8 @@ body,
 
 
 .agendaDay {
-  background: rgb(248,248,248);
-  border-bottom: calc(1rem / 3) solid rgb(230,230,230);
+  background: rgb(253,253,253);
+  border-bottom: 0.9rem solid rgb(245,245,245);
 }
 
 .agendaDay-events {
@@ -720,7 +1114,7 @@ body,
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-bottom: calc(1rem / 3);
+  margin-bottom: 0.9rem;
 }
 
 .cardRow:last-child {
@@ -728,7 +1122,7 @@ body,
 }
 
 .cardRow > .card {
-  margin-bottom: calc(1rem / 3);
+  margin-bottom: 0.9rem;
 }
 
 .cardRow > .card:last-child {
@@ -752,7 +1146,7 @@ body,
         -ms-flex: 1;
             flex: 1;
     margin-bottom: 0;
-    margin-right: calc(1rem / 3);
+    margin-right: 0.9rem;
   }
 
   .cardRow > .card:last-child {
@@ -822,7 +1216,7 @@ body,
           flex-direction: column;
   padding: 2.5rem;
   background: rgb(241, 86, 63);
-  color: rgb(248,248,248);
+  color: rgb(253,253,253);
   text-decoration: none;
 }
 
@@ -861,7 +1255,7 @@ body,
   -webkit-flex: 0 1 33%;
       -ms-flex: 0 1 33%;
           flex: 0 1 33%;
-  border-bottom: calc(1rem / 3) solid rgb(230,230,230);
+  border-bottom: 0.9rem solid rgb(245,245,245);
 }
 
 @media (min-width: 32em) {
@@ -874,7 +1268,7 @@ body,
   }
 
   .widgetsWhereTo > * {
-    border-right: calc(1rem / 3) solid rgb(230,230,230);
+    border-right: 0.9rem solid rgb(245,245,245);
   }
 
   .widgetsWhereTo > :last-child {
@@ -882,214 +1276,6 @@ body,
   }
 }
 
-
-
-.rsvpForm {
-  max-width: 25rem;
-  margin: 0 auto;
-}
-
-/* general form stuff */
-
-.rsvpForm label {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-  -webkit-flex-direction: column-reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  cursor: pointer;
-}
-
-.rsvpForm label,
-.rsvpForm fieldset {
-  margin-bottom: 0.9rem;
-}
-
-.rsvpForm label:last-child,
-.rsvpForm fieldset:last-child {
-  margin-bottom: 0;
-}
-
-.rsvpForm input {
-  width: 100%;
-  /* just stylin' */
-  padding: 0.9rem;
-  background: rgb(248,248,248);
-  font-size: 1.3rem;
-  /* unset defaults */
-  border: 0;
-  border-radius: 0;
-  /* when valid and focused, add a bottom border */
-  border-bottom: 2px solid rgb(241, 86, 63);
-}
-
-/* when the input is invalid, don't show a highlight */
-
-.rsvpForm input:invalid {
-  border-bottom: 2px solid rgb(210,210,210);
-}
-
-/* the focus style is the same as the valid styling */
-
-.rsvpForm input:focus {
-  outline: none;
-  border-bottom: 2px solid rgb(241, 86, 63);
-}
-
-.rsvpForm input:disabled {
-  cursor: auto;
-  opacity: 0.5;
-}
-
-.rsvpForm label span,
-.rsvpForm fieldset > span {
-  display: block;
-  margin-bottom: calc(1rem / 3);
-  font-weight: 800;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-/* radio inputs */
-
-.rsvpForm fieldset {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  padding: 0;
-  border: 0;
-}
-
-.rsvpForm fieldset label {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  /* relative to contain the input */
-  position: relative;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 50%;
-      -ms-flex: 1 1 50%;
-          flex: 1 1 50%;
-  margin: 0 0 calc(1rem / 3);
-  /* by default, labels get a pointer cursor, but we need more control here */
-  cursor: auto;
-}
-
-.rsvpForm fieldset label span {
-  font-weight: 400;
-  background: rgb(248,248,248);
-  padding: 0.9rem;
-  margin-bottom: 0;
-}
-
-/* position absolute the input so that it can be focused by HTML and validation
-messages can be shown */
-
-.rsvpForm fieldset input[type="radio"] {
-  position: absolute;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border-bottom: 0;
-  cursor: pointer;
-}
-
-.rsvpForm fieldset input[type="radio"]:focus {
-  outline: none;
-  border: 2px solid rgb(241, 86, 63);
-}
-
-.rsvpForm fieldset input[type="radio"]:active {
-  border: none;
-}
-
-.rsvpForm fieldset input[type="radio"]:disabled {
-  cursor: auto;
-}
-
-.rsvpForm fieldset input[type="radio"]:active:not(:disabled) + span {
-  color: rgb(241, 86, 63);
-}
-
-.rsvpForm fieldset input[type="radio"]:checked + span {
-  background: rgb(241, 86, 63);
-  color: rgb(230,230,230);
-}
-
-.rsvpForm fieldset input[type="radio"]:disabled + span {
-  opacity: 0.5;
-}
-
-/* auto suggest looks very much like the radio inputs */
-
-.react-autosuggest input {
-  margin-bottom: 0;
-}
-
-.rsvpForm [role="listbox"] {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.rsvpForm [role="listbox"] li {
-  background: rgb(248,248,248);
-  padding: 0.9rem;
-  margin-bottom: calc(1rem / 3);
-}
-
-.react-autosuggest__suggestion--focused {
-  box-shadow: 0 0 0 2px rgb(241, 86, 63) inset;
-}
-
-/* buttons. This could be abstracted */
-
-.rsvpForm button {
-  width: 100%;
-  padding: 0.9rem;
-  background: rgb(248,248,248);
-  border: 0;
-  color: rgb(241, 86, 63);
-  font-size: 1.3rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.rsvpForm button:focus {
-  background: rgb(241, 86, 63);
-  color: rgb(230,230,230);
-  outline: 0;
-}
-
-.rsvpForm button:disabled {
-  background: rgb(210,210,210);
-  color: rgb(230,230,230);
-}
-
-/* particular to this form*/
-
-.rsvpForm p {
-  text-align: center;
+.pageWeekend {
+  border-top: 0.9rem solid rgb(245,245,245);
 }

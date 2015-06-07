@@ -10,26 +10,35 @@ const namespace = 'rsvpForm'
 export default class RsvpForm extends Component {
   constructor (props) {
     super(props)
-    // aug 1st at midnight
-    const enabled = Date.now() < 1438498799000
-
     this.state = assign(
-      {submitEnabled: enabled}
-      , this.convertPartyToState(props.party)
+      this.convertPartyToState(props.party)
       , props
-      , {submitButtonLabel: props.party ? 'Change RSVP' : 'RSVP'}
+      , {submitButtonLabel: this.getSubmitButtonLabel(props.party)}
     )
   }
 
   componentWillReceiveProps (newProps) {
     const party = newProps.party
-    if (party) this.setState(this.convertPartyToState(party))
+    const newState = {}
+
+    if (party) assign(newState, this.convertPartyToState(party))
+    if (newProps.hasOwnProperty('submitEnabled')) {
+      newState.submitEnabled = newProps.submitEnabled
+      newState.submitButtonLabel = this.getSubmitButtonLabel(party)
+    }
+
+    this.setState(newState)
   }
 
   // use the pure-render mixin without the mixin. This allows us to use es6
   // classes and avoid "magic" code
   shouldComponentUpdate (...args) {
     return shouldComponentUpdate.apply(this, args)
+  }
+
+  getSubmitButtonLabel (party) {
+    if (!party || party.attending === null) return 'RSVP'
+    else return 'Change RSVP'
   }
 
   convertPartyToState (party) {
@@ -240,9 +249,12 @@ RsvpForm.propTypes = {
   , onPartyNameSelect: PropTypes.func.isRequired
   , onSubmit: PropTypes.func.isRequired
   , submitButtonLabel: PropTypes.string
+  , submitEnabled: PropTypes.bool
   , party: PropTypes.object
 }
 
 RsvpForm.defaultProps = {
   submitButtonLabel: 'RSVP'
+  // aug 1st at midnight
+  , submitEnabled: Date.now() < 1438498799000
 }

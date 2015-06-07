@@ -1,6 +1,8 @@
 import joi from 'joi'
 import boom from 'boom'
 import size from 'lodash/collection/size'
+import assign from 'lodash/object/assign'
+import uniq from 'lodash/array/uniq'
 
 const path = '/api/update/party'
 const validate = {
@@ -29,27 +31,31 @@ const validateParty = (r, conn, req, callback) => {
         req.log(['warn', path, 'hackish'], {message: 'too many names', payload})
         callback(boom.notAcceptable('Too many guests'))
       }
-      else if (size(req.payload.meals) !== party.names.length) {
+      else if (size(req.payload.meals) !== req.payload.names.length) {
         req.log(['warn', path, 'hackish'], {message: 'not enough meals', payload})
         callback(boom.notAcceptable('We need to know who\'s eat what!'))
       }
-      else callback()
+      else callback(null, party)
     })
 }
 
-const updateParty = (r, conn, req, callback) => {
+const updateParty = (r, conn, req, party, callback) => {
   const {payload} = req
   const {id} = payload
+  // ensure that we don't remove the guest count from the original list of names
+  // we have the acuurate names in meals
+  const names = uniq(payload.names.concat(party.names))
+  const updatedParty = assign({}, payload, {names})
 
   r.table('rsvp').get(id)
-    .update(payload, {returnChanges: true}).run(conn, (err, res) => {
+    .update(updatedParty, {returnChanges: true}).run(conn, (err, res) => {
       if (err) {
         req.log(['error', path, 'rethink'], err)
         callback(err)
       }
       else {
-        req.log(['info', path, 'rethink', 'update'], res)
-        callback(null, res)
+        req.log(['info', path, 'rethink', 'update', 'ok'], res)
+        callback(null, updatedParty)
       }
     })
 }
@@ -57,9 +63,9 @@ const updateParty = (r, conn, req, callback) => {
 const handler = (req, reply) => {
   const {r, conn} = req.server.plugins.rethinkdb
 
-  validateParty(r, conn, req, (validateErr) => {
+  validateParty(r, conn, req, (validateErr, party) => {
     if (validateErr) reply(validateErr)
-    else updateParty(r, conn, req, reply)
+    else updateParty(r, conn, req, party, reply)
   })
 }
 

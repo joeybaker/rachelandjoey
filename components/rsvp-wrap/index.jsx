@@ -28,7 +28,7 @@ export default class RsvpWrap extends Component {
   }
 
   convertStateToParty (state) {
-    const party = {meals: {}, names: []}
+    const party = {meals: {}, names: [], id: state.party.id}
     const nameKeyRegEx = /^name\d$/
     const nameKeys = Object.keys(state).filter((key) => nameKeyRegEx.test(key))
     party.attending = state.meal1 !== 'regrets'
@@ -67,18 +67,30 @@ export default class RsvpWrap extends Component {
       , encoding: null
       , json: true
     }, (err, res, party) => {
-      if (err) {
-        return void console.error(err)
-      }
-      this.setState({party})
+      if (err) console.error(err)
+      else this.setState({party})
     })
   }
 
   onSubmit (state) {
     const party = this.convertStateToParty(state)
-    if (hasStorage) {
-      window.localStorage.setItem(namespace, JSON.stringify(party))
-    }
+    xhr({
+      url: `/api/update/party`
+      , encoding: null
+      , json: party
+      , method: 'POST'
+    }, (err, res, savedParty) => {
+      console.log(savedParty, res)
+      if (err) console.error(err)
+      else if (res.statusCode >= 300) console.error(savedParty)
+      else {
+        if (hasStorage) {
+          window.localStorage.setItem(namespace, JSON.stringify(savedParty))
+        }
+
+        this.setState({party: savedParty, submitEnabled: true})
+      }
+    })
   }
 
   render () {
@@ -88,6 +100,7 @@ export default class RsvpWrap extends Component {
         findNames={this.findNames}
         onPartyNameSelect={this.findParty.bind(this)}
         onSubmit={this.onSubmit.bind(this)}
+        submitEnabled={this.state.submitEnabled}
         party={this.state.party}
       />
     </div>)

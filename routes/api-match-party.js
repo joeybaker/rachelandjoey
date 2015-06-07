@@ -8,9 +8,12 @@ export default {
     r.table('rsvp')
       .getAll(query, {index: 'names'})
       .run(conn, (err, cursor) => {
-        if (err) return void reply(err)
+        if (err) reply(err)
         else {
-          cursor.toArray(reply)
+          cursor.toArray((cursorErr, parties)=>{
+            if (cursorErr) reply(cursorErr)
+            else reply(parties[0])
+          })
         }
       })
   }

@@ -1,5 +1,8 @@
 process.title = 'rachelandjoey'
 
+import ReactRoutes from './components/_routes/'
+import ReactData from './components/_routes/example/data.js'
+
 const hapi = require('hapi')
   , path = require('path')
   , fs = require('fs')
@@ -7,7 +10,7 @@ const hapi = require('hapi')
   , React = require('react')
   , jace = require('jace')
   , browserify = require('browserify')
-  , entryJs = require('./components/home/index.jsx')
+  , ReactRouter = require('react-router')
   , config = jace({
     configPath: path.join(__dirname, 'config')
   })
@@ -29,15 +32,17 @@ function buildJs (callback) {
   if (builtJs) return void callback.apply(null, builtJs)
 
   server.log(['info', 'http', 'bundle', 'js'], 'started')
-  const b = browserify({debug: true})
+  const b = browserify({
+    debug: true
+    , extensions: ['.js', '.json', '.jsx']
+  })
 
-  b.add(path.join(__dirname, 'components', '_entry', 'index.jsx'))
+  b.add(path.join(__dirname, 'static', 'index.js'))
 
   b.transform('babelify')
   b.plugin('minifyify', {map: '/static/index.js.map'})
 
-  b.bundle(function bundled () {
-    let args = [].slice.call(arguments, 0)
+  b.bundle(function bundled (...args) {
     builtJs = args
     server.log(['info', 'http', 'bundle', 'js'], 'finished')
     callback.apply(null, args)
@@ -115,18 +120,15 @@ server.route({
   }
 })
 
+const html = fs.readFileSync(path.join(__dirname, 'static', 'index.html')).toString()
 server.route({
-  path: '/'
+  path: '/{path*}'
   , method: 'GET'
   , config: {
     handler: function homeHandler (req, reply) {
-      fs.readFile(path.join(__dirname, 'static', 'index.html'), function onReadHTML (err, html) {
-        if (err) return void reply(err)
-        const initialHTML = React.renderToString(React.createElement(entryJs))
-        reply(html.toString()
-          .replace('{{entry}}', '/static/index.js')
-          .replace('id="app">', 'id="app">' + initialHTML)
-          )
+      ReactRouter.run(ReactRoutes, req.path, (Handler) => {
+        const initialHTML = React.renderToString(React.createElement(Handler, ReactData))
+        reply(html.replace('id="app">', 'id="app">' + initialHTML))
           .type('text/html')
       })
     }

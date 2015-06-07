@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import moment from 'moment'
-import css from '../variables/css.js'
+import RsvpWrap from '../rsvp-wrap/'
+const namespace = 'home'
 
 // format moment strings
 moment.locale('en', {
@@ -26,24 +27,6 @@ export default class Home extends Component {
     }
   }
 
-  styles () {
-    return {
-      h1: {
-        WebkitFontSmoothing: 'antialiased'
-        , fontWeight: 300
-        , fontSize: '10vw'
-        , margin: 0
-      }
-      , container: {
-        justifyContent: 'center'
-        , WebkitJustifyContent: 'center'
-        , WebkitAlignItems: 'center'
-        , height: '100%'
-        , textAlign: 'center'
-      }
-    }
-  }
-
   getTimeRemaining (deadline) {
     const date = deadline || this.state.deadline
     if (date.valueOf() > Date.now()) return date.calendar()
@@ -61,11 +44,10 @@ export default class Home extends Component {
   }
 
   render () {
-    const styles = this.styles()
-
     return (
-      <div className="flex" style={styles.container}>
-        <h1 style={styles.h1}>{this.state.timeRemaining}</h1>
+      <div className={namespace}>
+        <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
+        <RsvpWrap />
       </div>
     )
   }

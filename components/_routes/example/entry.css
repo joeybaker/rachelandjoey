@@ -1,1 +1,7 @@
 @import "../";
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/l/font?kit=2NBgzUtEeyB-Xtpr9bm1CYUpO3myIcWyBoHLB3F4Rvk&skey=f3b68f0152604ed9) format('woff2');
+}

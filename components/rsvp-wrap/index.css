@@ -1,7 +1,9 @@
 @import "../rsvp-form/";
 @import "../variables/";
 
-.pageRsvp {
+.rsvpWrap {
+  /* 100% because it's container will be a flex */
+  width: 100%;
   padding: var(--padding-large) var(--padding-normal);
   border-top: var(--border-widgetSeperator);
 }

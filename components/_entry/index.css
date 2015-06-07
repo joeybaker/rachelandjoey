@@ -2,21 +2,6 @@
 @import "@getable/lato";
 @import "../variables/";
 
-/* hacky way to get the playfair font-face */
-/* via https://fonts.googleapis.com/css?family=Playfair+Display&text=%26*/
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/l/font?kit=2NBgzUtEeyB-Xtpr9bm1CYUpO3myIcWyBoHLB3F4Rvk&skey=f3b68f0152604ed9) format('woff2');
-}
-@font-face {
-  font-family: 'Playfair Display';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Playfair Display'), local('PlayfairDisplay-Regular'), url(https://fonts.gstatic.com/l/font?kit=2NBgzUtEeyB-Xtpr9bm1Cb8s7_7sVsxX-8CaClC1xT0&skey=f3b68f0152604ed9) format('woff');
-}
-
 :root {
   font-family: var(--fontFamily-lato);
   font-size: var(--fontSize-default);
@@ -28,16 +13,19 @@
   box-sizing: border-box;
 }
 
+
 html, body, #app {
-  min-height: 100%;
+  height: 100%;
   background: var(--background-body);
 }
 
 #app {
   display: flex;
+  flex-direction: column;
 }
 
 .entry {
+  flex: 1;
   display: flex;
   width: 100%;
   flex-direction: column-reverse;
@@ -70,7 +58,7 @@ html, body, #app {
 }
 
 .entry-link:hover:not(.active) {
-  color: var(--color-brand);
+  color: var(--color-grey50);
 }
 
 .entry-link--home span {
@@ -86,8 +74,13 @@ html, body, #app {
 }
 
 .entry-content {
+  display: flex;
+  flex-direction: column;
   flex: 1;
-  /*padding: var(--padding-normal) var(--padding-small) 0;*/
+}
+
+.entry-content > * {
+  flex: 1;
 }
 
 @media (min-width: 35rem) {
@@ -113,13 +106,12 @@ html, body, #app {
   }
 
   .entry-link:last-child {
-    border-right: 0;
+    /*border-right: 0;*/
   }
 
   .entry-link.active {
     display: block;
-    color: var(--color-text-inverted);
-    background: var(--background-inverted);
+    color: var(--color-brand);
   }
 
   .entry-link--home {
@@ -127,7 +119,7 @@ html, body, #app {
   }
 
   .entry-link--home.active {
-    background: var(--background-entryNav);
-    color: var(--color-brand);
+    /*background: var(--background-entryNav);*/
+    /*color: var(--color-brand);*/
   }
 }

@@ -1,7 +1,7 @@
 import test from 'tape'
 import React from 'react'
 import {addons} from 'react/addons'
-import PageRsvp from './index.jsx'
+import RsvpWrap from './index.jsx'
 const {TestUtils} = addons
 const {Simulate, renderIntoDocument, isElement, createRenderer} = TestUtils
 const getReactNode = (dom, node) => TestUtils.findRenderedDOMComponentWithTag(dom, node)
@@ -9,10 +9,10 @@ const getDOMNode = (dom, node) => getReactNode(dom, node).getDOMNode()
 const getDOMNodes = (dom, type) => TestUtils.scryRenderedDOMComponentsWithTag(dom, type)
 const getDOMNodeText = (dom, node) => getDOMNode(dom, node).textContent
 
-test('PageRsvp: constructor', (t) => {
-  const pageRsvp = React.createElement(PageRsvp)
+test('RsvpWrap: constructor', (t) => {
+  const rsvpWrap = React.createElement(RsvpWrap)
   t.ok(
-    isElement(pageRsvp)
+    isElement(rsvpWrap)
     , 'is a valid react component'
   )
 
@@ -20,10 +20,10 @@ test('PageRsvp: constructor', (t) => {
 })
 
 // TODO: delete me. I'm just an example!
-test('PageRsvp rendered DOM', (t) => {
+test('RsvpWrap rendered DOM', (t) => {
   const name = 'Bert'
-  const pageRsvp = React.createElement(PageRsvp, {name})
-  const dom = renderIntoDocument(pageRsvp)
+  const rsvpWrap = React.createElement(RsvpWrap, {name})
+  const dom = renderIntoDocument(rsvpWrap)
 
   t.equal(
     getDOMNodeText(dom, 'h1')

@@ -1,12 +1,12 @@
-# PageRsvp
+# RsvpWrap
 
 Describe what this component does!
 
 ## Usage
 ```js
   import React from 'react'
-  import PageRsvp from 'page-rsvp'
-  React.render(<PageRsvp />, document.createElement('div'))
+  import RsvpWrap from 'page-rsvp'
+  React.render(<RsvpWrap />, document.createElement('div'))
 ```
 
 ```css

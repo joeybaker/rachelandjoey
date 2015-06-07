@@ -75,9 +75,10 @@
     "@joeybaker/hapi-rethinkdb": "^3.0.1",
     "atomify-css": "^3.3.3",
     "autoprefixer-core": "^5.2.0",
-    "babel": "^5.4.7",
+    "babel": "^5.5.3",
     "babel-plugin-closure-elimination": "0.0.1",
     "babelify": "^6.1.2",
+    "boom": "^2.7.2",
     "browserify": "^10.2.3",
     "bulk-require": "^0.2.1",
     "classnames": "^2.1.2",
@@ -87,6 +88,7 @@
     "hapi-rethinkdb": "^2.0.0",
     "inherits": "^2.0.1",
     "jace": "^2.0.0",
+    "joi": "^6.4.3",
     "lodash": "^3.9.3",
     "minifyify": "^7.0.0",
     "moment": "^2.10.3",
@@ -95,6 +97,7 @@
     "react-autosuggest": "^1.14.0",
     "react-router": "^0.13.3",
     "rethinkdb": "^2.0.0",
-    "through": "^2.3.7"
+    "through": "^2.3.7",
+    "xhr": "^2.0.1"
   }
 }

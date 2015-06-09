@@ -15,9 +15,9 @@ export default class WidgetWhereTo extends Component {
     const reccomendations = this.props.reccomendations.map((reccomendation) => {
       return <li key={reccomendation.name}><a className={`${namespace}-link`} href={reccomendation.link}>{reccomendation.name}</a></li>
     })
-    return (<Card style="inverted">
+    return (<Card style={this.props.style}>
       <div className={namespace}>
-        <h3 className={`${namespace}-title`}>Where To {this.props.verb}</h3>
+        <h3 className={`${namespace}-title`}>{this.props.title}</h3>
         <p className={`${namespace}-description`}>{this.props.description}</p>
         <ul className={`${namespace}-recs`}>
           {reccomendations}
@@ -29,13 +29,15 @@ export default class WidgetWhereTo extends Component {
 }
 
 WidgetWhereTo.propTypes = {
-  verb: PropTypes.string.isRequired
-  , description: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
+  , description: PropTypes.string
   , link: PropTypes.string.isRequired
   , reccomendations: PropTypes.arrayOf(PropTypes.object).isRequired
   , cta: PropTypes.string.isRequired
+  , style: PropTypes.string
 }
 
 WidgetWhereTo.defaultProps = {
   reccomendations: []
+  , style: 'inverted'
 }

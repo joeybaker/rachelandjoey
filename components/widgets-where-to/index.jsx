@@ -22,8 +22,10 @@ export default class WidgetsWhereTo extends Component {
 
 WidgetsWhereTo.propTypes = {
   activities: PropTypes.array.isRequired
+  , style: PropTypes.string
 }
 
 WidgetsWhereTo.defaultProps = {
   activities: []
+  , style: 'inverted'
 }

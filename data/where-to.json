@@ -1,6 +1,6 @@
 [
     {
-      "verb": "Stay"
+      "title": "Where to Stay"
       , "description": "There are plenty of options in downtown Healdsburg and the town of Windsor—both within a 15 minute drive of the wedding site—but hotels will fill up fast. Book something now!"
       , "reccomendations": [
         {"name": "airbnb", "link": "https://www.airbnb.com/s/Healdsburg--CA"}
@@ -10,7 +10,7 @@
       , "cta": "See all area hotels"
     }
   , {
-    "verb": "Eat"
+    "title": "Where to Eat"
     , "description": "It’s wine country, which means there is some of the best farm-to-table eats around from grab’n’go picnics to 5-course tasting menus."
     , "reccomendations": [
       {"name": "Chalkboard", "link": "http://chalkboardhealdsburg.com/"}
@@ -20,7 +20,7 @@
     , "cta": "See more Healdsburg restaruants"
   }
   , {
-    "verb": "Drink"
+    "title": "Where to Drink"
     , "description": "You had me at Merlot! The Dry Creek Valley area and Sonoma County are home to some of the best wineries in California (and the world)."
     , "reccomendations": [
       {"name": "Dry Creek Vineyard", "link": "http://www.drycreekvineyard.com/"}

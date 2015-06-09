@@ -1,0 +1,35 @@
+[
+    {
+      "title": "Nearby in Sonoma County"
+      , "reccomendations": [
+        {"name": "Wild Flour Bread Bakery, Sebastopol", "link": "http://www.wildflourbread.com/"}
+        , {"name": "Sonoma Cheese Factory, Sonoma", "link": "http://www.sonomacheesefactory.com/"}
+        , {"name": "Ravenswood Vineyard, Sonoma", "link": "http://www.ravenswoodwinery.com/"}
+      ]
+      , "link": "https://www.sonoma.com/businesses/index/filter:wineries,sonoma-valley"
+      , "cta": "See more Sonoma Wineries"
+    }
+    , {
+      "title": "Nearby in Napa County"
+      , "reccomendations": [
+        {"name": "St. Supery Vineyards & Winery, Rutherford", "link": "https://www.stsupery.com/"}
+        , {"name": "Gott’s Roadside, St. Helena", "link": "http://gotts.com/"}
+        , {"name": "Muir Woods", "link": "http://www.nps.gov/muwo/index.htm"}
+      ]
+      , "link": "https://www.napavalley.com/drink/"
+      , "cta": "See more Napa Wineries"
+    }
+    , {
+      "title": "Nearby in San Francisco"
+      , "reccomendations": [
+        {"name": "Lombard Street: The crookedest street in the world", "link": "http://www.sftodo.com/lomabardcrookedstreet.html"}
+        , {"name": "Boundin’s Bakery: Best sourdough!", "link": "https://www.boudinbakery.com/index.cfm"}
+        , {"name": "Golden Gate Bridge", "link": "http://www.goldengatebridge.org/"}
+        , {"name": "Ghirardelli Square: SF Chocolate!", "link": "http://www.ghirardellisq.com/"}
+        , {"name": "Ride a Cable Car!", "link": "http://www.sfcablecar.com/riders.html"}
+        , {"name": "Chinatown", "link": "http://www.sanfranciscochinatown.com/"}
+      ]
+      , "link": "http://www.tripadvisor.com/Attractions-g60713-Activities-San_Francisco_California.html"
+      , "cta": "Top 30 Things to Do in San Francisco"
+    }
+]

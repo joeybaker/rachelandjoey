@@ -1,5 +1,7 @@
 @import "../agenda/";
 @import "../widgets-where-to/";
+@import "../card-row/";
+@import "../card/";
 
 .pageWeekend {
   border-top: var(--border-widgetSeperator);

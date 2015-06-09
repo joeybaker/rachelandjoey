@@ -45,19 +45,36 @@ const updateParty = (r, conn, req, party, callback) => {
   // ensure that we don't remove the guest count from the original list of names
   // we have the acuurate names in meals
   const names = uniq(payload.names.concat(party.names))
-  const updatedParty = assign({}, payload, {names})
+  const updatedParty = assign({}, payload, {names, updatedAt: new Date()})
 
   r.table('rsvp').get(id)
     .update(updatedParty, {returnChanges: true}).run(conn, (err, res) => {
       if (err) {
-        req.log(['error', path, 'rethink'], err)
+        req.log(['error', path, 'rethink', 'rsvp', 'update'], err)
         callback(err)
       }
       else {
-        req.log(['info', path, 'rethink', 'update', 'ok'], res)
-        callback(null, updatedParty)
+        req.log(['info', path, 'rethink', 'rsvp', 'update', 'ok'], res)
+        saveHistory(r, conn, req, res.changes[0], updatedParty, callback)
       }
     })
+}
+
+const saveHistory = (r, conn, req, changes, party, callback) => {
+  r.table('rsvp_history').insert({
+    rsvpId: party.id
+    , update: changes.new_val
+    , createdAt: new Date()
+  }).run(conn, (err, res) => {
+    if (err) {
+      req.log(['error', path, 'rethink', 'history', 'insert'], err)
+      callback(err)
+    }
+    else {
+      req.log(['info', path, 'rethink', 'rsvp', 'insert', 'ok'], res)
+      callback(null, party)
+    }
+  })
 }
 
 const handler = (req, reply) => {

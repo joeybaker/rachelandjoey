@@ -210,6 +210,16 @@ export default class RsvpForm extends Component {
 
     const submit = <button type="submit" disabled={!this.state.submitEnabled}>{this.state.submitButtonLabel || this.props.submitButtonLabel}</button>
 
+    const confirm = <p>Great! We look forward to seeing you.</p>
+
+    const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, but we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
+
+    const showSubmit = this.state.meal1 === 'regrets' || this.state.meal2 || this.state.plus1 === 'nope'
+      || (this.state.names && this.state.names.length === 0 && this.state.meal1)
+    const showConfirm = this.state.party && this.state.party.attending
+    const showRegistry = this.state.party && this.state.party.attending !== null
+
+
     return (<form className={namespace} onSubmit={this.onSubmit.bind(this)}>
       {makeAutosuggest({name: 'name1', label: 'Who are you?'})}
       {
@@ -232,12 +242,10 @@ export default class RsvpForm extends Component {
         ? mealChooser({label: 'They\'ll have', name: 'meal2'})
         : ''
       }
-      {
-        this.state.meal2 || this.state.meal1 === 'regrets' || this.state.plus1 === 'nope' || (this.state.names && this.state.names.length === 0 && this.state.meal1)
-        ? submit
-        : ''
-      }
-      <p>
+      {showSubmit ? submit : ''}
+      {showConfirm ? confirm : ''}
+      {showRegistry ? registry : ''}
+      <p className={`${namespace}-rsvpWarning`}>
         <small>Please RSVP by August 1<sup>st</sup></small>
       </p>
     </form>)

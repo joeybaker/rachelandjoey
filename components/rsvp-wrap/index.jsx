@@ -80,7 +80,6 @@ export default class RsvpWrap extends Component {
       , json: party
       , method: 'POST'
     }, (err, res, savedParty) => {
-      console.log(savedParty, res)
       if (err) console.error(err)
       else if (res.statusCode >= 300) console.error(savedParty)
       else {

@@ -185,6 +185,6 @@ messages can be shown */
 
 
 /* particular to this form*/
-.rsvpForm p {
+.rsvpForm-rsvpWarning {
   text-align: center;
 }

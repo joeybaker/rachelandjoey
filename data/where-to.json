@@ -2,19 +2,31 @@
     {
       "verb": "Stay"
       , "description": "There are plenty of options in downtown Healdsburg and the town of Windsor—both within a 15 minute drive of the wedding site—but hotels will fill up fast. Book something now!"
-      , "link": "http://business.healdsburg.com/list/QL/lodging-travel-15"
+      , "reccomendations": [
+        {"name": "airbnb", "link": "https://www.airbnb.com/s/Healdsburg--CA"}
+        , {"name": "VRBO", "link": "http://www.vrbo.com/vacation-rentals/usa/california/wine-country/sonoma-county/russian-river/healdsburg"}
+      ]
+      , "link": "http://www.drycreekvalley.org/visit/lodging/index.php"
       , "cta": "See all area hotels"
     }
   , {
     "verb": "Eat"
     , "description": "It’s wine country, which means there is some of the best farm-to-table eats around from grab’n’go picnics to 5-course tasting menus."
+    , "reccomendations": [
+      {"name": "Chalkboard", "link": "http://chalkboardhealdsburg.com/"}
+      , {"name": "Dry Creek General Store", "link": "http://drycreekgeneralstore1881.com/"}
+    ]
     , "link": "http://business.healdsburg.com/list/QL/restaurants-food-beverages-22"
-    , "cta": "See Healdsburg restaruants"
+    , "cta": "See more Healdsburg restaruants"
   }
   , {
     "verb": "Drink"
     , "description": "You had me at Merlot! The Dry Creek Valley area and Sonoma County are home to some of the best wineries in California (and the world)."
-    , "link": "http://business.healdsburg.com/list/QL/wineries-tasting-rooms-26"
+    , "reccomendations": [
+      {"name": "Dry Creek Vineyard", "link": "http://www.drycreekvineyard.com/"}
+      , {"name": "Unti Vineyards", "link": "http://www.untivineyards.com/"}
+    ]
+    , "link": "http://www.drycreekvalley.org/wineries/interactive-winery-map.php"
     , "cta": "See nearby wineries and breweries"
   }
 ]

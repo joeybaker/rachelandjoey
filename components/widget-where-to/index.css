@@ -13,7 +13,7 @@
 
   padding: var(--padding-xLarge);
   background: var(--color-brand);
-  color: var(--color-white10);
+  color: var(--color-text-inverted);
   text-decoration: none;
 }
 
@@ -26,7 +26,24 @@
   flex: 1;
 }
 
+.widgetWhereTo-recs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .widgetWhereTo-link {
-  padding: var(--padding-normal) 0 0;
+  display: inline-block;
+  padding: var(--padding-small);
+  /* so that the left edge of the text still lines up */
+  margin-left: -var(--padding-small);
+  color: var(--color-text-inverted);
   text-decoration: underline;
+}
+
+.widgetWhereTo-link:hover
+, .widgetWhereTo-link:focus {
+  background: var(--color-text-inverted);
+  color: var(--color-brand);
+  text-decoration: none;
 }

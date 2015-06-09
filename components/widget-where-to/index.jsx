@@ -12,12 +12,18 @@ export default class WidgetWhereTo extends Component {
   }
 
   render () {
+    const reccomendations = this.props.reccomendations.map((reccomendation) => {
+      return <li key={reccomendation.name}><a className={`${namespace}-link`} href={reccomendation.link}>{reccomendation.name}</a></li>
+    })
     return (<Card style="inverted">
-      <a className={namespace} href={this.props.link}>
+      <div className={namespace}>
         <h3 className={`${namespace}-title`}>Where To {this.props.verb}</h3>
         <p className={`${namespace}-description`}>{this.props.description}</p>
-        <p className={`${namespace}-link`} href={this.props.link}>{this.props.cta}</p>
-      </a>
+        <ul className={`${namespace}-recs`}>
+          {reccomendations}
+          <li><a className={`${namespace}-link`} href={this.props.link}>{this.props.cta}</a></li>
+        </ul>
+      </div>
     </Card>)
   }
 }
@@ -26,5 +32,10 @@ WidgetWhereTo.propTypes = {
   verb: PropTypes.string.isRequired
   , description: PropTypes.string.isRequired
   , link: PropTypes.string.isRequired
+  , reccomendations: PropTypes.arrayOf(PropTypes.object).isRequired
   , cta: PropTypes.string.isRequired
+}
+
+WidgetWhereTo.defaultProps = {
+  reccomendations: []
 }

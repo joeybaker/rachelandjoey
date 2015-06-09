@@ -8,6 +8,7 @@
 
   --color-text-default: var(--color-black30);
   --color-text-inverted: var(--color-white30);
+  --color-text-invertedHighlight: var(--color-white10);
 
   --background-body: var(--color-white30);
   --background-content: var(--color-white10);
@@ -29,7 +30,7 @@
 
   --fontWeight-body-bold: var(--fontWeight-lato-bold);
 
-  --padding-small: calc(1rem / 3);
+  --padding-small: 0.333333333333333333rem;
   --padding-normal: 0.9rem;
   --padding-large: 1.5rem;
   --padding-xLarge: 2.5rem;

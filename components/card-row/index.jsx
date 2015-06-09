@@ -1,6 +1,7 @@
 import React, {PropTypes, Component, Children} from 'react'
 import {addons} from 'react/addons'
 import identity from 'lodash/utility/identity'
+import classnames from 'classnames'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'cardRow'
 
@@ -12,7 +13,11 @@ export default class CardRow extends Component {
   }
 
   render () {
-    return (<div className={namespace}>
+    const classes = classnames(namespace, {
+      [`${this.props.className}`]: this.props.className
+    })
+
+    return (<div className={classes}>
       {Children.map(this.props.children, identity)}
     </div>)
   }
@@ -20,4 +25,5 @@ export default class CardRow extends Component {
 
 CardRow.propTypes = {
   children: PropTypes.any
+  , className: PropTypes.string
 }

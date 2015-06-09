@@ -1,0 +1,43 @@
+@import "../variables/";
+@import "../card-row/";
+@import "../card/";
+
+:root {
+  /* define your namespaced vars here
+  --fontSize-normal-pageAbout: 1rem;
+  */
+}
+
+@media (min-width: 550px) {
+  .pageAbout-thumbs .card {
+    padding: 0;
+    display: flex;
+  }
+
+  /* specificity war */
+  img.pageAbout-thumb:first-child {
+    display: block;
+    max-width: 250px;
+    max-height: 250px;
+    margin: 0;
+    margin-right: var(--padding-large);
+  }
+}
+
+/* from card-row */
+@media (min-width: 54rem) {
+  .pageAbout-thumbs .card {
+    padding: 0;
+    display: block;
+  }
+
+  .pageAbout-thumbs .card div {
+    padding: 0 var(--padding-large);
+  }
+
+  img.pageAbout-thumb:first-child {
+    max-width: 100%;
+    max-height: auto;
+    margin-bottom: var(--padding-normal);
+  }
+}

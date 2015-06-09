@@ -24,6 +24,11 @@ html, body, #app {
   flex-direction: column;
 }
 
+abbr > a {
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
 .entry {
   flex: 1;
   display: flex;

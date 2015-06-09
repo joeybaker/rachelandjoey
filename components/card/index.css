@@ -16,9 +16,24 @@
   color: var(--color-text-inverted);
 }
 
+.card img:first-child
+, .card img:last-child {
+  display: block;
+  width: calc(100% + 2 * var(--padding-normal));
+  margin: -var(--padding-normal);
+  margin-bottom: var(--padding-normal);
+}
+
 /* 35rem is the arbitrarily decided break point */
 @media (min-width: 36rem) {
   .card {
     padding: var(--padding-large);
+  }
+
+  .card img:first-child
+  , .card img:last-child {
+    width: calc(100% + 2 * var(--padding-large));
+    margin: -var(--padding-large);
+    margin-bottom: var(--padding-normal);
   }
 }

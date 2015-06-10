@@ -95,6 +95,7 @@
     "normalize.css": "^3.0.3",
     "react": "^0.13.3",
     "react-autosuggest": "^1.14.0",
+    "react-document-head": "^1.0.0",
     "react-router": "^0.13.3",
     "rethinkdb": "^2.0.0",
     "through": "^2.3.7",

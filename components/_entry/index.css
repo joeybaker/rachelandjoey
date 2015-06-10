@@ -37,7 +37,7 @@ abbr > a {
 }
 
 .entry-nav {
-  flex: 0 0;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -47,7 +47,7 @@ abbr > a {
 
 .entry-link {
   display: block;
-  flex: 1;
+  flex: 1 0 auto;
   padding: var(--padding-normal);
   border-bottom: var(--border-widgetSeperator-inverted);
   color: var(--color-text-default);

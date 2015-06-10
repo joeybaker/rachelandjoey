@@ -18,15 +18,29 @@ export default class PageWeekend extends Component {
   render () {
     setHead({title: this.props.title})
     return (<div className={namespace}>
+      <CardRow>
+        <Card>
+          <h2>Agenda</h2>
+        </Card>
+      </CardRow>
       <Agenda events={this.props.events} />
+      <CardRow>
+        <Card style="inverted">
+          <h2>What to Do</h2>
+        </Card>
+      </CardRow>
       <WhereTo activities={this.props.activities} />
       <WhereTo activities={this.props.futherActivities} />
+      <CardRow>
+        <Card>
+          <h2>Getting Here</h2>
+        </Card>
+      </CardRow>
       <CardRow>
         <iframe width="100%" height="500px" frameBorder="0" src="https://a.tiles.mapbox.com/v4/joeybaker.lbap2chb/zoompan.html?access_token=pk.eyJ1Ijoiam9leWJha2VyIiwiYSI6Im9pYTdyNUEifQ.Gff2sHYLfe4hG3TPKZmx9Q"></iframe>
       </CardRow>
       <CardRow>
         <Card>
-          <h2>Getting Here</h2>
           <p>Healdsburg is located in the heart of California Wine Country about 65 miles north of the Golden Gate Bridge.</p>
           <p>Although the closest airport is Sonoma County (STS), it will probably be cheaper and more convenient to fly in San Francisco International (SFO). From there, you will either need to rent a car (it is a little less than a two hour drive) or you can take the <a href="http://airportexpressinc.com/schedules.php">Sonoma County Airport Express</a> to STS and <a href="http://www.sonomacountyairport.org/ground-transportation">rent one there</a>.</p>
           <p>The wedding ceremonty is at Quivira Vineyards</p>

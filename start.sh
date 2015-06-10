@@ -17,8 +17,8 @@ fi
 
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
 sudo docker rm -f rachelandjoey
-sudo docker run -d --restart=always --name rachelandjoey --link rethinkdb:rdb \
-  joeybaker/rachelandjoey
+sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
+  --link rethinkdb:rdb joeybaker/rachelandjoey
 
 
 sudo docker rm -f bud

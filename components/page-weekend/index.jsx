@@ -23,11 +23,21 @@ export default class PageWeekend extends Component {
           <h2>Agenda</h2>
         </Card>
       </CardRow>
+      <CardRow>
+        <div>
+          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,g_center,h_800,q_20,w_1800/v1433909715/villa_tz3fvu.jpg" style={{maxWidth: '100%'}}/>
+        </div>
+      </CardRow>
       <Agenda events={this.props.events} />
       <CardRow>
         <Card style="inverted">
           <h2>What to Do</h2>
         </Card>
+      </CardRow>
+      <CardRow>
+        <div>
+          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,fl_strip_profile,h_800,q_20,w_1800/v1433909714/where_erktao.jpg" style={{maxWidth: '100%'}}/>
+        </div>
       </CardRow>
       <WhereTo activities={this.props.activities} />
       <WhereTo activities={this.props.futherActivities} />

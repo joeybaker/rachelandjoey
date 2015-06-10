@@ -67,8 +67,12 @@ export default class RsvpWrap extends Component {
       , encoding: null
       , json: true
     }, (err, res, party) => {
-      if (err) console.error(err)
-      else this.setState({party})
+      if (err) return void console.error(err)
+
+      if (process.browser && window.heap) {
+        window.heap.identify({name, party: party.id})
+      }
+      this.setState({party})
     })
   }
 

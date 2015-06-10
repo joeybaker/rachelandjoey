@@ -68,14 +68,6 @@ export default class RsvpForm extends Component {
   }
 
   getSuggestionsMain (input, callback) {
-    const propKeys = Object.keys(this.props)
-    const newState = mapValues(omit(this.state, propKeys), () => null)
-    // when the main name is changed, clear the state
-    newState.name1 = input
-    // yes, the party is a prop, but we still want to clear it if the name1 is
-    // going to be changed
-    newState.party = null
-    this.setState(newState)
     this.props.findNames(input, callback)
   }
 
@@ -83,6 +75,19 @@ export default class RsvpForm extends Component {
     callback(null, this.state.names.filter((name) => {
       return name.toLowerCase().includes(input.toLowerCase())
     }))
+  }
+
+  clearStateKeys (name, value) {
+    const propKeys = Object.keys(this.props)
+    const newState = mapValues(omit(this.state, propKeys), () => null)
+    // yes, the party is a prop, but we still want to clear it if the name1 is
+    // going to be changed
+    newState.party = null
+
+    // if passed a value to keey
+    if (name) newState[name] = value
+
+    this.setState(newState)
   }
 
   onSuggestionSelected (value, e) {
@@ -109,6 +114,8 @@ export default class RsvpForm extends Component {
     return (value) => {
       // when the name is deleted, make sure to unset
       if (!value) this.setFormValue(name, value)
+
+      if (name === 'name1') this.clearStateKeys(name, value)
 
       // we have to make sure the name1 is validated by auto-suggest, but
       // other names can be whatever the user wants
@@ -238,11 +245,11 @@ export default class RsvpForm extends Component {
 
     const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, becuase we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
 
-    const showSubmit = this.state.meal1 === 'regrets' || this.state.meal2 || this.state.plus1 === 'nope'
+    const showSubmit = this.state.name1 && this.state.meal1
+      && (this.state.meal1 === 'regrets' || this.state.meal2 || this.state.plus1 === 'nope')
       || (this.state.names && this.state.names.length === 0 && this.state.meal1)
     const showConfirm = this.state.party && this.state.party.attending
     const showRegistry = this.state.party && this.state.party.attending !== null
-
 
     return (<form className={namespace} onSubmit={this.onSubmit.bind(this)}>
       {makeAutosuggest({name: 'name1', label: 'Who are you?'})}

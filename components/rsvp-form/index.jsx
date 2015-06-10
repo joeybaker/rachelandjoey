@@ -3,6 +3,7 @@ import {addons} from 'react/addons'
 import Autosuggest from 'react-autosuggest'
 import assign from 'lodash/object/assign'
 import reject from 'lodash/collection/reject'
+import includes from 'lodash/collection/includes'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'rsvpForm'
 
@@ -47,7 +48,22 @@ export default class RsvpForm extends Component {
     const name1 = this.state ? this.state.name1 : party.names[0]
     const meal1 = party.attending === false ? 'regrets' : party.meals[name1]
     const names = reject(party.names, (name) => name === name1)
-    return {meal1, names, party, name1}
+    const state = {meal1, names, party, name1}
+    const confirmedNames = Object.keys(party.meals)
+    names.forEach((name, i) => {
+      // we start from 0, and we already have 1, so + 2
+      const j = i + 2
+      // -1 b/c we only start counting plusses from 1
+      const plusKey = `plus${j - 1}`
+      if (includes(confirmedNames, name)) {
+        state[plusKey] = 'yes'
+        state[`name${j}`] = name
+        state[`meal${j}`] = party.meals[name]
+      }
+      else state[plusKey] = 'nope'
+    })
+    console.log(state)
+    return state
   }
 
   getSuggestionsMain (input, callback) {

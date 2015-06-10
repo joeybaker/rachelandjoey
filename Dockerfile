@@ -5,6 +5,8 @@
 FROM      iojs:2.2.1
 MAINTAINER Joey Baker <joey@byjoeybaker.com>
 
+ENV NODE_ENV production
+
 # Bundle app source
 ADD . /src
 # Install app dependencies

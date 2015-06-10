@@ -29,7 +29,7 @@ export default class PageWeekend extends Component {
           <h2>Getting Here</h2>
           <p>Healdsburg is located in the heart of California Wine Country about 65 miles north of the Golden Gate Bridge.</p>
           <p>Although the closest airport is Sonoma County (STS), it will probably be cheaper and more convenient to fly in San Francisco International (SFO). From there, you will either need to rent a car (it is a little less than a two hour drive) or you can take the <a href="http://airportexpressinc.com/schedules.php">Sonoma County Airport Express</a> to STS and <a href="http://www.sonomacountyairport.org/ground-transportation">rent one there</a>.</p>
-          <p>The wedding ceremonty is at Quivera Vineyards</p>
+          <p>The wedding ceremonty is at Quivira Vineyards</p>
           <p>4900 W Dry Creek Rd<br />Healdsburg, CA 95448</p>
         </Card>
         <Card>

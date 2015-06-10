@@ -212,7 +212,7 @@ export default class RsvpForm extends Component {
 
     const confirm = <p>Great! We look forward to seeing you.</p>
 
-    const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, but we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
+    const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, becuase we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
 
     const showSubmit = this.state.meal1 === 'regrets' || this.state.meal2 || this.state.plus1 === 'nope'
       || (this.state.names && this.state.names.length === 0 && this.state.meal1)

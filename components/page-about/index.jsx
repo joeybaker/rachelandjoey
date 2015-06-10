@@ -61,7 +61,7 @@ export default class PageAbout extends Component {
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822958/danielle_frjll2.jpg')}
           <div>
             <h3>Danielle Fus</h3>
-            <p>Danielle is Rachel’s entirely overeducated older sister. An English teacher at Whitman High School in Bethesda, MD, Danielle is currently working to earn her second master’s degree. Although to an outside observer they couldn’t be more different, the sisters have bonded over a mutual love of musicals, grammar, and Talbots sweaters.</p>
+            <p>Danielle is Rachel’s entirely overeducated older sister. An English teacher at Whitman High School in Bethesda, MD, Danielle just completed a certificate in education administration and supervision. Although to an outside observer they couldn’t be more different, the sisters have bonded over a mutual love of musicals, grammar, and Talbots sweaters.</p>
           </div>
         </Card>
         <Card>
@@ -84,7 +84,7 @@ export default class PageAbout extends Component {
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822957/phill_ykn6aj.jpg')}
           <div>
             <h3>Phill Baker</h3>
-            <p>Phill is Joey's 6 inch taller little brother. They're only a year apart in age, and have shared many life events. Phill lives and works in New York City, writing Ruby code (which we try not hold hold against him) for a server hosting company, Digital Ocean.</p>
+            <p>Phill is Joey's 6-inch-taller little brother. They're only a year apart in age, and have shared many life events. Phill lives and works in New York City writing Ruby code (which we try not to hold against him) for a server hosting company, Digital Ocean.</p>
           </div>
         </Card>
       </CardRow>

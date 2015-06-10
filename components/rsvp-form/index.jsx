@@ -119,7 +119,7 @@ export default class RsvpForm extends Component {
 
       // we have to make sure the name1 is validated by auto-suggest, but
       // other names can be whatever the user wants
-      if (name !== 'name1' && name.trim().includes(' ')){
+      if (name !== 'name1' && value.trim().includes(' ')){
         this.setFormValue(name, value)
       }
     }

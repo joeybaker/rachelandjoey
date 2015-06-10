@@ -899,7 +899,7 @@ messages can be shown */
 .rsvpWrap {
   /* 100% because it's container will be a flex */
   width: 100%;
-  padding: 1.5rem 0.9rem;
+  padding: 1.5rem 0.9rem calc(1.5rem * 2);
   border-top: 0.9rem solid rgb(245,245,245);
 }
 

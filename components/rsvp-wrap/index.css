@@ -4,6 +4,6 @@
 .rsvpWrap {
   /* 100% because it's container will be a flex */
   width: 100%;
-  padding: var(--padding-large) var(--padding-normal);
+  padding: var(--padding-large) var(--padding-normal) calc(var(--padding-large) * 2);
   border-top: var(--border-widgetSeperator);
 }

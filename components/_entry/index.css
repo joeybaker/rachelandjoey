@@ -37,6 +37,7 @@ abbr > a {
 }
 
 .entry-nav {
+  flex: 0 0;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -82,6 +83,7 @@ abbr > a {
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow-x: scroll;
 }
 
 .entry-content > * {

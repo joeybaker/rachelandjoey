@@ -31,7 +31,7 @@ abbr > a {
 
 .entry {
   flex: 1;
-  display: flex;
+  display: inline-flex;
   width: 100%;
   flex-direction: column-reverse;
 }
@@ -83,7 +83,6 @@ abbr > a {
   display: flex;
   flex-direction: column;
   flex: 1;
-  overflow-x: scroll;
 }
 
 .entry-content > * {

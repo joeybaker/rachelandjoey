@@ -1297,7 +1297,6 @@ messages can be shown */
   -webkit-flex: 0 1 33%;
       -ms-flex: 0 1 33%;
           flex: 0 1 33%;
-  /*border-bottom: var(--border-widgetSeperator);*/
 }
 
 @media (min-width: 32em) {
@@ -1307,10 +1306,6 @@ messages can be shown */
     -webkit-flex-direction: row;
         -ms-flex-direction: row;
             flex-direction: row;
-  }
-
-  .widgetsWhereTo > * {
-    /*border-right: var(--border-widgetSeperator);*/
   }
 
   .widgetsWhereTo > :last-child {

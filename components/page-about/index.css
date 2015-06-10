@@ -8,6 +8,10 @@
   */
 }
 
+.pageAbout {
+  border-top: var(--border-widgetSeperator);
+}
+
 @media (min-width: 550px) {
   .pageAbout-thumbs .card {
     padding: 0;

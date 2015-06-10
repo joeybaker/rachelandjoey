@@ -1,21 +1,2 @@
 @import "../variables/";
 @import "../widget-where-to/";
-
-.widgetsWhereTo {
-  display: flex;
-  flex-direction: column;
-}
-
-.widgetsWhereTo > * {
-  flex: 0 1 33%;
-}
-
-@media (min-width: 32em) {
-  .widgetsWhereTo {
-    flex-direction: row;
-  }
-
-  .widgetsWhereTo > :last-child {
-    border-right: 0;
-  }
-}

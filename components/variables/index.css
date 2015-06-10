@@ -42,7 +42,7 @@
 
   --border-hairline: 1px solid var(--color-grey10);
   --border-widgetSeperator: var(--width-widgetSeperator) solid var(--background-body);
-  --border-widgetSeperator-inverse: var(--width-widgetSeperator) solid var(--color-brand);
+  --border-widgetSeperator-inverted: var(--width-widgetSeperator) solid var(--color-brand);
   --border-narrow: 2px solid var(--color-grey10);
   --border-brand-narrow: 2px solid var(--color-brand);
 }

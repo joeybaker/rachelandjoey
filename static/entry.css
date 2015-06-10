@@ -924,7 +924,7 @@ messages can be shown */
   display: block;
   width: 100%;
   padding: 0.9rem;
-  /*border-right: var(--border-widgetSeperator-inverse);*/
+  /*border-right: var(--border-widgetSeperator-inverted);*/
 }
 
 .agendaEvent-locationName,

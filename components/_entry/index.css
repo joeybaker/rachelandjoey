@@ -41,14 +41,14 @@ abbr > a {
   flex-direction: column;
   text-align: center;
   background: var(--background-entryNav);
-  border-top: var(--border-widgetSeperator-inverse);
+  border-top: var(--border-widgetSeperator-inverted);
 }
 
 .entry-link {
   display: block;
   flex: 1;
   padding: var(--padding-normal);
-  border-bottom: var(--border-widgetSeperator-inverse);
+  border-bottom: var(--border-widgetSeperator-inverted);
   color: var(--color-text-default);
   font-size: var(--fontSize-h2);
   background: var(--background-content);
@@ -101,7 +101,7 @@ abbr > a {
     flex-direction: row;
     align-content: center;
     box-shadow: 0 -1px 2px rgba(0, 0, 0, .2) inset;
-    border-bottom: var(--border-widgetSeperator-inverse);
+    border-bottom: var(--border-widgetSeperator-inverted);
   }
 
   .entry-link {

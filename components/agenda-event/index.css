@@ -4,7 +4,7 @@
   display: block;
   width: 100%;
   padding: var(--padding-normal);
-  /*border-right: var(--border-widgetSeperator-inverse);*/
+  /*border-right: var(--border-widgetSeperator-inverted);*/
 }
 
 .agendaEvent-locationName

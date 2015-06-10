@@ -17,7 +17,7 @@
     "rachelandjoey"
   ],
   "scripts": {
-    "start": "if [ $NODE_ENV == 'development' ]; then nodemon -x babel-node -e js,jsx,css -i static -i node_modules/ index.js; else babel-node index.js; fi",
+    "start": "if [ '$NODE_ENV' == 'development' ]; then nodemon -x babel-node -e js,jsx,css -i static -i node_modules/ index.js; else babel-node index.js; fi",
     "dev": "source ./scripts.sh && run_beefy components/_entry/index.jsx --index static/index.html 8000",
     "component": "source ./scripts.sh && run_beefy --open",
     "test-browser": "browserify -t coverify -t babelify test/test.js | tap-closer | smokestack -b chrome | tap-spec",

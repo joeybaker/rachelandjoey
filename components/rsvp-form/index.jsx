@@ -4,6 +4,8 @@ import Autosuggest from 'react-autosuggest'
 import assign from 'lodash/object/assign'
 import reject from 'lodash/collection/reject'
 import includes from 'lodash/collection/includes'
+import omit from 'lodash/object/omit'
+import mapValues from 'lodash/object/mapValues'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'rsvpForm'
 
@@ -62,11 +64,18 @@ export default class RsvpForm extends Component {
       }
       else state[plusKey] = 'nope'
     })
-    console.log(state)
     return state
   }
 
   getSuggestionsMain (input, callback) {
+    const propKeys = Object.keys(this.props)
+    const newState = mapValues(omit(this.state, propKeys), () => null)
+    // when the main name is changed, clear the state
+    newState.name1 = input
+    // yes, the party is a prop, but we still want to clear it if the name1 is
+    // going to be changed
+    newState.party = null
+    this.setState(newState)
     this.props.findNames(input, callback)
   }
 
@@ -113,7 +122,6 @@ export default class RsvpForm extends Component {
     const name = e.target.name
     const value = e.target.value
     this.setFormValue(name, value)
-    console.log(name, value)
   }
 
   setFormValue (name, value) {
@@ -239,7 +247,7 @@ export default class RsvpForm extends Component {
     return (<form className={namespace} onSubmit={this.onSubmit.bind(this)}>
       {makeAutosuggest({name: 'name1', label: 'Who are you?'})}
       {
-        this.state.name1 && this.props.party
+        this.state.name1 && this.state.party
         ? mealChooser({label: 'I\'ll have', name: 'meal1', addRSVP: true})
         : ''
       }

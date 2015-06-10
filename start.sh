@@ -28,3 +28,6 @@ sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
 sudo docker rm -f redirector
 sudo docker run -d --restart=always -p 80:80 \
   --name redirector getable/https-redirect
+
+echo "ensuring assests are cached"
+time curl -s https://rachelandjoey.com > /dev/null

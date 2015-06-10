@@ -39,7 +39,7 @@
     "parse-db-csv": "f () { csv-parser $@; }; f",
     "rethinkdb": "remote=root@rachelandjoey.com; ssh -fNTL localhost:8080:$(ssh $remote \"docker inspect --format '{{ .NetworkSettings.IPAddress }}' rethinkdb\"):8080 $remote",
     "kill-rethinkdb": "kill $(lsof -t -i @localhost:8080 -sTCP:listen)",
-    "deploy": "npm run -s requireGitClean && npm run -s gitPull && npm run -s gitPush && ssh root@rachelandjoey.com -t 'bash /srv/rachelandjoey.com/start.sh'"
+    "deploy": "npm run -s requireGitClean && npm run -s gitPull && npm run -s gitPush && ssh root@rachelandjoey.com -t 'eval \"$(ssh-agent -s)\"; ssh-add ~/.ssh/rachelandjoey_rsa; bash /srv/rachelandjoey.com/start.sh'"
   },
   "config": {
     "notes": "important to correct the path of npm so that the git hook doesn't error",

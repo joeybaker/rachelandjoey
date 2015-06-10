@@ -1,6 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import moment from 'moment'
 import RsvpWrap from '../rsvp-wrap/'
+import setHead from 'react-document-head'
 const namespace = 'home'
 
 // format moment strings
@@ -44,6 +45,7 @@ export default class Home extends Component {
   }
 
   render () {
+    setHead({title: this.props.title})
     return (
       <div className={namespace}>
         <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
@@ -51,4 +53,12 @@ export default class Home extends Component {
       </div>
     )
   }
+}
+
+Home.propTypes = {
+  title: PropTypes.string
+}
+
+Home.defaultProps = {
+  title: 'Rachel & Joey'
 }

@@ -128,8 +128,17 @@ server.route({
     handler: function homeHandler (req, reply) {
       ReactRouter.run(ReactRoutes, req.path, (Handler) => {
         const initialHTML = React.renderToString(React.createElement(Handler, ReactData))
-        reply(html.replace('id="app">', 'id="app">' + initialHTML))
-          .type('text/html')
+        let title = 'Rachel & Joey'
+
+        if (React.documentHead) {
+          title = React.documentHead.title
+          React.documentHead = {}
+        }
+
+        reply(html
+          .replace('id="app">', 'id="app">' + initialHTML)
+          .replace('<title>Rachel & Joey</title>', `<title>${title}</title>`)
+          ).type('text/html')
       })
     }
     , cache: {

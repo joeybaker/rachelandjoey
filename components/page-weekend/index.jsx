@@ -4,6 +4,7 @@ import Agenda from '../agenda/'
 import WhereTo from '../widgets-where-to/'
 import CardRow from '../card-row/'
 import Card from '../card/'
+import setHead from 'react-document-head'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'pageWeekend'
 
@@ -15,6 +16,7 @@ export default class PageWeekend extends Component {
   }
 
   render () {
+    setHead({title: this.props.title})
     return (<div className={namespace}>
       <Agenda events={this.props.events} />
       <WhereTo activities={this.props.activities} />
@@ -62,4 +64,12 @@ PageWeekend.propTypes = {
   events: PropTypes.array.isRequired
   , activities: PropTypes.array.isRequired
   , futherActivities: PropTypes.array.isRequired
+  , title: PropTypes.string
+}
+
+PageWeekend.defaultProps = {
+  events: []
+  , activities: []
+  , futherActivities: []
+  , title: 'Weekend | Rachel & Joey'
 }

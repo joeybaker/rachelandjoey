@@ -2,6 +2,7 @@ import React, {PropTypes, Component} from 'react'
 import {addons} from 'react/addons'
 import Card from '../card/'
 import CardRow from '../card-row/'
+import setHead from 'react-document-head'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'pageAbout'
 
@@ -24,6 +25,7 @@ export default class PageAbout extends Component {
   }
 
   render () {
+    setHead({title: this.props.title})
     return (<div className={namespace}>
       <CardRow>
         <Card>
@@ -91,5 +93,9 @@ export default class PageAbout extends Component {
 }
 
 PageAbout.propTypes = {
-  name: PropTypes.string.isRequired
+  title: PropTypes.string
+}
+
+PageAbout.defaultProps = {
+  title: 'About Rachel & Joey'
 }

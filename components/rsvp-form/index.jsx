@@ -7,7 +7,11 @@ import includes from 'lodash/collection/includes'
 import omit from 'lodash/object/omit'
 import mapValues from 'lodash/object/mapValues'
 const {shouldComponentUpdate} = addons.PureRenderMixin
+
 const namespace = 'rsvpForm'
+const plusTrue = 'yes'
+const plusFalse = 'nope'
+const regretRSVP = 'regrets'
 
 
 export default class RsvpForm extends Component {
@@ -48,7 +52,7 @@ export default class RsvpForm extends Component {
     if (!party) return {}
 
     const name1 = this.state ? this.state.name1 : party.names[0]
-    const meal1 = party.attending === false ? 'regrets' : party.meals[name1]
+    const meal1 = party.attending === false ? regretRSVP : party.meals[name1]
     const names = reject(party.names, (name) => name === name1)
     const state = {meal1, names, party, name1}
     const confirmedNames = Object.keys(party.meals)
@@ -58,7 +62,7 @@ export default class RsvpForm extends Component {
       // -1 b/c we only start counting plusses from 1
       const plusKey = `plus${j - 1}`
       if (includes(confirmedNames, name)) {
-        state[plusKey] = 'yes'
+        state[plusKey] = plusTrue
         state[`name${j}`] = name
         state[`meal${j}`] = party.meals[name]
       }
@@ -196,8 +200,8 @@ export default class RsvpForm extends Component {
       const rsvp = (
         <label>
           {makeRadioInput(assign({
-            value: 'regrets'
-            , checked: checkedValue === 'regrets'
+            value: regretRSVP
+            , checked: checkedValue === regretRSVP
           }, inputOptions))}
           <span>Sorry, I won't be coming</span>
         </label>
@@ -246,7 +250,7 @@ export default class RsvpForm extends Component {
     const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, becuase we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
 
     const showSubmit = this.state.name1 && this.state.meal1
-      && (this.state.meal1 === 'regrets' || this.state.meal2 || this.state.plus1 === 'nope')
+      && (this.state.meal1 === regretRSVP || this.state.meal2 || this.state.plus1 === plusFalse)
       || (this.state.names && this.state.names.length === 0 && this.state.meal1)
     const showConfirm = this.state.party && this.state.party.attending
     const showRegistry = this.state.party && this.state.party.attending !== null
@@ -259,17 +263,17 @@ export default class RsvpForm extends Component {
         : ''
       }
       {
-        this.state.meal1 && this.state.meal1 !== 'regrets' && (this.state.names && this.state.names.length > 0)
+        this.state.meal1 && this.state.meal1 !== regretRSVP && (this.state.names && this.state.names.length > 0)
         ? plus1Chooser({name: 'plus1', label: 'Bringing anyone else?'})
         : ''
       }
       {
-        this.state.plus1 === 'yes' && this.state.meal1 && this.state.meal1 !== 'regrets'
+        this.state.plus1 === plusTrue && this.state.meal1 && this.state.meal1 !== regretRSVP
         ? makeAutosuggest({name: 'name2', label: 'Who?'})
         : ''
       }
       {
-        this.state.name2 && this.state.meal1 !== 'regrets'
+        this.state.name2 && this.state.meal1 !== regretRSVP
         ? mealChooser({label: 'They\'ll have', name: 'meal2'})
         : ''
       }

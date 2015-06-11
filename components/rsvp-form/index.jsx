@@ -66,7 +66,12 @@ export default class RsvpForm extends Component {
         state[`name${j}`] = name
         state[`meal${j}`] = party.meals[name]
       }
-      else state[plusKey] = 'nope'
+      // if we have other elible names
+      else if (party.names.length > 1) {
+        // if we have a previous submission, and there are other eligible names,
+        // but they don't have meals, we must not have a plus one
+        if (party.attending !== null) state[plusKey] = plusFalse
+      }
     })
     return state
   }

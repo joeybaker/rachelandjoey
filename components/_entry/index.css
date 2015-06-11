@@ -14,13 +14,14 @@
 }
 
 
-html, body, #app {
-  min-height: 100%;
+html, body {
+  height: 100%;
   background: var(--background-body);
 }
 
 #app {
   display: flex;
+  min-height: 100%;
   flex-direction: column;
 }
 

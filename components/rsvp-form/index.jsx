@@ -73,7 +73,7 @@ export default class RsvpForm extends Component {
 
   getSuggestionsSecondary (input, callback) {
     callback(null, this.state.names.filter((name) => {
-      return name.toLowerCase().includes(input.toLowerCase())
+      return includes(name.toLowerCase(), input.toLowerCase())
     }))
   }
 
@@ -119,7 +119,7 @@ export default class RsvpForm extends Component {
 
       // we have to make sure the name1 is validated by auto-suggest, but
       // other names can be whatever the user wants
-      if (name !== 'name1' && value.trim().includes(' ')){
+      if (name !== 'name1' && includes(value.trim(), ' ')){
         this.setFormValue(name, value)
       }
     }

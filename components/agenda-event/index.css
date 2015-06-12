@@ -29,8 +29,8 @@
 }
 
 .agendaEvent-title-time {
-  /* 6 is enough so that the content doesn't get pushed off to the side*/
-  flex-basis: 6em;
+  /* 5 is enough so that the content doesn't get pushed off to the side*/
+  flex: 0 1 5em;
   color: var(--color-text-default);
   margin-left: var(--padding-small);
 }

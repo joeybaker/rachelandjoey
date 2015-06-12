@@ -6,3 +6,9 @@
 .pageWeekend {
   border-top: var(--border-widgetSeperator);
 }
+
+.pageWeekend iframe {
+  height: 500px;
+  /* ensure we can scroll past the map on small screens */
+  max-height: 70vh;
+}

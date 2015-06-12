@@ -47,7 +47,7 @@ export default class PageWeekend extends Component {
         </Card>
       </CardRow>
       <CardRow>
-        <iframe width="100%" height="500px" frameBorder="0" src="https://a.tiles.mapbox.com/v4/joeybaker.lbap2chb/zoompan.html?access_token=pk.eyJ1Ijoiam9leWJha2VyIiwiYSI6Im9pYTdyNUEifQ.Gff2sHYLfe4hG3TPKZmx9Q"></iframe>
+        <iframe width="100%" frameBorder="0" src="https://a.tiles.mapbox.com/v4/joeybaker.lbap2chb/zoompan.html?access_token=pk.eyJ1Ijoiam9leWJha2VyIiwiYSI6Im9pYTdyNUEifQ.Gff2sHYLfe4hG3TPKZmx9Q"></iframe>
       </CardRow>
       <CardRow>
         <Card>

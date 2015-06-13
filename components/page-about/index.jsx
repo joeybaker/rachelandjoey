@@ -29,7 +29,7 @@ export default class PageAbout extends Component {
     return (<div className={namespace}>
       <CardRow>
         <Card>
-          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_500/v1433822962/su_ajdq9g.jpg" srcSet="http://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_500/v1433822962/su_ajdq9g.jpg 1x, http://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_1000/v1433822962/su_ajdq9g.jpg 2x" />
+          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_500/v1433822962/su_ajdq9g.jpg" srcSet="https://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_500/v1433822962/su_ajdq9g.jpg 1x, https://res.cloudinary.com/dvxzdky9t/image/upload/fl_strip_profile,q_50,w_1000/v1433822962/su_ajdq9g.jpg 2x" />
           <h3>How We Met</h3>
           <p>Joey and Rachel met in January 2007 while working at <abbr title="the independent student newspaper"><a href="http://dailyorange.com/">The Daily Orange</a></abbr> at Syracuse University, but didn’t start dating until three years later. Joey moved back to California only a few months later—and things didn’t look good—but after two years of trans-continental flights and long weekends, they decided to move to San Francisco together. They found a gorgeous rent-controlled apartment in the Richmond neighborhood near Sea Cliff with a great sushi restaurant and have been living there ever since.</p>
         </Card>

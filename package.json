@@ -83,6 +83,7 @@
     "browserify": "^10.2.3",
     "bulk-require": "^0.2.1",
     "classnames": "^2.1.2",
+    "fastclick": "^1.0.6",
     "good": "^6.1.4",
     "good-console": "^5.0.1",
     "hapi": "^8.6.0",

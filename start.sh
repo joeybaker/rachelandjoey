@@ -30,5 +30,4 @@ sudo docker run -d --restart=always -p 80:80 \
   --name redirector getable/https-redirect
 
 echo "ensuring assests are cached"
-time curl -s https://rachelandjoey.com > /dev/null
 time curl -s https://rachelandjoey.com/static/index.js > /dev/null

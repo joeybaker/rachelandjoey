@@ -15,7 +15,7 @@ export default class Notfound extends Component {
   render () {
     return (<div className={namespace}>
       <h1 className={`${namespace}-title`}>404</h1>
-      <img src={`http://huh.jpg.to`} />
+      <img src={`http://huh.jpg.to`} alt="huh?" />
     </div>)
   }
 }

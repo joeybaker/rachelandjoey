@@ -25,7 +25,7 @@ export default class PageWeekend extends Component {
       </CardRow>
       <CardRow>
         <div>
-          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,g_center,h_800,q_20,w_1800/v1433909715/villa_tz3fvu.jpg" style={{maxWidth: '100%'}}/>
+          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,g_center,h_800,q_20,w_1800/v1433909715/villa_tz3fvu.jpg" style={{maxWidth: '100%'}} alt="Villa Terra Bella"/>
         </div>
       </CardRow>
       <Agenda events={this.props.events} />
@@ -36,7 +36,7 @@ export default class PageWeekend extends Component {
       </CardRow>
       <CardRow>
         <div>
-          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,fl_strip_profile,h_800,q_20,w_1800/v1433909714/where_erktao.jpg" style={{maxWidth: '100%'}}/>
+          <img src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_fill,fl_strip_profile,h_800,q_20,w_1800/v1433909714/where_erktao.jpg" style={{maxWidth: '100%'}} alt="A Vineyard. There are many in Sonoma." />
         </div>
       </CardRow>
       <WhereTo activities={this.props.activities} />

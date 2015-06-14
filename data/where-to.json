@@ -5,6 +5,7 @@
       , "reccomendations": [
         {"name": "airbnb", "link": "https://www.airbnb.com/s/Healdsburg--CA"}
         , {"name": "VRBO", "link": "http://www.vrbo.com/vacation-rentals/usa/california/wine-country/sonoma-county/russian-river/healdsburg"}
+        , {"name": "Holiday Inn", "link": "https://www.ihg.com/holidayinnexpress/hotels/us/en/windsor/winca/hoteldetail"}
       ]
       , "link": "http://www.drycreekvalley.org/visit/lodging/index.php"
       , "cta": "See all area hotels"

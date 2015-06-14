@@ -964,10 +964,11 @@ messages can be shown */
 }
 
 .agendaEvent-title-time {
-  /* 6 is enough so that the content doesn't get pushed off to the side*/
-  -webkit-flex-basis: 6em;
-      -ms-flex-preferred-size: 6em;
-          flex-basis: 6em;
+  /* 5 is enough so that the content doesn't get pushed off to the side*/
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 5em;
+      -ms-flex: 0 1 5em;
+          flex: 0 1 5em;
   color: rgb(30,30,30);
   margin-left: 0.333333333333333333rem;
 }
@@ -1281,6 +1282,12 @@ messages can be shown */
 
 .pageWeekend {
   border-top: 0.9rem solid rgb(245,245,245);
+}
+
+.pageWeekend iframe {
+  height: 500px;
+  /* ensure we can scroll past the map on small screens */
+  max-height: 70vh;
 }
 
 :root {

@@ -3,6 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+export NODE_ENV=production
+
 cd /srv/rachelandjoey.com
 git reset --hard HEAD
 git pull --rebase --prune

@@ -1,11 +1,10 @@
 import React, {PropTypes, Component} from 'react'
-import moment from 'moment'
 const namespace = 'agendaEvent'
 
 export default class AgendaEvent extends Component {
-  renderHour (timestamp) {
-    const date = moment(timestamp)
-    return <time dateTime={date.toISOString()}>{date.format('ha')}</time>
+  renderHour (timestamp, timeString) {
+    const date = new Date(timestamp)
+    return <time dateTime={date.toISOString()}>{timeString}</time>
   }
 
   render () {
@@ -17,7 +16,7 @@ export default class AgendaEvent extends Component {
         <p className={`${namespace}-title`}>
           <span className={`${namespace}-title-text`}>{event.title}</span>
           <span className={`${namespace}-title-time`}>
-            {this.renderHour(event.start)}-{this.renderHour(event.end)}
+            {this.renderHour(event.start, event.hardStart)}-{this.renderHour(event.end, event.hardEnd)}
           </span>
         </p>
         <p className={`${namespace}-locationName`}>{location.name}</p>

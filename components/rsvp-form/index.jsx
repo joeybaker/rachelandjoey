@@ -18,7 +18,8 @@ export default class RsvpForm extends Component {
   constructor (props) {
     super(props)
     this.state = assign(
-      this.convertPartyToState(props.party)
+      {names: []}
+      , this.convertPartyToState(props.party)
       , props
       , {submitButtonLabel: this.getSubmitButtonLabel(props.party)}
     )
@@ -161,6 +162,7 @@ export default class RsvpForm extends Component {
       , placeholder: 'name'
       , disabled: !this.state.submitEnabled
     }
+    const isNotRegrets = this.state.meal1 && this.state.meal1 !== regretRSVP
 
     const makeAutosuggest = (options = {}) => (
       <label>
@@ -248,40 +250,85 @@ export default class RsvpForm extends Component {
       )
     }
 
+    const makeGuest = (index) => {
+      // we're not counting guests from 0
+      const count = index + 1
+      const plusName = `plus${count}`
+      const nameName = `name${count + 1}`
+      const mealName = `meal${count + 1}`
+      const out = []
+
+      if (isNotRegrets && (this.state.names.length >= count)) {
+        out.push(plus1Chooser({name: plusName, label: 'Bringing anyone else?'}))
+      }
+
+      if (isNotRegrets && this.state[plusName] === plusTrue) {
+        out.push(makeAutosuggest({name: nameName, label: 'Who?'}))
+      }
+
+      if (this.state[nameName] && isNotRegrets) {
+        out.push(mealChooser({label: 'They\'ll have', name: mealName}))
+      }
+
+      return out
+    }
+
     const submit = <button type="submit" disabled={!this.state.submitEnabled}>{this.state.submitButtonLabel || this.props.submitButtonLabel}</button>
 
     const confirm = <p>Great! We look forward to seeing you.</p>
 
     const registry = <p>We have a <a href="http://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, becuase we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
 
-    const showSubmit = this.state.name1 && this.state.meal1
-      && (this.state.meal1 === regretRSVP || this.state.meal2 || this.state.plus1 === plusFalse)
-      || (this.state.names && this.state.names.length === 0 && this.state.meal1)
+    const showSubmit =
+      // we need at least a name and a meal
+      this.state.name1
+      && this.state.meal1
+      // the first meal could be a regrest
+      && (this.state.meal1 === regretRSVP
+        //
+        || this.state.names.reduce((guestsFilledOut, name, i) => {
+          // we've already removed the first name from the array, and we start
+          // from 0, so add 2
+          const count = i + 2
+          const nameName = `name${count}`
+          const mealName = `meal${count}`
+          const plusName = `plus${count - 1}`
+
+          // if we've already found a false statement, we can just bail
+          if (guestsFilledOut === false) return false
+
+          // for each guest check if they've got a meal
+          return !!(
+            guestsFilledOut
+            && (
+              (
+                // the guest is filled out
+                this.state[nameName]
+                && this.state[mealName]
+                && this.state[plusName] === plusTrue
+              )
+              // the guest has been denied
+              || this.state[plusName] === plusFalse
+            )
+            // the guest hasn't been filled out yet
+            && this.state[plusName] !== void 0
+          )
+        }, true)
+      )
+
     const showConfirm = this.state.party && this.state.party.attending
     const showRegistry = this.state.party && this.state.party.attending !== null
 
     return (<form className={namespace} onSubmit={this.onSubmit.bind(this)}>
-      {makeAutosuggest({name: 'name1', label: 'Who are you?'})}
-      {
+      { /* name1 */
+        makeAutosuggest({name: 'name1', label: 'Who are you?'})
+      }
+      { /* meal1 */
         this.state.name1 && this.state.party
         ? mealChooser({label: 'I\'ll have', name: 'meal1', addRSVP: true})
         : ''
       }
-      {
-        this.state.meal1 && this.state.meal1 !== regretRSVP && (this.state.names && this.state.names.length > 0)
-        ? plus1Chooser({name: 'plus1', label: 'Bringing anyone else?'})
-        : ''
-      }
-      {
-        this.state.plus1 === plusTrue && this.state.meal1 && this.state.meal1 !== regretRSVP
-        ? makeAutosuggest({name: 'name2', label: 'Who?'})
-        : ''
-      }
-      {
-        this.state.name2 && this.state.meal1 !== regretRSVP
-        ? mealChooser({label: 'They\'ll have', name: 'meal2'})
-        : ''
-      }
+      {this.state.names.map((name, i) => makeGuest(i))}
       {showSubmit ? submit : ''}
       {showConfirm ? confirm : ''}
       {showRegistry ? registry : ''}

@@ -1312,6 +1312,10 @@ messages can be shown */
   /* specificity war */
 
   img.pageAbout-thumb:first-child {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
     display: block;
     max-width: 250px;
     max-height: 250px;
@@ -1324,7 +1328,6 @@ messages can be shown */
 
 @media (min-width: 54rem) {
   .pageAbout-thumbs .card {
-    padding: 0;
     display: block;
   }
 
@@ -1336,5 +1339,28 @@ messages can be shown */
     max-width: 100%;
     max-height: 100%;
     margin-bottom: 0.9rem;
+  }
+}
+
+/* the images can get … too big, switch 'em back to left aligned */
+
+@media (min-width: 100rem) {
+  .pageAbout-thumbs .card {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .pageAbout-thumbs .card div:last-child {
+    padding: 0;
+    margin-right: 0.9rem;
+  }
+
+  img.pageAbout-thumb:first-child {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0;
+    margin-right: 1.5rem;
   }
 }

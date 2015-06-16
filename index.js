@@ -27,39 +27,44 @@ const connectionOptions = {port: 8000}
 if (config.nodeEnv === 'development') connectionOptions.host = 'localhost'
 server.connection(connectionOptions)
 
-let builtJs
-function buildJs (callback) {
-  if (builtJs) return void callback.apply(null, builtJs)
+// only build in dev
+// TODO: move this to a build step
+if (config.nodeEnv === 'development') {
+  function buildJs (callback) {
+    server.log(['info', 'http', 'bundle', 'js'], 'started')
+    const b = browserify({
+      debug: true
+      , extensions: ['.js', '.json', '.jsx']
+    })
 
-  server.log(['info', 'http', 'bundle', 'js'], 'started')
-  const b = browserify({
-    debug: true
-    , extensions: ['.js', '.json', '.jsx']
+    b.add(path.join(__dirname, 'static', 'entry.js'))
+
+    b.transform('babelify')
+    b.plugin('minifyify', {map: '/static/index.js.map'})
+
+    b.bundle(function bundled (...args) {
+      server.log(['info', 'http', 'bundle', 'js'], 'finished')
+      callback.apply(null, args)
+    })
+  }
+  buildJs(function bundled (err, js, map) {
+    if (err) throw err
+    fs.writeFileSync(path.join(__dirname, 'static', 'index.js'), js)
+    fs.writeFileSync(path.join(__dirname, 'static', 'index.js.map'), map)
   })
 
-  b.add(path.join(__dirname, 'static', 'index.js'))
-
-  b.transform('babelify')
-  b.plugin('minifyify', {map: '/static/index.js.map'})
-
-  b.bundle(function bundled (...args) {
-    builtJs = args
-    server.log(['info', 'http', 'bundle', 'js'], 'finished')
-    callback.apply(null, args)
+  function buildCss (callback) {
+    server.log(['info', 'http', 'bundle', 'css'], 'started')
+    atomifyCSS({
+      entry: path.join(__dirname, 'components', '_routes', 'index.css')
+      , autoprefixer: true
+    }, callback)
+  }
+  buildCss(function builtCss (err, css) {
+    if (err) throw err
+    fs.writeFileSync(path.join(__dirname, 'static', 'entry.css'), css)
   })
 }
-
-function buildCss (callback) {
-  server.log(['info', 'http', 'bundle', 'css'], 'started')
-  atomifyCSS({
-    entry: path.join(__dirname, 'components', '_routes', 'index.css')
-    , autoprefixer: true
-  }, callback)
-}
-buildCss(function builtCss (err, css) {
-  if (err) throw err
-  fs.writeFileSync(path.join(__dirname, 'static', 'entry.css'), css)
-})
 
 server.route({
   path: '/static/entry.css'
@@ -83,11 +88,8 @@ server.route({
   path: '/static/index.js'
   , method: 'GET'
   , config: {
-    handler: function jsHandler (req, reply) {
-      buildJs(function bundled (err, js) {
-        if (err) return void reply(err)
-        else reply(js).type('application/javascript')
-      })
+    handler: {
+      file: path.join(__dirname, 'static', 'index.js')
     }
     , cache: {
       // change to 'default' in prod
@@ -104,10 +106,8 @@ server.route({
   path: '/static/index.js.map'
   , method: 'GET'
   , config: {
-    handler: function jsHandler (req, reply) {
-      buildJs(function bundled (err, js, map) {
-        reply(err || map)
-      })
+    handler: {
+      file: path.join(__dirname, 'static', 'index.js.map')
     }
     , cache: {
       // change to 'default' in prod

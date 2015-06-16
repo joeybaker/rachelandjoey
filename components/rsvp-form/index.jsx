@@ -328,7 +328,7 @@ export default class RsvpForm extends Component {
         ? mealChooser({label: 'I\'ll have', name: 'meal1', addRSVP: true})
         : ''
       }
-      {this.state.names.map((name, i) => makeGuest(i))}
+      {(this.state.names || []).map((name, i) => makeGuest(i))}
       {showSubmit ? submit : ''}
       {showConfirm ? confirm : ''}
       {showRegistry ? registry : ''}

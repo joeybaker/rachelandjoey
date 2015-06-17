@@ -11,9 +11,6 @@ git pull --rebase --prune
 npm prune
 npm i --production
 
-# remove all unused images (saves space)
-docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm
-
 if [[ -n $(docker ps -f 'name=rethinkdb' -q) ]]; then
   echo 'rethinkdb already running'
 else
@@ -36,3 +33,6 @@ sudo docker run -d --restart=always -p 80:80 \
 
 echo "ensuring assests are cached"
 time curl -s https://rachelandjoey.com/static/index.js > /dev/null
+
+# remove all unused images (saves space)
+docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm

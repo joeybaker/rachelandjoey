@@ -37,4 +37,7 @@ echo "ensuring assests are cached"
 time curl -s https://rachelandjoey.com/static/index.js > /dev/null
 
 # remove all unused images (saves space)
-docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm
+if [[ -n $(docker ps -a | grep 'Exited' | awk '{print $1}') ]]; then
+  docker ps -a | grep 'Exited' | awk '{print $1}' | \
+    xargs --no-run-if-empty docker rm  2> /dev/null
+fi

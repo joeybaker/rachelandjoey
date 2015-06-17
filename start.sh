@@ -22,14 +22,16 @@ sudo docker rm -f rachelandjoey
 sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
-
 sudo docker rm -f bud
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
 
-sudo docker rm -f redirector
-sudo docker run -d --restart=always -p 80:80 \
-  --name redirector getable/https-redirect
+if [[ -n $(docker ps -f 'name=redirector' -q) ]]; then
+  echo 'redirector already running'
+else
+  sudo docker run -d --restart=always -p 80:80 \
+    --name redirector getable/https-redirect
+fi
 
 echo "ensuring assests are cached"
 time curl -s https://rachelandjoey.com/static/index.js > /dev/null

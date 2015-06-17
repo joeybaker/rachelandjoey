@@ -92,5 +92,7 @@ export default {
   , config: {
     validate
     , handler
+    , tags: ['api', 'rsvp', 'update']
+    , description: 'receive info from the rsvp form, validate it, and save'
   }
 }

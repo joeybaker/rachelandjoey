@@ -75,11 +75,12 @@
   "dependencies": {
     "@getable/lato": "^1.0.1",
     "@joeybaker/hapi-rethinkdb": "^3.0.2",
+    "MD5": "^1.2.2",
     "atomify-css": "^3.3.4",
     "autoprefixer-core": "^5.2.0",
     "babel": "^5.5.8",
-    "babel-runtime": "^5.5.8",
     "babel-plugin-closure-elimination": "0.0.1",
+    "babel-runtime": "^5.5.8",
     "babelify": "^6.1.2",
     "boom": "^2.8.0",
     "browserify": "^10.2.4",

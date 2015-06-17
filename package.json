@@ -39,7 +39,7 @@
     "parse-db-csv": "f () { csv-parser $@; }; f",
     "rethinkdb": "remote=root@rachelandjoey.com; ssh -fNTL localhost:8080:$(ssh $remote \"docker inspect --format '{{ .NetworkSettings.IPAddress }}' rethinkdb\"):8080 $remote",
     "kill-rethinkdb": "kill $(lsof -t -i @localhost:8080 -sTCP:listen)",
-    "build-assets": "babel-node ./build.js",
+    "build-assets": "NODE_ENV=production && babel-node ./build.js",
     "git-commit-assets": "git add static versions.json && git commit -m'Update assets'",
     "deploy": "npm run -s requireGitClean && npm run -s gitPull && npm run -s build-assets && npm run -s git-commit-assets && npm run -s gitPush && ssh root@rachelandjoey.com -t 'eval \"$(ssh-agent -s)\"; ssh-add ~/.ssh/rachelandjoey_rsa; bash /srv/rachelandjoey.com/start.sh'"
   },

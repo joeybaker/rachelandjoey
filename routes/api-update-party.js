@@ -65,6 +65,7 @@ const saveHistory = (r, conn, req, changes, party, callback) => {
     rsvpId: party.id
     , update: changes.new_val
     , createdAt: new Date()
+    , request: req.info
   }).run(conn, (err, res) => {
     if (err) {
       req.log(['error', path, 'rethink', 'history', 'insert'], err)

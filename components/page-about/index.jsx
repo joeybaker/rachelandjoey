@@ -54,21 +54,21 @@ export default class PageAbout extends Component {
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822957/stephanie_fnlbwg.jpg', 'Stephanie Rivetz')}
           <div>
             <h3>Maid of Honor: Stephanie Rivetz, Esq.</h3>
-            <p>Stephanie and Rachel met their freshman year at Syracuse University (at an extra credit lecture for their COM107 class given by some crazy woman from the National Enquirer). They exchanged numbers and became fast friends. In Fall 2006 while Rachel was abroad in London, she asked Steph to be her Facebook wife. Steph said “yes” and they have been social media married ever since :) Today Steph is an Associate at Orrick, Herrington, & Sutcliffe, LLP in New York City.</p>
+            <p>Stephanie and Rachel met their freshman year at Syracuse University (at an extra credit lecture for their COM107 class given by some crazy woman from the National Enquirer). They exchanged numbers and became fast friends. In Fall 2006 while Rachel was abroad in London, she asked Steph to be her Facebook wife. Steph said “yes” and they have been social media married ever since :) Today Steph is an Associate at <abbr title="Law firm that hosts it's site on .net. Yuk."><a href="https://www.orrick.com/Pages/default.aspx">Orrick, Herrington, & Sutcliffe, LLP</a></abbr> in New York City.</p>
           </div>
         </Card>
         <Card>
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822958/danielle_frjll2.jpg', 'Danielle Fus')}
           <div>
             <h3>Danielle Fus</h3>
-            <p>Danielle is Rachel’s entirely overeducated older sister. An English teacher at Whitman High School in Bethesda, MD, Danielle just completed a certificate in education administration and supervision. Although to an outside observer they couldn’t be more different, the sisters have bonded over a mutual love of musicals, grammar, and Talbots sweaters.</p>
+            <p>Danielle is Rachel’s entirely overeducated older sister. An English teacher at <abbr title="looks like the whole school district is hosted on some strange JAVA stack and violates HTTPS protocol with insecure assets :("><a href="https://www.montgomeryschoolsmd.org/schools/whitmanhs/">Whitman High School</a></abbr> in Bethesda, MD, Danielle just completed a certificate in education administration and supervision. Although to an outside observer they couldn’t be more different, the sisters have bonded over a mutual love of musicals, grammar, and Talbots sweaters.</p>
           </div>
         </Card>
         <Card>
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822957/konina_oloqcj.jpg', 'Konina Biswas')}
           <div>
             <h3>Konina Biswas</h3>
-            <p>Konina is one of Joey’s oldest friends having met in just fourth grade after Joey moved to Saratoga from LA. Upon moving to SF, she and Rachel became close as well, a relationship that was solidified when they all travelled to India together in Fall 2012.  Nina is a UX Designer at Google.</p>
+            <p>Konina is one of Joey’s oldest friends having met in just fourth grade after Joey moved to Saratoga from LA. Upon moving to SF, she and Rachel became close as well, a relationship that was solidified when they all travelled to India together in Fall 2012.  Nina is a UX Designer at <abbr title="heard of them?"><a href="https://google.com">Google</a></abbr>.</p>
           </div>
         </Card>
       </CardRow>
@@ -77,14 +77,14 @@ export default class PageAbout extends Component {
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822958/matt_s9rtv8.jpg', 'Matt Bellezza')}
           <div>
             <h3>Best Man: Matt Bellezza</h3>
-            <p>Matt and Joey were randomly assigned to the same freshman dorm room. Turns out, they're nearly the same person. Matt and Joey roomed together throughout college, including a 6 month stint in London. Matt works for Comcast doing information security in New Jersey.</p>
+            <p>Matt and Joey were randomly assigned to the same freshman dorm room. Turns out, they're nearly the same person. Matt and Joey roomed together throughout college, including a 6 month stint in London. Matt works for <abbr title="In Matt's defense, it was just NBC when he joined."><a href="http://corporate.comcast.com/our-company/businesses/nbcuniversal">Comcast</a></abbr> doing information security in New Jersey.</p>
           </div>
         </Card>
         <Card>
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822957/phill_ykn6aj.jpg', 'Phill Baker')}
           <div>
             <h3>Phill Baker</h3>
-            <p>Phill is Joey's 6-inch-taller little brother. They're only a year apart in age, and have shared many life events. Phill lives and works in New York City writing Ruby code (which we try not to hold against him) for a server hosting company, Digital Ocean.</p>
+            <p>Phill is Joey's 6-inch-taller little brother. They're only a year apart in age, and have shared many life events. Phill lives and works in New York City writing Ruby code (which we try not to hold against him) for a server hosting company, <abbr title="This site is hosted here!"><a href="https://www.digitalocean.com/">Digital Ocean</a></abbr>.</p>
           </div>
         </Card>
       </CardRow>

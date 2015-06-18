@@ -72,7 +72,7 @@ export default class PageAbout extends Component {
           </div>
         </Card>
       </CardRow>
-      <CardRow className={`${namespace}-thumbs`}>
+      <CardRow className={`${namespace}-thumbs ${namespace}-thumbs--short`}>
         <Card>
           {this.makeThumb('https://res.cloudinary.com/dvxzdky9t/image/upload/v1433822958/matt_s9rtv8.jpg', 'Matt Bellezza')}
           <div>

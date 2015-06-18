@@ -46,6 +46,25 @@
   }
 }
 
+/* the row with just two images quickly gets too big, deal with it first */
+@media (min-width: 75rem) {
+  .pageAbout-thumbs--short .card {
+    display: flex;
+  }
+
+  .pageAbout-thumbs--short .card div:last-child {
+    padding: 0;
+    margin-right: var(--padding-normal);
+  }
+
+  .pageAbout-thumbs--short img.pageAbout-thumb:first-child {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0;
+    margin-right: var(--padding-large);
+  }
+}
+
 /* the images can get … too big, switch 'em back to left aligned */
 @media (min-width: 100rem) {
   .pageAbout-thumbs .card {

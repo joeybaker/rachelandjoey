@@ -1,4 +1,5 @@
 @import "../rsvp-wrap/";
+@import "../variables/";
 
 .home {
   display: flex;
@@ -8,9 +9,20 @@
   text-align: center;
 }
 
+.home-banner {
+  flex: 1 1 auto;
+}
+
 .home-title {
-  margin: 30% 0 10%;
+  margin: -50% 0 50%;
   -webkit-font-smoothing: antialiased;
   font-weight: 300;
   font-size: 10vw;
+
+  color: var(--color-white10);
+}
+
+.home-banner img {
+  display: block;
+  max-width: 100%;
 }

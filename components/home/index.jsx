@@ -48,7 +48,33 @@ export default class Home extends Component {
     setHead({title: this.props.title})
     return (
       <div className={namespace}>
-        <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
+        <div className={`${namespace}-banner`}>
+          <img
+            src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_800/v1433822967/engagement-2_psdygp.jpg"
+            srcSet="
+            https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_640/v1433822967/engagement-2_psdygp.jpg 320w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_750/v1433822967/engagement-2_psdygp.jpg 375w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1242/v1433822967/engagement-2_psdygp.jpg 414w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_960/v1433822967/engagement-2_psdygp.jpg 480w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1024/v1433822967/engagement-2_psdygp.jpg 640w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1334/v1433822967/engagement-2_psdygp.jpg 667w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2208/v1433822967/engagement-2_psdygp.jpg 736w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_800/v1433822967/engagement-2_psdygp.jpg 800w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2048/v1433822967/engagement-2_psdygp.jpg 1024w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1200/v1433822967/engagement-2_psdygp.jpg 1200w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1500/v1433822967/engagement-2_psdygp.jpg 1500w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2000/v1433822967/engagement-2_psdygp.jpg 2000w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2200/v1433822967/engagement-2_psdygp.jpg 2200w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2400/v1433822967/engagement-2_psdygp.jpg 2400w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2600/v1433822967/engagement-2_psdygp.jpg 2600w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2800/v1433822967/engagement-2_psdygp.jpg 2800w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_3000/v1433822967/engagement-2_psdygp.jpg 3000w
+            "
+            sizes="100vw"
+            alt="Rachel & Joey"
+          />
+          <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
+        </div>
         <RsvpWrap />
       </div>
     )

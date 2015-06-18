@@ -32,13 +32,13 @@
   margin: 0;
 }
 
-.widgetWhereTo-link {
+/* specificity war with .card */
+a.widgetWhereTo-link {
   display: inline-block;
   padding: var(--padding-small);
+  margin: 0;
   /* so that the left edge of the text still lines up */
   margin-left: -var(--padding-small);
-  color: var(--color-text-inverted);
-  text-decoration: underline;
 }
 
 .widgetWhereTo-link:hover

@@ -16,6 +16,26 @@
   color: var(--color-text-inverted);
 }
 
+.card-inverted a {
+  color: var(--color-text-inverted);
+  text-decoration: underline;
+  padding: var(--padding-small);
+  margin: -var(--padding-small);
+}
+
+.card-inverted a:focus
+, .card-inverted a:hover {
+  background: var(--color-text-inverted);
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.card-inverted a:active {
+  background: transparent;
+  color: var(--color-text-inverted);
+  text-decoration: underline;
+}
+
 .card img:first-child
 , .card img:last-child {
   display: block;

@@ -88,6 +88,12 @@ export default class PageAbout extends Component {
           </div>
         </Card>
       </CardRow>
+      <CardRow>
+        <Card style="inverted">
+          <h2>Registry</h2>
+          <p>We have a <a href="https://www.amazon.com/registry/wedding/2IKOI1JN4B00E">small registry</a>, because we're lucky to already have a home together, so if you feel inclined, <a href="http://www.honeyfund.com/wedding/rachelandjoey2015">please give us a memory that will last a lifetime</a>.</p>
+        </Card>
+      </CardRow>
     </div>)
   }
 }

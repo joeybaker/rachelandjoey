@@ -7,10 +7,6 @@
   margin-bottom: var(--padding-normal);
 }
 
-.cardRow:last-child {
-  margin-bottom: 0;
-}
-
 .cardRow > .card {
   margin-bottom: var(--padding-normal);
 }

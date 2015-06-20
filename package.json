@@ -37,7 +37,7 @@
     "gitPush": "git push --follow-tags --no-verify && git push --tags --no-verify",
     "release": "source ./scripts.sh && npm run requireGitClean && npm run gitPull && npm run dmn && npm run doctoc && npm_release $@",
     "parse-db-csv": "f () { csv-parser $@; }; f",
-    "rethinkdb": "remote=root@rachelandjoey.com; ssh -fNTL localhost:8080:$(ssh $remote \"docker inspect --format '{{ .NetworkSettings.IPAddress }}' rethinkdb\"):8080 $remote",
+    "rethinkdb": "remote=root@rachelandjoey.com; port=8080; ssh -fNTL localhost:$port:$(ssh $remote \"docker inspect --format '{{ .NetworkSettings.IPAddress }}' rethinkdb\"):8080 $remote; open http://localhost:$port",
     "kill-rethinkdb": "kill $(lsof -t -i @localhost:8080 -sTCP:listen)",
     "build-assets": "NODE_ENV=production && babel-node ./build.js",
     "git-commit-assets": "git add static versions.json && git commit -m'Update assets'",

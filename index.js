@@ -24,10 +24,20 @@ if (config.nodeEnv === 'development') connectionOptions.host = 'localhost'
 server.connection(connectionOptions)
 
 // add routes
-server.route(values(routes))
+const loadRoutes = () => {
+  server.log(['server', 'init', 'info'], 'loading routes')
+  server.route(values(routes))
+  server.log(['server', 'init', 'info', 'ok'], 'routes loaded')
+}
 
 // load in packs and start server
 const startServer = after(size(packs), () => {
-  server.start(() => server.log(['server', 'init'], server.info))
+  server.log(['server', 'init', 'info', 'ok'], 'packs loaded')
+  loadRoutes()
+  server.start(() => server.log(['server', 'init', 'info', 'ok'], server.info))
 })
-each(packs, (pack) => pack(server, startServer))
+server.log(['server', 'init', 'info'], 'loading packs')
+each(packs, (pack, packName) => {
+  server.log(['server', 'init', 'info', packName], 'starting')
+  pack(server, startServer)
+})

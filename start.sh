@@ -23,18 +23,16 @@ fi
 
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
-sudo docker stop rachelandjoey
 sudo docker rm -f rachelandjoey
 sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"
-sudo docker stop bud
 sudo docker rm -f bud
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
 
-echo "starting http → https redirector";
+echo "starting http → https redirector"
 if [[ -n $(docker ps -f 'name=redirector' -q) ]]; then
   echo "redirector already running"
 else
@@ -42,18 +40,18 @@ else
     --name redirector getable/https-redirect
 fi;
 
-echo "looking for old containers to remove";
+echo "looking for old containers to remove"
 # remove all unused images (saves space)
 if [[ -n $(docker ps -a | grep 'Exited' | awk '{print $1}') ]]; then
   echo "removing old containers"
   docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 else
-  echo "no old containers found";
+  echo "no old containers found"
 fi;
 
 # wait for the server to go up
-echo "ensuring assests are cached";
-wait 10;
-curl --silent https://rachelandjoey.com/ > /dev/null;
+echo "ensuring assests are cached"
+sleep 10
+curl --silent https://rachelandjoey.com/ > /dev/null
 
 echo "done"

@@ -32,17 +32,16 @@ sudo docker rm -f bud
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
 
-echo "starting http → https redirector"
+echo "starting http → https redirector";
 if [[ -n $(docker ps -f 'name=redirector' -q) ]]; then
-  echo 'redirector already running'
+  echo "redirector already running"
 else
   sudo docker run -d --restart=always -p 80:80 \
     --name redirector getable/https-redirect
 fi
 
 echo "ensuring assests are cached";
-curl --silent https://rachelandjoey.com/static/index.js > /dev/null;
-curl --silent https://rachelandjoey.com > /dev/null;
+curl --silent https://rachelandjoey.com/ > /dev/null;
 
 echo "looking for old containers to remove"
 # remove all unused images (saves space)

@@ -27,7 +27,7 @@ const initGood = function initGood (server, cb) {
       , config: {
         token: logglyToken
         , subdomain: logglySubdomain
-        , name: server.app.config.app.name
+        , name: `${server.app.config.app.name}:${server.app.config.nodeEnv}`
         // hard code the hostname since we don't care about server-restarts
         , hostname: server.app.config.app.name
         , tags: [server.app.config.nodeEnv]

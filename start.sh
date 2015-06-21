@@ -23,13 +23,13 @@ fi
 
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
-sudo dokcer stop rachelandjoey
+sudo docker stop rachelandjoey
 sudo docker rm -f rachelandjoey
 sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"
-sudo dokcer stop bud
+sudo docker stop bud
 sudo docker rm -f bud
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls

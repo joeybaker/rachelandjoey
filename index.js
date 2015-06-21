@@ -25,19 +25,19 @@ server.connection(connectionOptions)
 
 // add routes
 const loadRoutes = () => {
-  server.log(['server', 'init', 'info'], 'loading routes')
+  server.log(['server', 'init', 'info'], {message: 'loading routes'})
   server.route(values(routes))
-  server.log(['server', 'init', 'info', 'ok'], 'routes loaded')
+  server.log(['server', 'init', 'info', 'ok'], {message: 'routes loaded'})
 }
 
 // load in packs and start server
 const startServer = after(size(packs), () => {
-  server.log(['server', 'init', 'info', 'ok'], 'packs loaded')
+  server.log(['server', 'init', 'info', 'ok'], {message: 'packs loaded'})
   loadRoutes()
   server.start(() => server.log(['server', 'init', 'info', 'ok'], server.info))
 })
-server.log(['server', 'init', 'info'], 'loading packs')
+server.log(['server', 'init', 'info'], {message: 'loading packs'})
 each(packs, (pack, packName) => {
-  server.log(['server', 'init', 'info', packName], 'starting')
+  server.log(['server', 'init', 'info', packName], {message: 'starting'})
   pack(server, startServer)
 })

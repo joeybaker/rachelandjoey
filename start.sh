@@ -23,11 +23,13 @@ fi
 
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
+sudo dokcer stop rachelandjoey
 sudo docker rm -f rachelandjoey
 sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"
+sudo dokcer stop bud
 sudo docker rm -f bud
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
@@ -49,7 +51,9 @@ else
   echo "no old containers found";
 fi;
 
+# wait for the server to go up
 echo "ensuring assests are cached";
-curl https://rachelandjoey.com/ > /dev/null;
+wait 10;
+curl --silent https://rachelandjoey.com/ > /dev/null;
 
 echo "done"

@@ -40,9 +40,6 @@ else
     --name redirector getable/https-redirect
 fi
 
-echo "ensuring assests are cached";
-curl --silent https://rachelandjoey.com/ > /dev/null;
-
 echo "looking for old containers to remove"
 # remove all unused images (saves space)
 if [[ -n $(docker ps -a | grep 'Exited' | awk '{print $1}') ]]; then
@@ -51,5 +48,8 @@ if [[ -n $(docker ps -a | grep 'Exited' | awk '{print $1}') ]]; then
 else
   echo "no old containers found"
 fi
+
+echo "ensuring assests are cached";
+curl --silent https://rachelandjoey.com/ > /dev/null;
 
 echo "done"

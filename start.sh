@@ -24,7 +24,10 @@ fi
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
 sudo docker rm -f rachelandjoey
-sudo docker run -d --restart=always --name rachelandjoey -e NODE_ENV=production \
+sudo docker run -d --restart=always --name rachelandjoey \
+  -e NODE_ENV=production \
+  -e LOGGLY_TOKEN="$LOGGLY_TOKEN" \
+  -e LOGGLY_SUBDOMAIN="$LOGGLY_SUBDOMAIN" \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"

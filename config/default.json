@@ -16,4 +16,11 @@
     }
   },
   "rethnkdb": {}
+  , "loggly": {
+    "token": ""
+    , "subdomain": ""
+  }
+  , "app": {
+    "name": "rachelandjoey"
+  }
 }

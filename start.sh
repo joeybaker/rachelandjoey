@@ -38,18 +38,18 @@ if [[ -n $(docker ps -f 'name=redirector' -q) ]]; then
 else
   sudo docker run -d --restart=always -p 80:80 \
     --name redirector getable/https-redirect
-fi
+fi;
 
-echo "looking for old containers to remove"
+echo "looking for old containers to remove";
 # remove all unused images (saves space)
 if [[ -n $(docker ps -a | grep 'Exited' | awk '{print $1}') ]]; then
   echo "removing old containers"
   docker ps -a | grep 'Exited' | awk '{print $1}' | xargs --no-run-if-empty docker rm
 else
-  echo "no old containers found"
-fi
+  echo "no old containers found";
+fi;
 
 echo "ensuring assests are cached";
-curl --silent https://rachelandjoey.com/ > /dev/null;
+curl https://rachelandjoey.com/ > /dev/null;
 
 echo "done"

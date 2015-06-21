@@ -29,6 +29,13 @@ sudo docker rm -f redirector
 sudo docker run -d --restart=always -p 80:80 --name redirector getable/https-redirect
 ```
 
+### Server setup
+* use docker
+* ensure you have env tokens set:
+    * `LOGGLY_TOKEN`
+    * `LOGGLY_SUBDOMAIN`
+* run `start.sh`
+
 ## Tests
 Tests are [tape](https://github.com/substack/tape). They can be run with `npm test`.
 
@@ -36,3 +43,8 @@ Tests are [tape](https://github.com/substack/tape). They can be run with `npm te
 `npm run dev` the JS in live reload mode, it's not the full server
 `npm run component -- component/dir` can run just a single component
 `npm start` boots the server
+
+### Adding ENV tokens
+* export from `~/.zprofile` for the root user on the server
+* add to the docker run command in `start.sh`
+* use in the app via `server.app.config`

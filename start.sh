@@ -41,8 +41,8 @@ else
 fi
 
 echo "ensuring assests are cached"
-time curl -s https://rachelandjoey.com/static/index.js > /dev/null
-time curl -s https://rachelandjoey.com > /dev/null
+time curl --silent https://rachelandjoey.com/static/index.js > /dev/null;
+time curl --silent https://rachelandjoey.com > /dev/null;
 
 echo "looking for old containers to remove"
 # remove all unused images (saves space)

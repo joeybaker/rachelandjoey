@@ -40,7 +40,7 @@ else
     --name redirector getable/https-redirect
 fi
 
-echo "ensuring assests are cached"
+echo "ensuring assests are cached";
 curl --silent https://rachelandjoey.com/static/index.js > /dev/null;
 curl --silent https://rachelandjoey.com > /dev/null;
 

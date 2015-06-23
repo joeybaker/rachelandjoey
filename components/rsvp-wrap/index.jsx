@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {addons} from 'react/addons'
 import RsvpForm from '../rsvp-form/'
 import take from 'lodash/array/take'
+import first from 'lodash/array/first'
 import xhr from 'xhr'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'rsvpWrap'
@@ -16,6 +17,12 @@ export default class RsvpWrap extends Component {
     if (hasStorage) {
       const raw = window.localStorage.getItem(namespace)
       if (raw) this.state.party = JSON.parse(raw)
+    }
+  }
+
+  componentWillMount () {
+    if (hasStorage && this.state.party) {
+      this.setParty(first(this.state.party.names))
     }
   }
 
@@ -61,7 +68,7 @@ export default class RsvpWrap extends Component {
     })
   }
 
-  findParty (name) {
+  setParty (name) {
     xhr({
       url: `/api/match/party/${name}`
       , encoding: null
@@ -101,7 +108,7 @@ export default class RsvpWrap extends Component {
       <h2>RSVP</h2>
       <RsvpForm
         findNames={this.findNames}
-        onPartyNameSelect={this.findParty.bind(this)}
+        onPartyNameSelect={this.setParty.bind(this)}
         onSubmit={this.onSubmit.bind(this)}
         submitEnabled={this.state.submitEnabled}
         party={this.state.party}

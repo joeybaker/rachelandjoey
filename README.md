@@ -4,8 +4,10 @@
 
 - [rachelandjoey.com](#rachelandjoeycom)
   - [Running](#running)
+    - [Server setup](#server-setup)
   - [Tests](#tests)
   - [Developing](#developing)
+    - [Adding ENV tokens](#adding-env-tokens)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

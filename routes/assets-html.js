@@ -6,7 +6,7 @@ import versions from '../versions.json'
 import React from 'react'
 import ReactRouter from 'react-router'
 
-const expiresIn = 1000 * 60
+const expiresIn = 1000 * 60 * 60 * 24
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'static', 'index.html')).toString()
   .replace('/index.js', `/${versions.js}/index.js`)

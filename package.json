@@ -103,6 +103,7 @@
     "react": "^0.13.3",
     "react-autosuggest": "^1.17.0",
     "react-document-head": "^1.0.0",
+    "react-helmet": "^1.1.0",
     "react-router": "^0.13.3",
     "react-transitive-number": "^1.1.0",
     "rethinkdb": "^2.0.2",

@@ -13,10 +13,9 @@
 }
 
 .dashboardStats-stat {
-  flex: 1 0 30%;
+  flex: 1 0 auto;
 
   display: block;
-  flex-direction: column;
 
   min-width: var(--width-statBox-dashboardStats);
   min-height: var(--width-statBox-dashboardStats);
@@ -44,6 +43,10 @@
 }
 
 @media (min-width: 25rem) {
+  .dashboardStats-stat {
+    flex-basis: 30%;
+  }
+
   .dashboardStats-stat:nth-of-type(2n) {
     margin-right: var(--width-widgetSeperator);
   }

@@ -20,9 +20,21 @@
   font-size: 10vw;
 
   color: var(--color-white10);
+  /* just give a little separation from the background */
+  text-shadow: 0 0 1px rgba(0,0,0,.2);
 }
 
 .home-banner img {
   display: block;
   max-width: 100%;
+  /* on mobile, the nav will be at the bottom of the page, so border up the image */
+  border-top: var(--border-widgetSeperator-inverted);
+  border-bottom: var(--border-widgetSeperator-inverted);
+}
+
+/* media query from _entry */
+@media (min-width: 35rem) {
+  .home-banner img {
+    border-top: none;
+  }
 }

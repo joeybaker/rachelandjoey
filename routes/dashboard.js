@@ -2,6 +2,7 @@ import path from 'path'
 import fs from 'fs'
 import versions from '../versions.json'
 import React from 'react'
+import Helmet from 'react-helmet'
 import Dashboard from '../components/page-dashboard/'
 import dashboardNamesQuery from '../queries/dashboard-names'
 
@@ -18,12 +19,9 @@ const handler = (req, reply) => {
     if (err) return void reply(err)
 
     const initialHTML = React.renderToString(React.createElement(Dashboard, {data}))
-    let title = 'Rachel & Joey'
+    const head = Helmet.rewind()
 
-    if (React.documentHead) {
-      title = React.documentHead.title
-      React.documentHead = {}
-    }
+    const title = head.title || 'Rachel & Joey'
 
     const outHtml = html
       .replace('id="app">', 'id="app">' + initialHTML)

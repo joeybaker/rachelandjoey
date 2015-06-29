@@ -4,6 +4,7 @@ import Stats from '../dashboard-stats/'
 import NamesTable from '../dashboard-names-table/'
 import CardRow from '../card-row/'
 import Card from '../card/'
+import Helmet from 'react-helmet'
 import size from 'lodash/collection/size'
 import each from 'lodash/collection/each'
 import xhr from 'xhr'
@@ -120,6 +121,7 @@ export default class PageDashboard extends Component {
     )
 
     return (<div className={namespace}>
+      <Helmet title="Dashboard" />
       {this.state.bannerMessage ? loadingBanner : ''}
       <Stats stats={this.state.stats} />
       <NamesTable persons={this.state.persons} />

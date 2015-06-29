@@ -1,0 +1,9 @@
+@import "../../_entry/";
+
+.small {
+  background: blue;
+}
+
+.large {
+  background: red;
+}

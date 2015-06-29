@@ -1,0 +1,15 @@
+@import "../_entry/";
+@import "../dashboard-stats/";
+@import "../dashboard-names-table/";
+@import "../card-row/";
+@import "../card/";
+
+.pageDashboard-alert {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+}
+
+.pageDashboard-alert h3 {
+  margin: 0;
+}

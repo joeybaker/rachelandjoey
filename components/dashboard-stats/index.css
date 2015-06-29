@@ -1,0 +1,85 @@
+@import "../variables/";
+
+:root {
+  --width-statBox-dashboardStats: 8rem;
+}
+
+.dashboardStats-stats {
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboardStats-stat {
+  flex: 1 0 30%;
+
+  display: block;
+  flex-direction: column;
+
+  min-width: var(--width-statBox-dashboardStats);
+  min-height: var(--width-statBox-dashboardStats);
+
+  margin-right: var(--width-widgetSeperator);
+  margin-bottom: var(--width-widgetSeperator);
+  padding: var(--padding-large);
+
+  background: var(--background-content);
+
+  text-align: center;
+}
+
+.dashboardStats-stat:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+.dashboardStats-statNumber
+, .dashboardStats-statTitle {
+  display: block;
+}
+
+.dashboardStats-statNumber {
+  font-size: 4rem;
+}
+
+@media (min-width: 25rem) {
+  .dashboardStats-stat:nth-of-type(2n) {
+    margin-right: var(--width-widgetSeperator);
+  }
+
+  .dashboardStats-stat:nth-of-type(3n) {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 35rem) {
+  /* at this width, the bottom two squares get larger, so… adjust this size so
+  that the most important actually take the whole top row */
+  .dashboardStats-stat:nth-of-type(1)
+  , .dashboardStats-stat:nth-of-type(2)
+  , .dashboardStats-stat:nth-of-type(3) {
+    min-width: 30%;
+  }
+}
+
+@media (min-width: 55rem) {
+  .dashboardStats-stat {
+    flex-basis: auto;
+  }
+
+  .dashboardStats-stat:nth-of-type(3n) {
+    margin-right: var(--width-widgetSeperator);
+  }
+
+  .dashboardStats-stat:nth-of-type(1)
+  , .dashboardStats-stat:nth-of-type(2)
+  , .dashboardStats-stat:nth-of-type(3) {
+    min-width: var(--width-statBox-dashboardStats);
+  }
+}
+
+/* keep this last so that it's always true, regardless of media queries */
+.dashboardStats-stat:last-of-type {
+  margin-right: 0;
+}

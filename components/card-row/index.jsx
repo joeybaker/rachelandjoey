@@ -17,13 +17,13 @@ export default class CardRow extends Component {
       [`${this.props.className}`]: this.props.className
     })
 
-    return (<div className={classes}>
+    return (<div {...this.props} className={classes}>
       {Children.map(this.props.children, identity)}
     </div>)
   }
 }
 
 CardRow.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.node
   , className: PropTypes.string
 }

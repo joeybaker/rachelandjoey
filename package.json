@@ -100,6 +100,7 @@
     "jace": "^2.0.0",
     "joi": "^6.4.3",
     "lodash": "^3.9.3",
+    "raf": "^3.0.0",
     "react": "^0.13.3",
     "react-autosuggest": "^1.15.0",
     "react-document-head": "^1.0.0",

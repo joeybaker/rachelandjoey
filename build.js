@@ -4,8 +4,7 @@ console.time(BUILD_TIMER)
 import md5 from 'MD5'
 import atomifyCSS from 'atomify-css'
 import browserify from 'browserify'
-import browserifyIncremental from 'browserify-incremental'
-import assign from 'lodash/object/assign'
+import rebundler from 'rebundler'
 import path from 'path'
 import fs from 'fs'
 import versions from './versions.json'
@@ -16,23 +15,28 @@ const componentPath = path.join(__dirname, 'components')
 
 const writeVersions = () => fs.writeFile(versionsPath, JSON.stringify(versions, null, 2))
 
-const buildJs = function buildJs (inPath, mapPath, callback) {
+const buildJs = function buildJs (entry, mapPath, callback) {
   const entryName = path.basename(mapPath)
+
   console.info(['info', entryName, 'bundle', 'js'], 'started')
-  const b = browserify(assign({
-    debug: true
-    , extensions: ['.js', '.json', '.jsx']
-    , cacheFile: path.join('/tmp', `${path.basename(__dirname)}-${entryName}-browserify-cache.json`)
-  }, browserifyIncremental.args))
 
-  b.add(inPath)
+  const bundler = rebundler({persist: true, persistKey: md5(entry)}, (cache, packageCache) => {
+    const b = browserify(entry, {
+      debug: true
+      , extensions: ['.js', '.json', '.jsx']
+      , cache
+      , packageCache
+      , fullPaths: true
+    })
 
-  b.transform('babelify')
-  b.plugin('minifyify', {map: mapPath})
+    b.transform('babelify')
+    b.plugin('minifyify', {map: mapPath})
 
-  browserifyIncremental(b)
+    return b
+  })
 
-  b.bundle((...args) => {
+
+  bundler().bundle((...args) => {
     console.info(['info', entryName, 'bundle', 'js'], 'finished')
     callback.apply(null, args)
   })

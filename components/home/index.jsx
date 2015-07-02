@@ -59,6 +59,7 @@ export default class Home extends Component {
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1024/v1433822967/engagement-2_psdygp.jpg 640w
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1334/v1433822967/engagement-2_psdygp.jpg 667w
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2208/v1433822967/engagement-2_psdygp.jpg 736w
+            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1536/v1433822967/engagement-2_psdygp.jpg 768w
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_800/v1433822967/engagement-2_psdygp.jpg 800w
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2048/v1433822967/engagement-2_psdygp.jpg 1024w
             , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1200/v1433822967/engagement-2_psdygp.jpg 1200w

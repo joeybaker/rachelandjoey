@@ -23,7 +23,9 @@ fi
 
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
-sudo docker rm -f rachelandjoey
+if [[ -n $(docker ps -f 'name=rachelandjoey' -q) ]]; then
+  sudo docker rm -f rachelandjoey
+fi
 sudo docker run -d --restart=always --name rachelandjoey \
   -e NODE_ENV=production \
   -e LOGGLY_TOKEN="$LOGGLY_TOKEN" \
@@ -31,7 +33,9 @@ sudo docker run -d --restart=always --name rachelandjoey \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"
-sudo docker rm -f bud
+if [[ -n $(docker ps -f 'name=bud' -q) ]]; then
+  sudo docker rm -f bud
+fi
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
 

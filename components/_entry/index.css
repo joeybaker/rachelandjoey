@@ -19,6 +19,13 @@ html, body {
   background: var(--background-body);
 }
 
+.browserupgrade {
+  background: yellow;
+  text-align: center;
+  margin: 0;
+  padding: var(--padding-large);
+}
+
 #app {
   display: flex;
   min-height: 100%;

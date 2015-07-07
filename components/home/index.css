@@ -4,9 +4,8 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   text-align: center;
-  height: calc(100% - 10vh);
+  min-height: 100%;
 }
 
 .home-banner {

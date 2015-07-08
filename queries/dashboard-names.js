@@ -4,6 +4,7 @@ const simplifyMeal = (meal) => {
   if (!meal) return meal
   else if (meal.includes('chicken')) return 'chicken'
   else if (meal.includes('steak')) return 'steak'
+  else if (meal.includes('regrets')) return null
   else return 'vegie'
 }
 

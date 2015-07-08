@@ -4,12 +4,12 @@
 .home {
   display: flex;
   flex-direction: column;
+  align-content: center;
   text-align: center;
-  min-height: 100%;
 }
 
-.home-banner {
-  flex: 1 1 100%;
+.home > * {
+  flex: 1 0 auto;
 }
 
 .home-title {
@@ -35,6 +35,7 @@
 /* media query from _entry */
 @media (min-width: 35rem) {
   .home-banner img {
+    flex: 1 1 100%;
     border-top: none;
   }
 }

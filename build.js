@@ -8,6 +8,7 @@ import rebundler from 'rebundler'
 import path from 'path'
 import fs from 'fs'
 import versions from './versions.json'
+import pkg from './package.json'
 
 const staticPath = path.join(__dirname, 'static')
 const versionsPath = path.join(__dirname, 'versions.json')
@@ -20,7 +21,7 @@ const buildJs = function buildJs (entry, mapPath, callback) {
 
   console.info(['info', entryName, 'bundle', 'js'], 'started')
 
-  const bundler = rebundler({persist: true, persistKey: md5(entry)}, (cache, packageCache) => {
+  const bundler = rebundler({persist: true, persistKey: md5(entry), cacheDir: path.join('/tmp/', pkg.name)}, (cache, packageCache) => {
     const b = browserify(entry, {
       debug: true
       , extensions: ['.js', '.json', '.jsx']

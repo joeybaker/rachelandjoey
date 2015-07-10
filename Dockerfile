@@ -2,7 +2,7 @@
 #
 # VERSION               2.0.0
 
-FROM      iojs:2.2.1
+FROM      iojs:2.3.3
 MAINTAINER Joey Baker <joey@byjoeybaker.com>
 
 ENV NODE_ENV production

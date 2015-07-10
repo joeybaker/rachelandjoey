@@ -11,7 +11,6 @@
 // }
 
 import _ from 'lodash'
-import fs from 'fs'
 import path from 'path'
 
 const raw = require(path.join(__dirname, '..', 'guests-raw.json'))

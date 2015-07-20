@@ -3,10 +3,23 @@ import {addons} from 'react/addons'
 import {Table, Column} from 'fixed-data-table'
 import clone from 'lodash/lang/clone'
 import ElementQuery from '../element-query/'
+import sortBy from 'lodash/collection/sortBy'
+import last from 'lodash/array/last'
 const {shouldComponentUpdate} = addons.PureRenderMixin
 const namespace = 'dashboardNamesTable'
 
 const isBrowser = process.browser
+
+const SORT_TYPES = {
+  ASCD: 'assending'
+  , DESC: 'desceding'
+}
+
+const COLUMNS = {
+  NAME: 'name'
+  , ATTENDING: 'attending'
+  , MEAL: 'meal'
+}
 
 export default class DashboardNamesTable extends Component {
   constructor (props) {
@@ -14,11 +27,13 @@ export default class DashboardNamesTable extends Component {
     const windowWidth = isBrowser ? window.innerWidth : 320
     const columnWidths = this.autoSizeColumns(windowWidth)
     this.state = {
-      persons: this.makeRows(props.persons)
+      persons: props.persons
       , width: windowWidth
       , columnWidths
       , isColumnResizing: false
       , hasColumnsResized: false
+      , sortBy: 'attending'
+      , sortDirection: null
     }
   }
 
@@ -26,9 +41,9 @@ export default class DashboardNamesTable extends Component {
     ElementQuery.register(this, {}, this.onResize.bind(this))
   }
 
-  componentWillReceiveProps (newProps) {
-    this.setState({persons: this.makeRows(newProps.persons)})
-  }
+  // componentWillReceiveProps (newProps) {
+    // this.setState({persons: this.makeRows(newProps.persons)})
+  // }
 
   // use the pure-render mixin without the mixin. This allows us to use es6
   // classes and avoid "magic" code. NOTE: if this component is used directly
@@ -42,11 +57,11 @@ export default class DashboardNamesTable extends Component {
     ElementQuery.unregister(this)
   }
 
-  makeRows (persons) {
-    return persons.map((person) => {
-      return [person.name, person.attending, person.meal]
-    })
-  }
+  // makeRows (persons) {
+  //   return persons.map((person) => {
+  //     return [person.name, person.attending, person.meal]
+  //   })
+  // }
 
   autoSizeColumns (windowWidth) {
     const columnWidth = windowWidth / 3
@@ -55,6 +70,37 @@ export default class DashboardNamesTable extends Component {
 
   rowGetter (index) {
     return this.state.persons[index]
+  }
+
+  rowSortBy (dataKey) {
+    let sortDirection
+
+    // if we have a sort alread set, and it's the same as what we are sorting,
+    // invert. Else, set to DESC
+    if (dataKey === this.state.sortBy) {
+      sortDirection = this.state.sortDirection === SORT_TYPES.ASCD
+        ? SORT_TYPES.DESC
+        : SORT_TYPES.ASCD
+    }
+    else {
+      sortDirection = SORT_TYPES.DESC
+    }
+
+    // clone so that we don't mess up the immutate state
+    const sortedRows = dataKey === COLUMNS.NAME
+      ? sortBy(this.state.persons, (person) => last(person.name.split(' ')))
+      : sortBy(this.state.persons, dataKey)
+
+    // if we're in decending sort order, reverse the default sort
+    if (sortDirection === SORT_TYPES.ASCD) {
+      sortedRows.reverse()
+    }
+
+    this.setState({
+      persons: sortedRows
+      , sortBy: dataKey
+      , sortDirection
+    })
   }
 
   onResize () {
@@ -74,7 +120,20 @@ export default class DashboardNamesTable extends Component {
     this.setState({columnWidths, isColumnResizing: false, hasColumnsResized: true})
   }
 
+  renderHeader (label, dataKey) {
+    return (
+      <a onClick={this.rowSortBy.bind(this, dataKey)}>{label}</a>
+    )
+  }
+
   render () {
+    let sortDirectionArrow = ''
+    const sortyBy = this.state.sortBy
+
+    if (this.state.sortDirection) {
+      sortDirectionArrow = this.state.sortDirection === SORT_TYPES.DESC ? '↓' : '↑'
+    }
+
     return (<div className={namespace}>
       <Table
         rowHeight={50}
@@ -87,30 +146,33 @@ export default class DashboardNamesTable extends Component {
         onColumnResizeEndCallback={this.onColumnResize.bind(this)}
       >
         <Column
-          label="Name"
+          label={`Name ${sortyBy === 'name' ? sortDirectionArrow : ''}`}
+          headerRenderer={::this.renderHeader}
           width={this.state.columnWidths[0] > 100 ? this.state.columnWidths[0] : 100}
           minWidth={100}
           maxWidth={1000}
-          dataKey={0}
+          dataKey={COLUMNS.NAME}
           isResizable={true}
           allowCellsRecycling={true}
           fixed={true}
         />
         <Column
-          label="Attending"
+          label={`Attending ${sortyBy === 'attending' ? sortDirectionArrow : ''}`}
+          headerRenderer={::this.renderHeader}
           width={this.state.columnWidths[1]}
           minWidth={100}
           maxWidth={1000}
-          dataKey={1}
+          dataKey={COLUMNS.ATTENDING}
           isResizable={true}
           allowCellsRecycling={true}
         />
         <Column
-          label="Meal"
+          label={`Meal ${sortyBy === 'meal' ? sortDirectionArrow : ''}`}
+          headerRenderer={::this.renderHeader}
           width={this.state.columnWidths[2]}
           minWidth={100}
           maxWidth={1000}
-          dataKey={2}
+          dataKey={COLUMNS.MEAL}
           isResizable={true}
           allowCellsRecycling={true}
         />

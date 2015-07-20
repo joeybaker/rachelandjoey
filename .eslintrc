@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "plugins": [
     "react"
   ],
@@ -41,7 +42,7 @@
     "no-empty-class": 2,
     "no-ex-assign": 2,
     "no-extra-boolean-cast": 2,
-    "no-extra-parens": 1,
+    "no-extra-parens": 0,
     "no-extra-semi": 2,
     "no-func-assign": 2,
     "no-inner-declarations": 2,
@@ -263,10 +264,16 @@
       1,
       {
         "order": [
+          "contextTypes",
+          "propTypes",
+          "defaultProps",
+          "state",
           "constructor",
+          "statics",
           "lifecycle",
           "everything-else",
           "/^on.*$$/",
+          "/^render.*$$/",
           "render"
         ],
         "groups": {

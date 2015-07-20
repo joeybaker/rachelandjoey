@@ -57,7 +57,7 @@
     "MD5": "^1.2.2",
     "atomify-css": "^3.3.4",
     "autoprefixer-core": "^5.2.0",
-    "babel-eslint": "^3.1.15",
+    "babel-eslint": "^3.1.23",
     "babelify": "^6.1.2",
     "beefy": "^2.1.5",
     "browserify": "^10.2.4",

@@ -351,5 +351,6 @@ RsvpForm.propTypes = {
 RsvpForm.defaultProps = {
   submitButtonLabel: 'RSVP'
   // aug 1st at midnight
-  , submitEnabled: Date.now() < 1438498799000
+  // , submitEnabled: Date.now() < 1438498799000
+  , submitEnabled: true
 }

@@ -41,9 +41,10 @@ export default class DashboardNamesTable extends Component {
     ElementQuery.register(this, {}, this.onResize.bind(this))
   }
 
-  // componentWillReceiveProps (newProps) {
-    // this.setState({persons: this.makeRows(newProps.persons)})
-  // }
+  componentWillReceiveProps (newProps) {
+    const {persons} = newProps
+    this.setState({persons}, () => this.rowSortBy(this.state.sortBy))
+  }
 
   // use the pure-render mixin without the mixin. This allows us to use es6
   // classes and avoid "magic" code. NOTE: if this component is used directly
@@ -56,12 +57,6 @@ export default class DashboardNamesTable extends Component {
   componentWillUnmount () {
     ElementQuery.unregister(this)
   }
-
-  // makeRows (persons) {
-  //   return persons.map((person) => {
-  //     return [person.name, person.attending, person.meal]
-  //   })
-  // }
 
   autoSizeColumns (windowWidth) {
     const columnWidth = windowWidth / 3

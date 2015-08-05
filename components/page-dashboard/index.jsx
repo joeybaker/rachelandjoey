@@ -59,8 +59,15 @@ export default class PageDashboard extends Component {
         }
 
         this.setState(parsed)
-        this.setState({bannerMessage: false})
+        this.setState({parsed, bannerMessage: false})
       }
+    })
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.setState({
+      stats: this.makeStats(newProps.data)
+      , persons: this.makePersons(newProps.data)
     })
   }
 

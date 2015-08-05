@@ -52,7 +52,7 @@ buildJs(path.join(staticPath, 'entry.js'), '/static/index.js.map', function bund
   writeVersions()
 })
 
-buildJs(path.join(componentPath, 'page-dashboard', 'example', 'entry.jsx'), '/static/dashboard.js.map', function bundled (err, js, map) {
+buildJs(path.join(staticPath, 'entry-dashboard.js'), '/static/dashboard.js.map', function bundled (err, js, map) {
   if (err) throw err
 
   versions.jsDashboard = md5(js)

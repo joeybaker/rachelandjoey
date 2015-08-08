@@ -46,7 +46,7 @@ export default class PageDashboard extends Component {
         console.error(err)
       }
       else if (res.statusCode >= 300) {
-        this.setState({bannerMessage: data.toString()})
+        this.setState({bannerMessage: data.toString ? data.toString() : data})
         console.error(data)
       }
       else {

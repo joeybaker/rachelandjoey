@@ -21,7 +21,7 @@ export default class DashboardStats extends Component {
         {Children.map(stats, (stat) => {
           return (<li className={`${namespace}-stat`}>
             <TransitiveNumber className={`${namespace}-statNumber`}>
-              {this.props.stats[stat]}
+              {this.props.stats[stat] || 0}
             </TransitiveNumber>
             <span className={`${namespace}-statTitle`}>{stat}</span>
           </li>)

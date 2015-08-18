@@ -1,19 +1,66 @@
 [
   {
-    "start": 1441472400000, "hardStart": "10am", "hardEnd": "4pm", "end": 1441494000000, "title": "Chillaxin’ by the Pool", "location": {
-      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
-    }, "description": "Drink some drink, nosh some nosh, and pick up a welcome packet!"
-  }, {
-    "start": 1441512000000, "end": 1441522800000, "hardStart": "9pm", "hardEnd": "12am", "title": "Rehearsal Dinner After Party", "location": {
-      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
-    }, "description": "Join us for drinks and dancing poolside. Please bring a beverage to share. We will be providing glasses, ice, and mixers."
-  }, {
-    "start": 1441582200000, "end": 1441602000000, "hardStart": "4pm", "hardEnd": "10pm", "title": "Wedding!", "location": {
-      "name": "Quivira Vineyards", "street": "4900 W Dry Creek Rd", "city": "Healdsburg", "state": "CA", "zip": "95448"
-    }, "description": "Ceremony starts at 4:30. It's short, so if you're late, you'll miss it. Much food and wine to follow."
-  }, {
-    "start": 1441641600000, "end": 1441652400000, "hardStart": "9am", "hardEnd": "12pm", "title": "Farewell Brunch", "location": {
-      "name": "Villa Terra Bella", "street": "8519 Starr Rd.", "city": "Windsor", "state": "CA", "zip": "95492"
-    }, "description": "Stop by before you head out for a light breakfast."
+    "start": 1441472400000,
+    "hardStart": "10am",
+    "hardEnd": "4pm",
+    "end": 1441494000000,
+    "hardDay": "Sat",
+    "title": "Chillaxin’ by the Pool",
+    "location": {
+      "name": "Villa Terra Bella",
+      "street": "8519 Starr Rd.",
+      "city": "Windsor",
+      "state": "CA",
+      "zip": "95492"
+    },
+    "description": "Drink some drink, nosh some nosh, and pick up a welcome packet!"
+  },
+  {
+    "start": 1441512000000,
+    "end": 1441522800000,
+    "hardStart": "9pm",
+    "hardEnd": "12am",
+    "hardDay": "Sat",
+    "title": "Rehearsal Dinner After Party",
+    "location": {
+      "name": "Villa Terra Bella",
+      "street": "8519 Starr Rd.",
+      "city": "Windsor",
+      "state": "CA",
+      "zip": "95492"
+    },
+    "description": "Join us for drinks and dancing poolside. Please bring a beverage to share. We will be providing glasses, ice, and mixers."
+  },
+  {
+    "start": 1441582200000,
+    "end": 1441602000000,
+    "hardStart": "4pm",
+    "hardEnd": "10pm",
+    "hardDay": "Sun",
+    "title": "Wedding!",
+    "location": {
+      "name": "Quivira Vineyards",
+      "street": "4900 W Dry Creek Rd",
+      "city": "Healdsburg",
+      "state": "CA",
+      "zip": "95448"
+    },
+    "description": "Ceremony starts at 4:30. It's short, so if you're late, you'll miss it. Much food and wine to follow."
+  },
+  {
+    "start": 1441641600000,
+    "end": 1441652400000,
+    "hardStart": "9am",
+    "hardEnd": "12pm",
+    "hardDay": "Mon",
+    "title": "Farewell Brunch",
+    "location": {
+      "name": "Villa Terra Bella",
+      "street": "8519 Starr Rd.",
+      "city": "Windsor",
+      "state": "CA",
+      "zip": "95492"
+    },
+    "description": "Stop by before you head out for a light breakfast."
   }
 ]

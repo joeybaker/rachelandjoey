@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react'
-import moment from 'moment'
 import groupBy from 'lodash/collection/groupBy'
 import map from 'lodash/collection/map'
 import AgendaDay from '../agenda-day/'
@@ -18,7 +17,7 @@ export default class Agenda extends Component {
 
   // helpers
   groupByDay (events) {
-    return groupBy(events, (event) => moment(event.start).format('ddd, MMMM Do'))
+    return groupBy(events, (event) => event.hardDay)
   }
 
   render () {

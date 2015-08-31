@@ -15,7 +15,7 @@ npm prune
 npm i --production
 
 echo "db connection"
-if [[ -n $(docker ps -f 'name=rethinkdb' -q) ]]; then
+if [[ -n $(docker ps -af 'name=rethinkdb' -q) ]]; then
   echo 'rethinkdb already running'
 else
   sudo docker run --name rethinkdb -v "/srv/rethinkdb:/data" -d rethinkdb
@@ -23,7 +23,7 @@ fi
 
 echo "building app"
 sudo docker build -t joeybaker/rachelandjoey /srv/rachelandjoey.com
-if [[ -n $(docker ps -f 'name=rachelandjoey' -q) ]]; then
+if [[ -n $(docker ps -af 'name=rachelandjoey' -q) ]]; then
   sudo docker rm -f rachelandjoey
 fi
 sudo docker run -d --restart=always --name rachelandjoey \
@@ -33,14 +33,14 @@ sudo docker run -d --restart=always --name rachelandjoey \
   --link rethinkdb:rdb joeybaker/rachelandjoey
 
 echo "starting ssl"
-if [[ -n $(docker ps -f 'name=bud' -q) ]]; then
+if [[ -n $(docker ps -af 'name=bud' -q) ]]; then
   sudo docker rm -f bud
 fi
 sudo docker run -d --restart=always -v "/srv/bud:/data" -p 443:443 --name bud \
   --link rachelandjoey:backend joeybaker/bud-tls
 
 echo "starting http → https redirector"
-if [[ -n $(docker ps -f 'name=redirector' -q) ]]; then
+if [[ -n $(docker ps -af 'name=redirector' -q) ]]; then
   echo "redirector already running"
 else
   sudo docker run -d --restart=always -p 80:80 \

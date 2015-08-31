@@ -19,19 +19,13 @@ moment.locale('en', {
 export default class Home extends Component {
   constructor () {
     super()
-    const deadline = moment([2015, 8, 6])
+    const deadline = moment('2015-09-06 16:30:00.000-07:00')
     const timeRemaining = this.getTimeRemaining(deadline)
 
     this.state = {
       deadline
       , timeRemaining
     }
-  }
-
-  getTimeRemaining (deadline) {
-    const date = deadline || this.state.deadline
-    if (date.valueOf() > Date.now()) return date.calendar()
-    else return date.fromNow()
   }
 
   componentDidMount () {
@@ -42,6 +36,12 @@ export default class Home extends Component {
 
   componentWillUnmount () {
     clearInterval(this.timeInterval)
+  }
+
+  getTimeRemaining (deadline) {
+    const date = deadline || this.state.deadline
+    if (date.valueOf() > Date.now()) return date.fromNow()
+    else return date.fromNow()
   }
 
   render () {

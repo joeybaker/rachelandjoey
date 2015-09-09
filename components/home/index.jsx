@@ -76,7 +76,6 @@ export default class Home extends Component {
           />
           <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
         </div>
-        <RsvpWrap />
       </div>
     )
   }

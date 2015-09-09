@@ -25,12 +25,12 @@
 }
 
 .agendaEvent-title-text {
-  flex: 1;
+  flex: 1 1 auto;
 }
 
 .agendaEvent-title-time {
-  /* 5 is enough so that the content doesn't get pushed off to the side*/
-  flex: 0 1 5em;
+  flex: 0 1 auto;
+  text-align: right;
   color: var(--color-text-default);
   margin-left: var(--padding-small);
 }
@@ -42,7 +42,7 @@
   }
 
   .agendaEvent-title-time {
-    flex-basis: auto;
+    flex: 0 1 auto;
     margin-left: 0;
     margin-top: var(--padding-small);
   }

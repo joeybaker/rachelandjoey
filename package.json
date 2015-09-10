@@ -17,7 +17,7 @@
     "rachelandjoey"
   ],
   "scripts": {
-    "start": "echo $NODE_ENV; f () { if [ \"$NODE_ENV\" = \"development\" ]; then nodemon -x babel-node -e js,jsx,css -i static -i node_modules/ index.js; else babel-node index.js; fi; }; f",
+    "start": "echo $NODE_ENV; f () { if [ \"$NODE_ENV\" = \"development\" ]; then npm run -s watch & browser-sync start --proxy localhost:8000 --port 8001 --files static/ --no-open & nodemon -x babel-node -e js,jsx,css -i static -i node_modules/ index.js; else babel-node index.js; fi; }; f",
     "watch": "nodemon -x npm -w components/ -w build.js -e js,css,jsx,json -- -s run build-assets",
     "test-browser": "browserify -t coverify -t babelify test/test.js | tap-closer | smokestack -b chrome | tap-spec",
     "test-server": "iojs test/*.js | tap-spec",
@@ -60,6 +60,7 @@
     "babel-eslint": "^3.1.23",
     "babelify": "^6.1.2",
     "beefy": "^2.1.5",
+    "browser-sync": "^2.9.3",
     "browserify": "^10.2.4",
     "csv-parser": "^1.6.0",
     "dmn": "^1.0.10",

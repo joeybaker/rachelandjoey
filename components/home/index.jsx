@@ -1,8 +1,12 @@
 import React, {Component, PropTypes} from 'react'
 import moment from 'moment'
-import RsvpWrap from '../rsvp-wrap/'
+// import RsvpWrap from '../rsvp-wrap/'
 import setHead from 'react-document-head'
 const namespace = 'home'
+
+const makeUrl = (url, width) => {
+  return url.replace('upload/v', `upload/c_scale,q_50,w_${width}/v`)
+}
 
 // format moment strings
 moment.locale('en', {
@@ -31,7 +35,7 @@ export default class Home extends Component {
   componentDidMount () {
     this.timeInterval = setInterval(() => {
       this.setState({timeRemaining: this.getTimeRemaining()})
-    }, 1000)
+    }, 6e4)
   }
 
   componentWillUnmount () {
@@ -46,19 +50,20 @@ export default class Home extends Component {
 
   render () {
     setHead({title: this.props.title})
+    const imageUrl = 'https://res.cloudinary.com/dvxzdky9t/image/upload/v1441840590/2015-09-09_0005_ldv7z7.jpg'
+    const srcSet = `${makeUrl(imageUrl, 2000)} 2x, ${makeUrl(imageUrl, 4000)} 3x`
+
     return (
       <div className={namespace}>
         <div className={`${namespace}-banner`}>
           <img
-            src="https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_1200/v1433822967/engagement-2_psdygp.jpg"
-            srcSet="
-            https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_2000/v1433822967/engagement-2_psdygp.jpg 2x
-            , https://res.cloudinary.com/dvxzdky9t/image/upload/c_scale,q_50,w_4000/v1433822967/engagement-2_psdygp.jpg 3x
-            "
+            src={makeUrl(imageUrl, 1200)}
+            srcSet={srcSet}
             sizes="100vw"
             alt="Rachel & Joey"
           />
           <h1 className={`${namespace}-title`}>{this.state.timeRemaining}</h1>
+          <cite><small><a href="http://www.tjsalsmanphotography.com">Photo by TJ Salsman</a></small></cite>
         </div>
       </div>
     )

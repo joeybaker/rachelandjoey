@@ -12,28 +12,68 @@
   flex: 1 0 auto;
 }
 
+.home-banner {
+  position: relative;
+  /* on mobile, the nav will be at the bottom of the page, so border up the image */
+  border-top: var(--border-widgetSeperator-inverted);
+  overflow: hidden;
+}
+
 .home-title {
-  margin: -50% 0 50%;
+  position: absolute;
+  /* middle align, half way - half text height */
+  top: calc(50% - 10vw);
+  width: 100%;
+
   -webkit-font-smoothing: antialiased;
-  font-weight: 300;
+  font-weight: var(--fontWeight-lato-bold);
   font-size: 10vw;
 
-  color: var(--color-white10);
+  color: var(--color-white30);
+  text-align: center;
   /* just give a little separation from the background */
-  text-shadow: 0 0 1px rgba(0,0,0,.2);
+  text-shadow: 0 0 1px rgba(0,0,0,.5);
+
+  /* so the title is over the image*/
+  z-index: 1;
 }
 
 .home-banner img {
   display: block;
-  width: 100%;
-  margin: 0;
-  /* on mobile, the nav will be at the bottom of the page, so border up the image */
-  border-top: var(--border-widgetSeperator-inverted);
-  border-bottom: var(--border-widgetSeperator-inverted);
+  position: absolute;
+  /* anchor right, b/c that's this photo */
+  right: 0;
+
+  /* clip off the copyright, but do it in CSS so the download info is still there */
+  margin: -10px -10px -50px;
+  clip-path: inset(10px 10px 50px 10px);
+
+  min-width: calc(100% + 20px);
+  max-width: 200vw;
+  height: calc(100% + 60px);
+
+  object-fit: cover;
+}
+
+.home-banner cite {
+  position: absolute;
+  bottom: var(--padding-normal);
+  right: var(--padding-normal);
+  font-size: var(--fontSize-tiny);
+}
+
+.home-banner cite a {
+  color: var(--color-white10);
+  text-decoration: none;
 }
 
 /* media query from _entry */
 @media (min-width: 35rem) {
+  .home-banner {
+    /* on desktop, the nav is on the top, we don't need a border anymore */
+    border-top: 0;
+
+  }
   .home-banner img {
     flex: 1 1 100%;
     border-top: none;

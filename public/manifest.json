@@ -1,0 +1,41 @@
+{
+  "name": "Rachel & Joey",
+  "icons": [
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-36x36_nf20y6.png",
+      "sizes": "36x36",
+      "type": "image\/png",
+      "density": "0.75"
+    },
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-48x48_dlv7rd.png",
+      "sizes": "48x48",
+      "type": "image\/png",
+      "density": "1.0"
+    },
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-72x72_n49h77.png",
+      "sizes": "72x72",
+      "type": "image\/png",
+      "density": "1.5"
+    },
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-96x96_eo8ihj.png",
+      "sizes": "96x96",
+      "type": "image\/png",
+      "density": "2.0"
+    },
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-144x144_erzzct.png",
+      "sizes": "144x144",
+      "type": "image\/png",
+      "density": "3.0"
+    },
+    {
+      "src": "https:\/\/res.cloudinary.com\/dvxzdky9t\/image\/upload\/v1434669382\/android-chrome-192x192_xvm5sb.png",
+      "sizes": "192x192",
+      "type": "image\/png",
+      "density": "4.0"
+    }
+  ]
+}
